@@ -20,7 +20,9 @@ Airbnb-Trainer/
     drills.json       ← 30 drills de escuta por sotaque
     vocab.json        ← espelho do baralho Anki (tag airbnb)
     ops.json          ← REGRAS DA OPERAÇÃO (auth, gravação, sumarização, holds, imparcialidade) — não é Help Center
-  dist/index.html     ← arquivo publicado como Artifact (gerado, não editar)
+  dist/index.html     ← arquivo publicado como Artifact no claude.ai (gerado)
+  site/               ← PWA para GitHub Pages: index.html + sw.js + manifest + ícones (gerado; versionado)
+  sw.js, manifest.webmanifest, icon-*.png ← fontes da PWA (build.py carimba e copia para site/)
   docs/               ← notas
 ```
 
@@ -34,6 +36,12 @@ Críticas (falha = nota limitada a 8/24 e banner de reprovação):
 - **summary** — antes de "os passos ficaram claros?" e "mais alguma coisa?" e de "vou fechar o caso": resumir TUDO.
 
 Outras regras (em `content/ops.json`): parafrasear o problema; até **2 holds × 3 min** com permissão; transferir para chat com permissão; imparcial com inclinação ao guest, sem pagar injustiça, sem perder cliente de alto valor; CSAT máximo por personalização.
+
+## v4 — PWA offline com auto-atualização; Hold removido
+
+- `site/` é uma PWA: service worker com cache do app (abre sem sinal) e auto-atualização ao reconectar (`reg.update()` no evento `online`, `skipWaiting` + reload). Deploy = `git push` (GitHub Pages serve `site/`). Ver `docs/PUBLISH.md`.
+- O Claude só existe na versão do claude.ai (`dist/`); na PWA o botão Online abre esse link.
+- O botão de Hold foi removido da chamada a pedido do Daniel (a regra continua documentada em `ops.json`/frases como conhecimento).
 
 ## v3 — modo, surpresa, vozes, ASCII
 

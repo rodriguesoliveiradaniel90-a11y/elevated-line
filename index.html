@@ -1,4 +1,5 @@
 <title>Elevated Line</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#0E6E66">
 <meta name="mobile-web-app-capable" content="yes">
@@ -181,7 +182,10 @@ details[open] summary::before{transform:rotate(45deg)}
 .line .t{font-size:1rem;line-height:1.45}
 .line .why{color:var(--muted);font-size:.86rem;margin-top:4px}
 .avoid .t{color:var(--crit)}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.92rem}
+.kv{display:grid;grid-template-columns:minmax(84px,30%) 1fr;gap:6px 12px;font-size:.92rem;overflow-wrap:anywhere}
+.kv.stack{grid-template-columns:1fr}
+.pathcard{border:1px solid var(--line);border-radius:var(--r-s);padding:10px 12px;margin-top:8px}
+.pathcard b{font-family:var(--f-ui);display:block;margin-bottom:4px}
 .kv b{font-family:var(--f-ui);font-weight:600;color:var(--ink-2)}
 ul.tight{margin:6px 0 0 18px;padding:0} ul.tight li{margin:3px 0}
 ol.tight{margin:6px 0 0 18px;padding:0} ol.tight li{margin:4px 0}
@@ -764,7 +768,7 @@ function viewPolicy(v){
   for(const c of D.ops.critical){
     const d=el("details",{class:"card",open:""}); d.append(el("summary",{},STAR+" "+c.title));
     d.append(el("div",{style:"margin:6px 0"},c.rule));
-    if(c.paths){ const k=el("div",{class:"kv small",style:"margin:8px 0"}); for(const p of c.paths){ k.append(el("b",{},p.label), el("span",{}, p.how, el("div",{class:"model",style:"margin-top:4px"},p.say), el("button",{class:"btn ghost sm",style:"margin-top:4px",onclick:()=>Voice.speak(p.say,"en-GB"),html:ICON.play+" Hear it"}))); } d.append(k); }
+    if(c.paths){ for(const p of c.paths){ d.append(el("div",{class:"pathcard small"}, el("b",{},p.label), el("div",{},p.how), el("div",{class:"model",style:"margin-top:6px"},p.say), el("button",{class:"btn ghost sm",style:"margin-top:6px",onclick:()=>Voice.speak(p.say,"en-GB"),html:ICON.play+" Hear it"}))); } }
     if(c.sequence) d.append(el("ol",{class:"tight small"},...c.sequence.map(x=>el("li",{},x))));
     if(c.say&&!c.paths) d.append(el("div",{class:"model",style:"margin-top:6px"},c.say), el("button",{class:"btn ghost sm",style:"margin-top:4px",onclick:()=>Voice.speak(c.say,"en-GB"),html:ICON.play+" Hear it"}));
     if(c.never) d.append(el("div",{class:"flag",style:"margin-top:8px"},"Never: "+c.never));

@@ -16,7 +16,7 @@ import json, os, re, sys, html, urllib.request
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC  = os.path.join(ROOT, "index.html")
 OUT  = os.path.join(ROOT, "dist", "index.html")      # claude.ai artifact copy
-SITE = os.path.join(ROOT, "site")                     # GitHub Pages / PWA copy
+SITE = os.path.join(ROOT, "docs")                     # GitHub Pages / PWA copy (Pages only serves / or /docs)
 CLAUDE_URL = "https://claude.ai/code/artifact/025fdbf5-a9fc-41e5-84a3-71aff5161ad2"
 FILES = {
     "__SCENARIOS__": "scenarios.json",

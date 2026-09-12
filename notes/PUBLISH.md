@@ -35,14 +35,14 @@ Publicado em 2026-09-11 (v1 — Fable build). Capacidade declarada: `sample`.
 
 O mesmo build gera duas saídas:
 - `dist/index.html` → **Artifact no claude.ai** (a única com revisão do Claude; precisa de internet e login).
-- `site/` → **PWA** para GitHub Pages: `index.html` + `sw.js` (service worker, cache do app) + `manifest.webmanifest` + ícones. Instala na tela inicial, **abre offline**, e quando há internet busca a versão nova e recarrega sozinha (toast "Updated…").
+- `docs/` → **PWA** para GitHub Pages: `index.html` + `sw.js` (service worker, cache do app) + `manifest.webmanifest` + ícones. Instala na tela inicial, **abre offline**, e quando há internet busca a versão nova e recarrega sozinha (toast "Updated…").
 
 ### Publicar a PWA (fluxo para o Opus 5)
 ```bash
 cd ~/Downloads/Airbnb-Trainer
 python3 build.py          # gera dist/ e site/ com carimbo de build novo
 git add -A && git commit -m "build: <o que mudou>"
-git push                  # GitHub Pages publica site/ em ~1 min
+git push                  # GitHub Pages publica docs/ em ~1 min
 ```
 O `sw.js` muda de nome de cache a cada build (`elevated-line-<build>`), então o celular detecta a atualização na próxima abertura com internet.
 

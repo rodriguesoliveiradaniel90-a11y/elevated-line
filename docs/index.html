@@ -857,7 +857,7 @@ function libraryView(v){
    Only outside the claude.ai viewer (there, window.claude exists and
    service workers are not allowed). BUILD is stamped by build.py.
 ---------------------------------------------------------------- */
-const BUILD = "20260912-1447";
+const BUILD = "20260912-1516";
 const CLAUDE_URL = "https://claude.ai/code/artifact/025fdbf5-a9fc-41e5-84a3-71aff5161ad2";
 const IS_PWA_HOST = ("serviceWorker" in navigator) && /^https?:/.test(location.protocol) && !(window.claude && typeof claude.use==="function");
 if (IS_PWA_HOST) {

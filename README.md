@@ -21,9 +21,9 @@ Airbnb-Trainer/
     vocab.json        ← espelho do baralho Anki (tag airbnb)
     ops.json          ← REGRAS DA OPERAÇÃO (auth, gravação, sumarização, holds, imparcialidade) — não é Help Center
   dist/index.html     ← arquivo publicado como Artifact no claude.ai (gerado)
-  site/               ← PWA para GitHub Pages: index.html + sw.js + manifest + ícones (gerado; versionado)
+  docs/               ← PWA para GitHub Pages: index.html + sw.js + manifest + ícones (gerado; versionado)
   sw.js, manifest.webmanifest, icon-*.png ← fontes da PWA (build.py carimba e copia para site/)
-  docs/               ← notas
+  notes/              ← notas (PUBLISH.md)
 ```
 
 ## As 12 fases e as 3 regras que demitem
@@ -39,7 +39,7 @@ Outras regras (em `content/ops.json`): parafrasear o problema; até **2 holds ×
 
 ## v4 — PWA offline com auto-atualização; Hold removido
 
-- `site/` é uma PWA: service worker com cache do app (abre sem sinal) e auto-atualização ao reconectar (`reg.update()` no evento `online`, `skipWaiting` + reload). Deploy = `git push` (GitHub Pages serve `site/`). Ver `docs/PUBLISH.md`.
+- `docs/` é uma PWA: service worker com cache do app (abre sem sinal) e auto-atualização ao reconectar (`reg.update()` no evento `online`, `skipWaiting` + reload). Deploy = `git push` (GitHub Pages serve `docs/`). Ver `notes/PUBLISH.md`.
 - O Claude só existe na versão do claude.ai (`dist/`); na PWA o botão Online abre esse link.
 - O botão de Hold foi removido da chamada a pedido do Daniel (a regra continua documentada em `ops.json`/frases como conhecimento).
 
@@ -76,7 +76,7 @@ Outras regras (em `content/ops.json`): parafrasear o problema; até **2 holds ×
    aberto, para puxar palavras novas do baralho).
 3. Republicar: no Claude Code, chamar a ferramenta **Artifact** com
    `file_path: dist/index.html` e a **mesma `url`** do artifact existente
-   (ver `docs/PUBLISH.md`). Passar `capabilities: {"sample": {}}` se for
+   (ver `notes/PUBLISH.md`). Passar `capabilities: {"sample": {}}` se for
    redeclarar; omitir mantém.
 
 ### Esquema de cenário (resumo)

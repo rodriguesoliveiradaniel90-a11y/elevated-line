@@ -1,0 +1,1375 @@
+{
+ "_about": "Léxico do app — espelho do baralho Anki 'Claude::Inglês Atendimento' (tag airbnb). Regenerar com build.py --vocab-from-anki.",
+ "categories": {
+  "encanamento": "Plumbing",
+  "eletrodomesticos": "Appliances",
+  "moveis": "Furniture",
+  "pragas": "Pests",
+  "limpeza": "Cleanliness",
+  "acesso": "Access",
+  "seguranca": "Safety",
+  "casa": "Parts of the home",
+  "banheiro": "Bathroom",
+  "cozinha": "Kitchen",
+  "cama": "Bedding",
+  "dano": "Damage & condition",
+  "processo": "Claims & process",
+  "chamada": "On the phone",
+  "emergencia": "Emergency & relocation"
+ },
+ "items": [
+  {
+   "en": "a lockbox",
+   "pt": "Cofre de chaves na porta",
+   "example": "The code for the lockbox didn't work.",
+   "note": "Causa nº1 de Access Failure.",
+   "cat": "acesso"
+  },
+  {
+   "en": "a smart lock",
+   "pt": "Fechadura eletrônica",
+   "example": "The smart lock battery is dead.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "self check-in",
+   "pt": "Entrada por autoatendimento",
+   "example": "The listing said self check-in but there were no instructions.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the access code",
+   "pt": "Código de acesso",
+   "example": "The host never sent the access code.",
+   "note": "Também: key code.",
+   "cat": "acesso"
+  },
+  {
+   "en": "the buzzer",
+   "pt": "Interfone da rua (o botão)",
+   "example": "The buzzer downstairs is broken.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the check-in instructions",
+   "pt": "Instruções de chegada",
+   "example": "The check-in instructions were wrong.",
+   "note": "Também: entry instructions. Instruções erradas = Access Failure.",
+   "cat": "acesso"
+  },
+  {
+   "en": "the concierge",
+   "pt": "Portaria / recepção do prédio",
+   "example": "The concierge had no record of the booking.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the doorman",
+   "pt": "Porteiro",
+   "example": "The doorman wouldn't let us in.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the gate",
+   "pt": "Portão",
+   "example": "The gate code didn't work.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the intercom",
+   "pt": "Interfone (o aparelho no apartamento)",
+   "example": "Nobody answered the intercom.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the keypad",
+   "pt": "Teclado numérico da fechadura",
+   "example": "The keypad isn't responding.",
+   "note": "",
+   "cat": "acesso"
+  },
+  {
+   "en": "the basin",
+   "pt": "Pia do banheiro",
+   "example": "The basin is cracked.",
+   "note": "🇺🇸 americano: the sink.",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the bath mat",
+   "pt": "Tapete de banheiro",
+   "example": "There was no bath mat.",
+   "note": "",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the bathtub",
+   "pt": "Banheira",
+   "example": "The bathtub won't drain.",
+   "note": "🇬🇧 também: the bath.",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the grout",
+   "pt": "Rejunte",
+   "example": "The grout is black with mould.",
+   "note": "Palavra que aparece muito em foto de mofo.",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the shower cubicle",
+   "pt": "Box do chuveiro",
+   "example": "The shower cubicle door is cracked.",
+   "note": "🇺🇸 americano: shower stall.",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the tiles",
+   "pt": "Azulejos",
+   "example": "The tiles in the shower are covered in mould.",
+   "note": "",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the toilet seat",
+   "pt": "Assento do vaso",
+   "example": "The toilet seat is broken.",
+   "note": "",
+   "cat": "banheiro"
+  },
+  {
+   "en": "the towel rail",
+   "pt": "Toalheiro",
+   "example": "The towel rail came off the wall.",
+   "note": "🇺🇸 americano: towel rack.",
+   "cat": "banheiro"
+  },
+  {
+   "en": "a bath towel",
+   "pt": "Toalha de banho",
+   "example": "We were given one bath towel for four people.",
+   "note": "Toalha de rosto: hand towel.",
+   "cat": "cama"
+  },
+  {
+   "en": "a blanket",
+   "pt": "Cobertor",
+   "example": "There were no extra blankets.",
+   "note": "",
+   "cat": "cama"
+  },
+  {
+   "en": "a pillow",
+   "pt": "Travesseiro",
+   "example": "The pillows were flat and stained.",
+   "note": "",
+   "cat": "cama"
+  },
+  {
+   "en": "the duvet",
+   "pt": "Edredom",
+   "example": "The duvet was stained.",
+   "note": "",
+   "cat": "cama"
+  },
+  {
+   "en": "the duvet cover",
+   "pt": "Capa de edredom",
+   "example": "The duvet cover hadn't been washed.",
+   "note": "",
+   "cat": "cama"
+  },
+  {
+   "en": "the fitted sheet",
+   "pt": "Lençol com elástico",
+   "example": "The fitted sheet had hair on it.",
+   "note": "Lençol de cima: the flat sheet.",
+   "cat": "cama"
+  },
+  {
+   "en": "the pillowcase",
+   "pt": "Fronha",
+   "example": "The pillowcases were dirty.",
+   "note": "",
+   "cat": "cama"
+  },
+  {
+   "en": "a fence",
+   "pt": "Cerca",
+   "example": "The fence is broken and the dog got out.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "a sofa bed",
+   "pt": "Sofá-cama",
+   "example": "The third bed turned out to be a sofa bed.",
+   "note": "⚠️ Reclamação clássica de Mismatch.",
+   "cat": "casa"
+  },
+  {
+   "en": "a studio",
+   "pt": "Quarto e sala / kitnet",
+   "example": "We booked a one-bedroom and got a studio.",
+   "note": "⚠️ Diferença de tipo de imóvel = Mismatch.",
+   "cat": "casa"
+  },
+  {
+   "en": "an en-suite bathroom",
+   "pt": "Suíte (banheiro dentro do quarto)",
+   "example": "The listing said en-suite but the bathroom is shared.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "bunk beds",
+   "pt": "Beliche",
+   "example": "The listing didn't mention bunk beds.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the attic",
+   "pt": "Sótão",
+   "example": "There's something living in the attic.",
+   "note": "🇬🇧 também: the loft.",
+   "cat": "casa"
+  },
+  {
+   "en": "the balcony",
+   "pt": "Sacada / varanda",
+   "example": "The balcony door won't lock.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the basement",
+   "pt": "Porão",
+   "example": "The basement flooded overnight.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the ceiling",
+   "pt": "Teto",
+   "example": "There's a water stain spreading across the ceiling.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the deck",
+   "pt": "Deck de madeira",
+   "example": "There's an opossum living under the deck.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the driveway",
+   "pt": "Entrada de carro",
+   "example": "The driveway was blocked by another car.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the garage",
+   "pt": "Garagem",
+   "example": "The garage we paid for was occupied.",
+   "note": "",
+   "cat": "casa"
+  },
+  {
+   "en": "the garden",
+   "pt": "Quintal",
+   "example": "There are rats in the garden.",
+   "note": "🇺🇸 americano: the yard / the backyard.",
+   "cat": "casa"
+  },
+  {
+   "en": "the hallway",
+   "pt": "Corredor",
+   "example": "The hallway light doesn't work.",
+   "note": "🇬🇧 também: the corridor.",
+   "cat": "casa"
+  },
+  {
+   "en": "the stairs",
+   "pt": "Escada (o lance de degraus)",
+   "example": "The stairs are very steep and there's no handrail.",
+   "note": "Estrutura: the staircase.",
+   "cat": "casa"
+  },
+  {
+   "en": "Could you say that again?",
+   "pt": "Repetir (pedindo educadamente)",
+   "example": "I'm sorry, could you say that again?",
+   "note": "Mais natural que 'repeat, please'.",
+   "cat": "chamada"
+  },
+  {
+   "en": "a bad connection",
+   "pt": "Conexão ruim / sinal fraco",
+   "example": "We seem to have a bad connection.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "a callback",
+   "pt": "Retorno de ligação",
+   "example": "I can schedule a callback for tomorrow morning.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "background noise",
+   "pt": "Ruído de fundo",
+   "example": "There's quite a lot of background noise on the line.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "the call dropped",
+   "pt": "A ligação caiu",
+   "example": "I'm sorry, the call dropped a moment ago.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "the case reference number",
+   "pt": "Número de referência do caso",
+   "example": "Let me give you the case reference number.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "to be on mute",
+   "pt": "Estar no mudo",
+   "example": "I think you might be on mute.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "to speak up",
+   "pt": "Falar mais alto",
+   "example": "Could you speak up a little, please?",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "to spell out",
+   "pt": "Soletrar",
+   "example": "Could you spell that out for me, please?",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "to transfer the call",
+   "pt": "Transferir a ligação",
+   "example": "I'm going to transfer your call to our claims team.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "to verify your details",
+   "pt": "Confirmar seus dados",
+   "example": "Before we continue, I need to verify your details.",
+   "note": "Obrigatório em outbound.",
+   "cat": "chamada"
+  },
+  {
+   "en": "voicemail",
+   "pt": "Caixa postal",
+   "example": "I left you a voicemail earlier today.",
+   "note": "",
+   "cat": "chamada"
+  },
+  {
+   "en": "you're breaking up",
+   "pt": "Você está falhando",
+   "example": "I'm sorry, you're breaking up a little.",
+   "note": "Frase pronta essencial.",
+   "cat": "chamada"
+  },
+  {
+   "en": "a chopping board",
+   "pt": "Tábua de corte",
+   "example": "There's no chopping board.",
+   "note": "🇺🇸 americano: cutting board.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "a corkscrew",
+   "pt": "Saca-rolhas",
+   "example": "We couldn't find a corkscrew.",
+   "note": "",
+   "cat": "cozinha"
+  },
+  {
+   "en": "a tin opener",
+   "pt": "Abridor de lata",
+   "example": "There's no tin opener in the kitchen.",
+   "note": "🇺🇸 americano: can opener.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "crockery",
+   "pt": "Louça (pratos e xícaras)",
+   "example": "Half the crockery is chipped.",
+   "note": "🇺🇸 americano: dishes.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "cutlery",
+   "pt": "Talheres",
+   "example": "There's almost no cutlery in the kitchen.",
+   "note": "🇺🇸 americano: silverware / flatware.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "pots and pans",
+   "pt": "Panelas",
+   "example": "There are no pots and pans as advertised.",
+   "note": "",
+   "cat": "cozinha"
+  },
+  {
+   "en": "the bin",
+   "pt": "Lixeira",
+   "example": "The bin hadn't been emptied.",
+   "note": "🇺🇸 americano: the trash can / garbage can.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "the cupboards",
+   "pt": "Armário de cozinha",
+   "example": "There were droppings inside the cupboards.",
+   "note": "🇺🇸 americano: the cabinets.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "the worktop",
+   "pt": "Bancada",
+   "example": "The worktop was sticky and covered in crumbs.",
+   "note": "🇺🇸 americano: the countertop.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "washing-up liquid",
+   "pt": "Detergente de louça",
+   "example": "There was no washing-up liquid.",
+   "note": "🇺🇸 americano: dish soap.",
+   "cat": "cozinha"
+  },
+  {
+   "en": "a stain",
+   "pt": "Mancha (a marca)",
+   "example": "There's a large stain on the mattress.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "chipped",
+   "pt": "Lascado (borda quebrada)",
+   "example": "Most of the plates are chipped.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "cracked",
+   "pt": "Rachado / trincado",
+   "example": "The bathroom mirror is cracked.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "dented",
+   "pt": "Amassado",
+   "example": "The fridge door is dented.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "faulty",
+   "pt": "Com defeito",
+   "example": "The listing had a faulty smoke alarm.",
+   "note": "Termo formal do relatório.",
+   "cat": "dano"
+  },
+  {
+   "en": "frayed",
+   "pt": "Puído / desfiado",
+   "example": "The cable is frayed and unsafe.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "jammed",
+   "pt": "Emperrado / travado",
+   "example": "The window is jammed shut.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "out of order",
+   "pt": "Fora de serviço",
+   "example": "The lift has been out of order all week.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "peeling",
+   "pt": "Descascando (tinta)",
+   "example": "The paint is peeling off the ceiling.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "rusty",
+   "pt": "Enferrujado",
+   "example": "The shower rail is rusty.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "torn",
+   "pt": "Rasgado",
+   "example": "The sofa cushion is torn.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "warped",
+   "pt": "Empenado",
+   "example": "The bathroom door is warped and won't close.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "wobbly",
+   "pt": "Bambo / balançando",
+   "example": "The dining table is wobbly.",
+   "note": "",
+   "cat": "dano"
+  },
+  {
+   "en": "worn out",
+   "pt": "Desgastado pelo uso",
+   "example": "The mattress is completely worn out.",
+   "note": "Compare com wear and tear.",
+   "cat": "dano"
+  },
+  {
+   "en": "a fan",
+   "pt": "Ventilador",
+   "example": "There's no fan and it's 35 degrees.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "a hair dryer",
+   "pt": "Secador de cabelo",
+   "example": "The hair dryer in the bathroom doesn't work.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "a kettle",
+   "pt": "Chaleira elétrica",
+   "example": "There's no kettle in the kitchen.",
+   "note": "Muito comum em anúncios britânicos.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "a microwave",
+   "pt": "Micro-ondas",
+   "example": "The microwave sparks when you turn it on.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "a toaster",
+   "pt": "Torradeira",
+   "example": "The toaster is broken.",
+   "note": "⚠️ O Airbnb usa a torradeira como exemplo do que NÃO é coberto — inconveniente menor.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the AC unit",
+   "pt": "Ar-condicionado (a unidade)",
+   "example": "The AC unit is blowing warm air.",
+   "note": "Por extenso: air conditioning unit.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the dishwasher",
+   "pt": "Lava-louças",
+   "example": "The dishwasher leaks every time we run it.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the extractor fan",
+   "pt": "Exaustor / coifa",
+   "example": "The extractor fan doesn't work, so the bathroom stays damp.",
+   "note": "🇺🇸 sobre o fogão: range hood.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the freezer",
+   "pt": "Congelador",
+   "example": "The freezer is completely iced over.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the fridge",
+   "pt": "Geladeira",
+   "example": "The fridge isn't cooling.",
+   "note": "Formal: refrigerator.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the hob",
+   "pt": "Fogão (a superfície com as bocas)",
+   "example": "Only two rings on the hob are working.",
+   "note": "🇺🇸 americano: the stovetop. Boca do fogão: a ring / a burner.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the oven",
+   "pt": "Forno",
+   "example": "The oven doesn't heat up.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the radiator",
+   "pt": "Radiador / aquecedor de ambiente",
+   "example": "The radiators aren't coming on.",
+   "note": "⚠️ Aquecimento quebrado no inverno É coberto pelo AirCover.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the tumble dryer",
+   "pt": "Secadora de roupa",
+   "example": "There's no tumble dryer as advertised.",
+   "note": "🇺🇸 americano: só dryer.",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "the washing machine",
+   "pt": "Máquina de lavar roupa",
+   "example": "The washing machine won't drain.",
+   "note": "",
+   "cat": "eletrodomesticos"
+  },
+  {
+   "en": "a hazard",
+   "pt": "Risco / perigo",
+   "example": "Exposed wiring is a safety hazard.",
+   "note": "",
+   "cat": "emergencia"
+  },
+  {
+   "en": "alternative accommodation",
+   "pt": "Acomodação alternativa",
+   "example": "We'll help you find alternative accommodation.",
+   "note": "",
+   "cat": "emergencia"
+  },
+  {
+   "en": "displaced",
+   "pt": "Sem ter onde ficar",
+   "example": "The guests were displaced at midnight.",
+   "note": "",
+   "cat": "emergencia"
+  },
+  {
+   "en": "overnight",
+   "pt": "Durante a noite / pernoite",
+   "example": "The heating failed overnight.",
+   "note": "",
+   "cat": "emergencia"
+  },
+  {
+   "en": "to rebook",
+   "pt": "Remarcar em outro lugar",
+   "example": "We can rebook you at a similar listing nearby.",
+   "note": "",
+   "cat": "emergencia"
+  },
+  {
+   "en": "to relocate the guest",
+   "pt": "Realocar o hóspede",
+   "example": "We had to relocate the guest the same night.",
+   "note": "",
+   "cat": "emergencia"
+  },
+  {
+   "en": "a blocked sink",
+   "pt": "Pia entupida",
+   "example": "The kitchen sink is blocked.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "a burst pipe",
+   "pt": "Cano estourado",
+   "example": "A burst pipe flooded the whole flat.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "a clogged drain",
+   "pt": "Ralo entupido",
+   "example": "The shower drain is completely clogged.",
+   "note": "🇬🇧 britânico: blocked drain.",
+   "cat": "encanamento"
+  },
+  {
+   "en": "a leak",
+   "pt": "Vazamento (água escapando)",
+   "example": "There's a leak under the kitchen sink.",
+   "note": "Verbo: to leak.",
+   "cat": "encanamento"
+  },
+  {
+   "en": "a running toilet",
+   "pt": "Vaso com água correndo sem parar",
+   "example": "There's a running toilet keeping us up all night.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "damp",
+   "pt": "Umidade na parede",
+   "example": "There's damp along the bedroom wall.",
+   "note": "Substantivo e adjetivo.",
+   "cat": "encanamento"
+  },
+  {
+   "en": "low water pressure",
+   "pt": "Pressão da água fraca",
+   "example": "The water pressure in the shower is very low.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "no hot water",
+   "pt": "Sem água quente",
+   "example": "We've had no hot water since we arrived.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "sewage backup",
+   "pt": "Refluxo de esgoto",
+   "example": "There's a sewage backup in the downstairs bathroom.",
+   "note": "Sempre grave — vai para uninhabitable.",
+   "cat": "encanamento"
+  },
+  {
+   "en": "the showerhead",
+   "pt": "Chuveiro (a peça de metal)",
+   "example": "The showerhead is leaking badly.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "the toilet won't flush",
+   "pt": "O vaso não dá descarga",
+   "example": "The toilet won't flush at all.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "the water heater",
+   "pt": "Aquecedor de água / boiler",
+   "example": "The water heater stopped working overnight.",
+   "note": "🇬🇧 britânico: the boiler.",
+   "cat": "encanamento"
+  },
+  {
+   "en": "to drip",
+   "pt": "Pingar (torneira que não fecha)",
+   "example": "The bathroom tap won't stop dripping.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "water pooling on the floor",
+   "pt": "Poça de água formando no chão",
+   "example": "There's water pooling on the bathroom floor.",
+   "note": "",
+   "cat": "encanamento"
+  },
+  {
+   "en": "water seeping through",
+   "pt": "Infiltração (água atravessando)",
+   "example": "Water is seeping through the ceiling.",
+   "note": "Substantivo: seepage.",
+   "cat": "encanamento"
+  },
+  {
+   "en": "an odour",
+   "pt": "Mau cheiro",
+   "example": "There's a strong odour coming from the drain.",
+   "note": "🇺🇸 americano: odor.",
+   "cat": "limpeza"
+  },
+  {
+   "en": "cobwebs",
+   "pt": "Teias de aranha",
+   "example": "There were cobwebs in every corner.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "dusty",
+   "pt": "Empoeirado",
+   "example": "Every surface was dusty.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "grimy",
+   "pt": "Encardido / imundo",
+   "example": "The bathroom tiles are grimy.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "mildew",
+   "pt": "Bolor (a camada esbranquiçada)",
+   "example": "There's mildew on the shower curtain.",
+   "note": "Menos grave que mould.",
+   "cat": "limpeza"
+  },
+  {
+   "en": "mould",
+   "pt": "Mofo (o fungo preto na parede)",
+   "example": "There's black mould in the bathroom.",
+   "note": "🇺🇸 americano: mold. Risco à saúde — pode ser uninhabitable.",
+   "cat": "limpeza"
+  },
+  {
+   "en": "musty",
+   "pt": "Cheiro de mofo / abafado",
+   "example": "The whole flat smells musty.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "rubbish that hadn't been taken out",
+   "pt": "Lixo não retirado",
+   "example": "There was rubbish left in the kitchen.",
+   "note": "🇺🇸 americano: trash / garbage.",
+   "cat": "limpeza"
+  },
+  {
+   "en": "soiled linens",
+   "pt": "Roupa de cama suja (não trocada)",
+   "example": "The linens were soiled when we arrived.",
+   "note": "Soiled é o termo formal do relatório.",
+   "cat": "limpeza"
+  },
+  {
+   "en": "stained",
+   "pt": "Manchado",
+   "example": "The sheets were stained.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "sticky",
+   "pt": "Grudento / pegajoso",
+   "example": "The kitchen floor was sticky.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "unwashed dishes",
+   "pt": "Louça suja deixada na pia",
+   "example": "There were unwashed dishes in the sink.",
+   "note": "",
+   "cat": "limpeza"
+  },
+  {
+   "en": "a bedside table",
+   "pt": "Criado-mudo / mesa de cabeceira",
+   "example": "There are no bedside tables.",
+   "note": "🇺🇸 americano: nightstand.",
+   "cat": "moveis"
+  },
+  {
+   "en": "a chest of drawers",
+   "pt": "Cômoda (com gavetas)",
+   "example": "The chest of drawers is missing a drawer.",
+   "note": "",
+   "cat": "moveis"
+  },
+  {
+   "en": "a cot",
+   "pt": "Berço",
+   "example": "The cot we booked wasn't there.",
+   "note": "🇺🇸 americano: crib. ⚠️ Em inglês americano cot é cama de armar!",
+   "cat": "moveis"
+  },
+  {
+   "en": "a sofa",
+   "pt": "Sofá",
+   "example": "The sofa is stained and smells.",
+   "note": "🇺🇸 americano: couch.",
+   "cat": "moveis"
+  },
+  {
+   "en": "a wardrobe",
+   "pt": "Guarda-roupa",
+   "example": "There's no wardrobe in the bedroom.",
+   "note": "🇺🇸 americano: closet.",
+   "cat": "moveis"
+  },
+  {
+   "en": "an armchair",
+   "pt": "Poltrona",
+   "example": "One of the armchairs is broken.",
+   "note": "",
+   "cat": "moveis"
+  },
+  {
+   "en": "blinds",
+   "pt": "Persiana",
+   "example": "The blinds are broken and won't close.",
+   "note": "Sempre plural.",
+   "cat": "moveis"
+  },
+  {
+   "en": "curtains",
+   "pt": "Cortina",
+   "example": "There are no curtains in the bedroom.",
+   "note": "Sempre plural.",
+   "cat": "moveis"
+  },
+  {
+   "en": "the bed frame",
+   "pt": "Estrutura da cama",
+   "example": "The bed frame is broken and collapses.",
+   "note": "",
+   "cat": "moveis"
+  },
+  {
+   "en": "the bedding",
+   "pt": "Roupa de cama",
+   "example": "The bedding hadn't been changed.",
+   "note": "Também: the linens.",
+   "cat": "moveis"
+  },
+  {
+   "en": "the headboard",
+   "pt": "Cabeceira da cama",
+   "example": "The headboard is coming off the wall.",
+   "note": "",
+   "cat": "moveis"
+  },
+  {
+   "en": "the mattress",
+   "pt": "Colchão",
+   "example": "The mattress is stained and sagging.",
+   "note": "",
+   "cat": "moveis"
+  },
+  {
+   "en": "a nest",
+   "pt": "Ninho",
+   "example": "There's a nest in the roof.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "a raccoon",
+   "pt": "Guaxinim",
+   "example": "A raccoon got into the bins overnight.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "a skunk",
+   "pt": "Cangambá (o que solta o cheiro)",
+   "example": "A skunk sprayed right outside the window.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "an exterminator",
+   "pt": "Dedetizador",
+   "example": "The host is sending an exterminator tomorrow.",
+   "note": "Serviço: pest control.",
+   "cat": "pragas"
+  },
+  {
+   "en": "an infestation",
+   "pt": "Infestação",
+   "example": "This is a full infestation, not a one-off.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "an opossum",
+   "pt": "Gambá americano (o marsupial cinza)",
+   "example": "There's an opossum living under the deck.",
+   "note": "Informal: possum.",
+   "cat": "pragas"
+  },
+  {
+   "en": "ants",
+   "pt": "Formigas",
+   "example": "There's a trail of ants across the counter.",
+   "note": "Trilha de formigas: a trail of ants.",
+   "cat": "pragas"
+  },
+  {
+   "en": "bed bugs",
+   "pt": "Percevejos (o pior pesadelo)",
+   "example": "We woke up covered in bed bug bites.",
+   "note": "Sempre grave — uninhabitable.",
+   "cat": "pragas"
+  },
+  {
+   "en": "bites",
+   "pt": "Picadas de inseto",
+   "example": "The guest sent photos of bites on her arms.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "cockroaches",
+   "pt": "Baratas",
+   "example": "There are cockroaches all over the kitchen.",
+   "note": "Informal: roaches.",
+   "cat": "pragas"
+  },
+  {
+   "en": "droppings",
+   "pt": "Fezes de bicho (o sinal que se procura)",
+   "example": "We found droppings in the kitchen cupboards.",
+   "note": "Palavra-chave na evidência de um claim.",
+   "cat": "pragas"
+  },
+  {
+   "en": "fleas",
+   "pt": "Pulgas",
+   "example": "The carpet is full of fleas.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "fumigation",
+   "pt": "Dedetização",
+   "example": "The unit needs fumigation before anyone stays.",
+   "note": "Também: pest treatment.",
+   "cat": "pragas"
+  },
+  {
+   "en": "hornets",
+   "pt": "Marimbondo (o grande e agressivo)",
+   "example": "A hornet got into the bedroom.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "lice",
+   "pt": "Piolhos",
+   "example": "There were lice in the bedding.",
+   "note": "Singular: a louse.",
+   "cat": "pragas"
+  },
+  {
+   "en": "mice",
+   "pt": "Camundongos",
+   "example": "We heard mice in the walls all night.",
+   "note": "Singular: a mouse.",
+   "cat": "pragas"
+  },
+  {
+   "en": "rats",
+   "pt": "Ratos (os grandes)",
+   "example": "There are rats in the back garden.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "rodents",
+   "pt": "Roedores (o termo genérico)",
+   "example": "There's evidence of rodents in the property.",
+   "note": "Termo que você usa no relatório do caso.",
+   "cat": "pragas"
+  },
+  {
+   "en": "termites",
+   "pt": "Cupins",
+   "example": "The wooden beams have termites.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "wasps",
+   "pt": "Vespas",
+   "example": "There's a wasp nest by the front door.",
+   "note": "",
+   "cat": "pragas"
+  },
+  {
+   "en": "a chargeback",
+   "pt": "Estorno no cartão",
+   "example": "The guest initiated a chargeback with their bank.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "a goodwill gesture",
+   "pt": "Gesto de boa vontade",
+   "example": "We can offer a credit as a goodwill gesture.",
+   "note": "Usado quando a política diz não mas você quer resolver.",
+   "cat": "processo"
+  },
+  {
+   "en": "a partial refund",
+   "pt": "Reembolso parcial",
+   "example": "We've approved a partial refund of forty percent.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "a prorated refund",
+   "pt": "Reembolso proporcional às noites",
+   "example": "You'll receive a prorated refund for the unused nights.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "a quote",
+   "pt": "Orçamento (de conserto)",
+   "example": "Please upload a quote from a repair service.",
+   "note": "Também: an estimate.",
+   "cat": "processo"
+  },
+  {
+   "en": "a timeframe",
+   "pt": "Prazo (janela de tempo)",
+   "example": "The timeframe for reporting is 72 hours.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "an itemised receipt",
+   "pt": "Recibo detalhado (item por item)",
+   "example": "Could you send an itemised receipt?",
+   "note": "🇺🇸 americano: itemized.",
+   "cat": "processo"
+  },
+  {
+   "en": "out of pocket",
+   "pt": "Do próprio bolso",
+   "example": "I don't want to be out of pocket for this.",
+   "note": "Frase que o cliente diz.",
+   "cat": "processo"
+  },
+  {
+   "en": "proof of purchase",
+   "pt": "Comprovante de compra",
+   "example": "We couldn't accept it without proof of purchase.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "supporting documentation",
+   "pt": "Documentação de apoio",
+   "example": "We'll need supporting documentation for this.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "the burden of proof",
+   "pt": "Ônus da prova",
+   "example": "The burden of proof is on the host.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "to dispute",
+   "pt": "Contestar (uma decisão)",
+   "example": "The host is disputing the decision.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "to escalate",
+   "pt": "Escalar o caso",
+   "example": "I'm going to escalate this to our specialist team.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "to file a claim",
+   "pt": "Abrir um claim",
+   "example": "The host filed a claim for damages.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "to reimburse",
+   "pt": "Reembolsar",
+   "example": "We'll reimburse you for the first two nights.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "to void",
+   "pt": "Anular / invalidar",
+   "example": "Filing late voids the claim.",
+   "note": "",
+   "cat": "processo"
+  },
+  {
+   "en": "a gas leak",
+   "pt": "Vazamento de gás",
+   "example": "There's a smell of gas in the kitchen.",
+   "note": "Emergência — escalar imediatamente.",
+   "cat": "seguranca"
+  },
+  {
+   "en": "a loose railing",
+   "pt": "Corrimão solto",
+   "example": "The stair railing is loose.",
+   "note": "",
+   "cat": "seguranca"
+  },
+  {
+   "en": "a power outage",
+   "pt": "Falta de energia",
+   "example": "There's been a power outage since yesterday.",
+   "note": "🇬🇧 britânico: a power cut.",
+   "cat": "seguranca"
+  },
+  {
+   "en": "a smoke detector",
+   "pt": "Detector de fumaça",
+   "example": "There's no smoke detector in the property.",
+   "note": "",
+   "cat": "seguranca"
+  },
+  {
+   "en": "broken glass",
+   "pt": "Vidro quebrado",
+   "example": "There was broken glass on the balcony.",
+   "note": "",
+   "cat": "seguranca"
+  },
+  {
+   "en": "carbon monoxide",
+   "pt": "Monóxido de carbono",
+   "example": "The carbon monoxide alarm was beeping.",
+   "note": "Emergência — escalar imediatamente.",
+   "cat": "seguranca"
+  },
+  {
+   "en": "exposed wiring",
+   "pt": "Fiação exposta",
+   "example": "There's exposed wiring in the hallway.",
+   "note": "Risco à segurança — uninhabitable.",
+   "cat": "seguranca"
+  }
+ ],
+ "uk_us_pairs": [
+  {
+   "pt": "Torneira",
+   "uk": "tap",
+   "us": "faucet",
+   "example_uk": "The tap in the bathroom is dripping.",
+   "example_us": "The faucet in the bathroom is dripping."
+  },
+  {
+   "pt": "Apartamento",
+   "uk": "flat",
+   "us": "apartment",
+   "example_uk": "The flat was filthy when we arrived.",
+   "example_us": "The apartment was filthy when we arrived."
+  },
+  {
+   "pt": "Elevador",
+   "uk": "lift",
+   "us": "elevator",
+   "example_uk": "The lift has been out of service all week.",
+   "example_us": "The elevator has been out of service all week."
+  },
+  {
+   "pt": "Lixo",
+   "uk": "rubbish",
+   "us": "trash",
+   "example_uk": "Nobody took the rubbish out.",
+   "example_us": "Nobody took the trash out."
+  },
+  {
+   "pt": "Aspirador de pó",
+   "uk": "hoover",
+   "us": "vacuum",
+   "example_uk": "There's no hoover in the flat.",
+   "example_us": "There's no vacuum in the apartment."
+  },
+  {
+   "pt": "Fogão",
+   "uk": "cooker",
+   "us": "stove",
+   "example_uk": "The cooker doesn't work.",
+   "example_us": "The stove doesn't work."
+  },
+  {
+   "pt": "Guarda-roupa",
+   "uk": "wardrobe",
+   "us": "closet",
+   "example_uk": "There's no wardrobe in the bedroom.",
+   "example_us": "There's no closet in the bedroom."
+  },
+  {
+   "pt": "Lanterna",
+   "uk": "torch",
+   "us": "flashlight",
+   "example_uk": "We had to use a torch to find the door.",
+   "example_us": "We had to use a flashlight to find the door."
+  },
+  {
+   "pt": "Aquecedor de água",
+   "uk": "boiler",
+   "us": "water heater",
+   "example_uk": "The boiler is broken.",
+   "example_us": "The water heater is broken."
+  },
+  {
+   "pt": "Berço",
+   "uk": "cot",
+   "us": "crib",
+   "example_uk": "The cot was missing.",
+   "example_us": "The crib was missing."
+  },
+  {
+   "pt": "Mofo",
+   "uk": "mould",
+   "us": "mold",
+   "example_uk": "There's mould on the bathroom ceiling.",
+   "example_us": "There's mold on the bathroom ceiling."
+  },
+  {
+   "pt": "Entupido",
+   "uk": "blocked",
+   "us": "clogged",
+   "example_uk": "The drain is blocked.",
+   "example_us": "The drain is clogged."
+  }
+ ]
+}

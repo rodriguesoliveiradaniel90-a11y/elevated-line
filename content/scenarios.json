@@ -1,0 +1,3036 @@
+{
+ "_about": "Biblioteca de cenários offline. Cada turno tem a fala do cliente, o que se espera do agente ('expects' — chaves da rubrica/fases), a resposta-modelo e o comentário do coach. 'customer_if_weak' é a fala alternativa do cliente quando a resposta anterior foi fraca (escalada). {name} é substituído pelo nome do agente. Online, o app também GERA cenários novos com este mesmo esquema. v2: cada cenário traz 'auth' (caminho e dados fictícios que o cliente vai dar), 'callback' (exige aviso de gravação), 'value_tier' (alto valor = não pode ser perdido) e um turno final obrigatório de sumarização → confirmação → fechamento.",
+ "schema_version": 2,
+ "categories": {
+  "access": "Access failure",
+  "uninhabitable": "Uninhabitable conditions",
+  "mismatch": "Not as advertised",
+  "host_cancel": "Host cancellation",
+  "guest_cancel": "Guest cancellation",
+  "host_damage": "Host damage claim",
+  "appeal": "Appeals & disputes",
+  "repeat_contact": "Repeat contact"
+ },
+ "call_types": {
+  "inbound_guest": "Inbound · guest calls you",
+  "outbound_guest": "Outbound · you call the guest",
+  "outbound_host": "Outbound · you call the host",
+  "inbound_host": "Inbound · host calls you"
+ },
+ "phases": [
+  "opening",
+  "auth",
+  "recording",
+  "listen",
+  "paraphrase",
+  "empathy",
+  "clarify",
+  "policy",
+  "options",
+  "summary",
+  "confirm",
+  "close"
+ ],
+ "scenarios": [
+  {
+   "id": "acc-in-01",
+   "title": "Lockbox code fails at 11:30 pm",
+   "category": "access",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "panicked",
+   "accent": "en-AU",
+   "caller": {
+    "name": "Jess",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "2-bed flat, Melbourne CBD",
+    "booking": "3 nights, checked in tonight",
+    "policy": "Flexible",
+    "facts": [
+     "self check-in via lockbox",
+     "host not answering for 40 min",
+     "two children aged 4 and 7 in the car",
+     "discovered 40 min ago — inside 72h"
+    ]
+   },
+   "lexicon": [
+    "lockbox",
+    "code",
+    "keypad",
+    "self check-in"
+   ],
+   "turns": [
+    {
+     "customer": "Hi — hi, sorry, is this Airbnb? The lockbox code the host sent doesn't work, I've tried it six times, it's half eleven at night and I've got two kids asleep in the car. Nobody's answering. I don't know what to do.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "Yes, you've reached Airbnb Elevated Support, this is {name} — I'm going to help you with this right now. First: are you and the kids somewhere safe, in the car with the doors locked? Good. Let me just confirm I've got the right booking — is this the two-bedroom in Melbourne CBD, checking in tonight?",
+     "coach": "Pânico: segurança primeiro, uma instrução por vez, voz firme. Verifique com dados não sensíveis (cidade, data). Não explique política ainda."
+    },
+    {
+     "customer": "Yes, that's it. What do I do? I can't keep them in the car all night.",
+     "customer_if_weak": "Are you even listening? I said I have KIDS in the car. Do something.",
+     "expects": [
+      "ownership",
+      "clarify",
+      "options",
+      "auth"
+     ],
+     "model": "You won't have to. Here's what happens now: I'm going to message and call the host from my side while we talk. If I can't reach them in the next ten minutes, I'll start looking at somewhere comparable nearby for tonight. Can you tell me the exact number you typed, and whether the keypad lights up when you press it? Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 0447 right now — could you read it back to me when it arrives?",
+     "coach": "Dois caminhos concretos com prazo (host em 10 min → remarcação). Pergunta técnica curta (keypad acende?) pode resolver na hora."
+    },
+    {
+     "customer": "Okay — it's just come through. 8 2 9 1 5 3.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: you arrived at half eleven, the lockbox code was rejected six times, and the host hasn't answered in forty minutes — with the two kids in the car. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "It lights up but just beeps red. I typed 4-4-7-1 like the message says.",
+     "expects": [
+      "policy",
+      "options",
+      "expectations"
+     ],
+     "model": "Thank you — that tells me the code itself is being rejected, not the keypad. I've sent the host an urgent message. Because your check-in time has passed and the host isn't responding, this is what we call an access failure, and it's covered: if we can't get you in, we'll rebook you somewhere comparable tonight, or refund the nights you can't use. Give me two minutes on the line while I check availability — I'm not going anywhere.",
+     "coach": "Nomeia a política em inglês simples ('access failure') e o que ela garante. Não promete o resultado da análise, promete a ação de agora."
+    },
+    {
+     "customer": "Okay. Thank you. Sorry, I'm just — thank you.",
+     "expects": [
+      "future"
+     ],
+     "model": "You don't need to apologise for anything. Your case reference is 4471 — if we get cut off, message the case in the app and I'll call you straight back on this number. I'm staying with you until you're inside somewhere with the kids.",
+     "coach": "Número do caso, plano para queda de linha, compromisso de continuidade. Nada de 'have a nice night'."
+    },
+    {
+     "customer": "Okay — yes.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, you couldn't get into the flat because the lockbox code was rejected, and the host wasn't responding. Second, I've messaged and called the host, opened this as an access failure, and started looking at a comparable place for tonight. And third, you'll get options by message within the next few minutes and I'm staying on the case until you're inside somewhere. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 4471. Thank you for your time, Jess.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Rebooking tonight if host unreachable; refund of unusable nights.",
+    "policy_ref": "checkin_trouble",
+    "why": "Check-in time passed + host unresponsive + inside 72h = access failure."
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Jess Carmody",
+    "verified_phone_ends": "0447",
+    "pin": "829153"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "4471"
+  },
+  {
+   "id": "acc-in-02",
+   "title": "Wrong directions — sent to the wrong building",
+   "category": "access",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "frustrated",
+   "accent": "en-IE",
+   "caller": {
+    "name": "Ciarán",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Studio, Porto",
+    "booking": "5 nights",
+    "policy": "Moderate",
+    "facts": [
+     "check-in instructions had the wrong street number",
+     "host replied after 90 min with correct address",
+     "guest arrived 2h late, missed a dinner booking",
+     "wants compensation for the dinner"
+    ]
+   },
+   "lexicon": [
+    "check-in instructions",
+    "buzzer",
+    "directions",
+    "street number"
+   ],
+   "turns": [
+    {
+     "customer": "Right, so the check-in instructions sent us to number 12 and it was number 21. The buzzer at 12 did nothing, we stood there like eejits for an hour and a half, and we missed a dinner I'd booked months ago. I'm in now, but honestly.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "I'm sorry — an hour and a half on the wrong doorstep after a flight is a rotten start, and losing the dinner on top of it. I'm glad you're in now. Let me pull up the booking — the studio in Porto, five nights? Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Empatia específica (hora e meia, jantar). Reconhece que está resolvido o acesso antes de discutir compensação."
+    },
+    {
+     "customer": "It's Ciarán Doyle.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Ciarán — that matches what I have here. So, just to make sure I've got this right: the check-in instructions sent you to number 12 instead of 21, the buzzer did nothing, you lost about an hour and a half and missed a dinner you'd booked. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "That's the one. So what are you going to do about the dinner? That was a hundred and forty euro.",
+     "expects": [
+      "clarify",
+      "policy",
+      "options"
+     ],
+     "model": "Let me be straight with you about what's covered and what isn't. Wrong instructions that delay your access are something we take seriously, and I'm noting it against the host. The dinner itself isn't something the policy reimburses — it covers the stay, not costs outside it. What I can look at is the delay to your first night. Do you still have the host's original message with the wrong number?",
+     "coach": "Negativa clara sobre o jantar (fora do escopo), sem 'unfortunately'. Abre o caminho que existe (impacto na primeira noite). Pede evidência."
+    },
+    {
+     "customer": "I do, yeah. Fine. I just want it noted, to be honest — I don't want the next person going through that.",
+     "customer_if_weak": "So that's a no, is it? Grand. Typical.",
+     "expects": [
+      "ownership",
+      "future"
+     ],
+     "model": "It's noted, with the message attached, and the host will hear about the instructions. I'll message you a summary within the hour so you have it in writing. Your reference is 5820 — if anything else comes up during the week, reply on that thread and it comes straight to me. Enjoy Porto; the second night's usually better than the first.",
+     "coach": "Fecha com registro, resumo escrito, número do caso, e um toque humano leve — depois que o problema está resolvido, o humor é permitido."
+    },
+    {
+     "customer": "Right.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the check-in instructions had the wrong street number and it cost you an hour and a half and a dinner booking. Second, I've noted the wrong instructions against the host, with the host's original message attached, and I'm looking at the impact on your first night. And third, the dinner itself isn't something the policy reimburses, and I'll send you a written summary within the hour. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 5820. Thank you for your time, Ciarán.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Note against host; possible partial for first-night impact; no reimbursement for external dinner cost.",
+    "policy_ref": "rebooking_refund",
+    "why": "Policy covers the stay, not third-party costs."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Ciarán Doyle"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "5820"
+  },
+  {
+   "id": "acc-out-01",
+   "title": "Calling the host about the failed lockbox",
+   "category": "access",
+   "callType": "outbound_host",
+   "severity": 3,
+   "emotion": "host_defensive",
+   "accent": "en-GB",
+   "caller": {
+    "name": "Marco",
+    "role": "host"
+   },
+   "context": {
+    "listing": "2-bed flat, Melbourne CBD",
+    "booking": "guest Jess, 3 nights",
+    "facts": [
+     "guest could not get in until 01:10",
+     "host's phone was off overnight",
+     "host says the code 'always works'",
+     "payout for night 1 will be affected"
+    ]
+   },
+   "lexicon": [
+    "lockbox",
+    "access failure",
+    "payout",
+    "dispute"
+   ],
+   "turns": [
+    {
+     "customer": "Yeah, hello? Airbnb? Look, I saw the messages. That code has worked for two hundred guests. I don't know what she was pressing.",
+     "expects": [
+      "opening",
+      "auth",
+      "listen",
+      "recording"
+     ],
+     "model": "Hi Marco, this is {name} from Airbnb's Elevated Support team — I'm calling about last night's check-in for the reservation with Jess. I've read the messages, and I'm calling because I want your side of it on the record before anything is decided. Can you walk me through how the code is set up and when it was last changed? Before we go on, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Apresentação completa em outbound. Enquadra como 'ouvir o seu lado'. Pergunta aberta e factual — não 'the guest says you…'."
+    },
+    {
+     "customer": "Yeah, that's fine. It's Marco Bellini.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you. Thank you, Marco — that matches what I have here. So, just to make sure I've got this right: from your side the code 4471 has worked for two hundred guests, your phone was on charge overnight, and the guest did get in eventually. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "It's the same code, 4471, hasn't changed in a year. My phone was on charge, I'm not on call twenty-four seven. She got in eventually, didn't she?",
+     "customer_if_weak": "So you've already decided. Whose side are you on exactly?",
+     "expects": [
+      "empathy",
+      "policy",
+      "clarify"
+     ],
+     "model": "She did, at ten past one — after about ninety minutes outside with two young children. I understand you can't be awake all night; nobody expects that. The difficulty is that the check-in time had passed and no one could be reached, and the policy treats that as an access failure regardless of why the code failed. Is there any chance the lockbox battery is low? That would explain a red beep on a correct code.",
+     "coach": "Fato (ten past one, ninety minutes) + reconhecimento do limite humano + regra explicada com o motivo. Oferece uma causa técnica plausível que não culpa ninguém."
+    },
+    {
+     "customer": "…Actually, it might be. It's been flashing. So what happens to my payout?",
+     "expects": [
+      "policy",
+      "options",
+      "future"
+     ],
+     "model": "I'll be clear so there are no surprises: the first night is affected, because the guest couldn't use it. The remaining two nights are unaffected. You'll see the exact figure in the app today. If you replace the battery and send me a photo, I'll add it to the file — it shows you acted on it. And if you believe something's been missed, you can dispute the decision from the reservation page; I'll message you the steps.",
+     "coach": "Notícia ruim clara com escopo (noite 1 apenas). Dá ao host algo a fazer (foto da bateria). Caminho de contestação com passos."
+    },
+    {
+     "customer": "Alright. Thanks for actually calling, I suppose.",
+     "expects": [],
+     "model": "Of course. You'll have the summary and the dispute steps by message within the hour. Thanks for talking it through, Marco.",
+     "coach": "Fecho curto e sem ironia de volta."
+    },
+    {
+     "customer": "Alright.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the guest couldn't get in until ten past one, which the policy treats as an access failure regardless of the cause. Second, the first night's payout is affected; the other two nights are not. And third, if you replace the lockbox battery and send me a photo I'll add it to the file, and you can dispute the decision from the reservation page — I'll message you the steps. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 4471. Thank you for your time, Marco.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Night 1 payout reduced; host may dispute; note about battery.",
+    "policy_ref": "rebooking_refund",
+    "why": "Access failure affects payout for the portion of the stay affected."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Marco Bellini"
+   },
+   "callback": true,
+   "value_tier": "high",
+   "reference": "4471"
+  },
+  {
+   "id": "unin-in-01",
+   "title": "Bed bugs on night two",
+   "category": "uninhabitable",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "angry",
+   "accent": "en-US",
+   "caller": {
+    "name": "Darnell",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "1-bed apartment, Chicago",
+    "booking": "6 nights, currently night 2",
+    "policy": "Strict",
+    "facts": [
+     "photos of bites and mattress seams uploaded",
+     "host offered a 'deep clean' tomorrow",
+     "guest has left for a hotel tonight — $210",
+     "reported within 3 hours of discovery"
+    ]
+   },
+   "lexicon": [
+    "bed bugs",
+    "bites",
+    "mattress",
+    "infestation",
+    "exterminator"
+   ],
+   "turns": [
+    {
+     "customer": "We woke up covered in bites. Bed bugs. I have photos of the mattress seams, it's disgusting. The host is offering a 'deep clean' tomorrow — I'm not sleeping there again. We're in a hotel and I want every cent back.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "This is {name} with Airbnb Elevated Support. Waking up covered in bites is a genuinely awful thing to go through, and moving to a hotel was the right call — you don't have to sleep there again. I can see the photos on the case already. Let me confirm the reservation: the one-bedroom in Chicago, six nights, you're on night two? Before we go any further, I need to verify the account, and as you're not calling from the number we have on file I'll need a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Valida a decisão de sair (é fator de decisão da política). Confirma que já viu a evidência — mostra preparo."
+    },
+    {
+     "customer": "Seriously? Fine. Darnell Washington. 312-555-0143. Date of birth 2 August 1988. And the card ends in 9018.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you — that all matches. You're verified. So, just to make sure I've got this right: you woke up this morning covered in bites, you've got photos of the mattress seams, the host offered a deep clean, and you've moved to a hotel and don't want to go back. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yes. And don't tell me about the host's cleaning. Bed bugs don't go away with a deep clean, that needs an exterminator.",
+     "customer_if_weak": "You people always side with the host. I'm done. Refund. Now.",
+     "expects": [
+      "policy",
+      "options",
+      "clarify"
+     ],
+     "model": "You're right that this isn't a cleaning issue — a suspected infestation is a health matter, and it falls under what we call uninhabitable conditions, which is covered. Here's what that means in practice: the nights you can't use are refundable, and I can help you rebook somewhere comparable for the rest of the trip if you'd rather not manage that from a hotel. Two quick questions so I get the review right: what time did you first notice the bites, and did the host see the photos?",
+     "coach": "Concorda com o fato técnico (não é limpeza). Nomeia a categoria e o que ela garante. Duas perguntas de decisão: descoberta (72h) e contato com host."
+    },
+    {
+     "customer": "This morning, around seven. Yeah, I sent him the photos, that's when he offered the clean. What about the hotel? That's two hundred and ten dollars.",
+     "expects": [
+      "policy",
+      "options",
+      "expectations"
+     ],
+     "model": "Seven this morning — that's well inside the 72-hour window, so timing is not an issue here. On the refund: the four remaining nights are what I'll put forward, and given the photos and that you've had to leave, I'd expect that to be straightforward — but I'm not the one who signs it off, so I'll say 'expect' rather than 'promise'. The hotel is a separate question: it's not covered as a rule, but where a guest has to leave for a health issue, it's something the reviewer can consider with the receipt. Send me the receipt and I'll attach it with a note.",
+     "coach": "Confirma prazo explicitamente (alivia). Diferencia 'expect' de 'promise'. Hotel: honesto sobre a regra, mas mostra o caminho para o reviewer considerar."
+    },
+    {
+     "customer": "Fine. How long?",
+     "expects": [
+      "expectations",
+      "future"
+     ],
+     "model": "The review should be done within a day or two. Refunds go out immediately on our side and usually land within 15 days depending on your bank. Your case reference is 9034. I'll message you tomorrow either way — and if you want help rebooking tonight, say the word and I'll start now.",
+     "coach": "Prazos reais (1–2 dias, 15 dias), número do caso, follow-up com prazo, oferta ativa."
+    },
+    {
+     "customer": "Fine. Go on.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, you found what looks like bed bugs on night two, with photos, and you've left for a hotel. Second, this falls under uninhabitable conditions and is covered; I've put forward the four remaining nights for refund with your photos, and attached the hotel receipt with a note for the reviewer. And third, review takes a day or two, refunds usually land within 15 days, and I'll message you tomorrow either way — I can also help you rebook tonight if you want. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 9034. Thank you for your time, Darnell.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Refund of remaining nights; rebooking help; hotel receipt attached for reviewer consideration.",
+    "policy_ref": "rebooking_refund",
+    "why": "Uninhabitable (health hazard), guest vacated, reported within hours, evidence strong."
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Darnell Washington",
+    "phone": "312-555-0143",
+    "dob": "2 August 1988",
+    "payment_last4": "9018"
+   },
+   "callback": false,
+   "value_tier": "high",
+   "reference": "9034"
+  },
+  {
+   "id": "unin-in-02",
+   "title": "Dirty on arrival — host wants a second chance",
+   "category": "uninhabitable",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "sarcastic",
+   "accent": "en-GB",
+   "caller": {
+    "name": "Priya",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Cottage, Cotswolds",
+    "booking": "4 nights, arrived 2h ago",
+    "policy": "Moderate",
+    "facts": [
+     "sticky worktops, hair in the plughole, bins full, one used towel",
+     "host says cleaner 'must have missed it' and offers to send her back tonight",
+     "guest hasn't decided whether to stay"
+    ]
+   },
+   "lexicon": [
+    "worktops",
+    "plughole",
+    "bins",
+    "soiled linens",
+    "musty"
+   ],
+   "turns": [
+    {
+     "customer": "Oh, brilliant, a real person. So the cottage: sticky worktops, hair in the plughole, bins overflowing, and a used towel on the rail. Lovely. The host says the cleaner 'must have missed it'. Missed the whole house, apparently.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "Hi Priya, this is {name} at Airbnb Elevated Support. That's not how you want to walk into a four-night stay, and I'm not going to pretend a used towel is a small thing. Let me look at the booking — the cottage in the Cotswolds, arrived this afternoon? Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Sarcasmo: não ri junto, não se defende; responde ao conteúdo com competência. Nomeia o detalhe mais grave (toalha usada)."
+    },
+    {
+     "customer": "Oh, security theatre, lovely. It's Priya Shah.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Priya — that matches what I have here. So, just to make sure I've got this right: the cottage wasn't clean on arrival — sticky worktops, hair in the plughole, full bins, a used towel — and the host has offered to send the cleaner back tonight. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Correct. So do I stay in the filth or what?",
+     "expects": [
+      "clarify",
+      "options",
+      "policy"
+     ],
+     "model": "You've got a choice, and I'll tell you what each one means. The host has offered to send the cleaner back tonight — if you're willing to let that happen, I'd photograph everything first, and if it's properly done, you keep the stay and I'd still note the arrival state. If you don't want to stay, that's reasonable too: a place that isn't reasonably clean on arrival is something we cover, and I'd look at rebooking or refund. Which way are you leaning?",
+     "coach": "Duas opções reais, cada uma com consequência. Deixa o cliente decidir. Não empurra a 'segunda chance' do host."
+    },
+    {
+     "customer": "…I'll give the cleaner one chance. But if it's not right, I'm not staying.",
+     "customer_if_weak": "You're really selling this, aren't you. Fine. One chance.",
+     "expects": [
+      "ownership",
+      "future"
+     ],
+     "model": "That's fair. Here's what I'll do: I'm noting the arrival condition with your photos now, so if tonight doesn't go well, you don't have to re-explain anything — you just message the case and I pick it up. Reference is 3312. Take a photo when the cleaner's done, either way. And if you do decide to leave, you're still inside the window; nothing is lost by giving it a go.",
+     "coach": "Protege o cliente contra a 'segunda chance' virar armadilha: registra tudo agora, confirma que o prazo não corre contra ele."
+    },
+    {
+     "customer": "Sure, wrap it up.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the cottage wasn't properly cleaned when you arrived, and you've documented it with photos. Second, you've chosen to give the cleaner one chance tonight; I've recorded the arrival condition on the case so nothing is lost if it doesn't work out. And third, if it isn't right, message the case and we look at rebooking or refund — you're still inside the reporting window either way. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 3312. Thank you for your time, Priya.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Documented; guest chooses second clean; refund/rebook path stays open.",
+    "policy_ref": "cleanliness",
+    "why": "Not reasonably clean is covered; giving host a chance is guest's choice, not a policy requirement."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Priya Shah"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "3312"
+  },
+  {
+   "id": "unin-in-03",
+   "title": "No heating in January — third contact",
+   "category": "repeat_contact",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "frustrated",
+   "accent": "en-GB",
+   "caller": {
+    "name": "Tom",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Flat, Edinburgh",
+    "booking": "7 nights, day 3",
+    "policy": "Firm",
+    "facts": [
+     "boiler down since night 1",
+     "two previous agents promised callbacks — none came",
+     "host sent a plumber who couldn't fix it",
+     "outside temperature −2°C",
+     "reported day 1 — inside 72h"
+    ]
+   },
+   "lexicon": [
+    "boiler",
+    "radiators",
+    "stone cold",
+    "callback",
+    "follow up"
+   ],
+   "turns": [
+    {
+     "customer": "This is the third time I've called. Boiler's been dead since the first night, radiators stone cold, it's minus two outside. Two people promised to call me back. Nobody did. I'm not explaining it all again.",
+     "expects": [
+      "opening",
+      "empathy",
+      "ownership",
+      "auth"
+     ],
+     "model": "You shouldn't have to, and you won't. I've got the notes in front of me — boiler out since Tuesday night, plumber came Wednesday and couldn't repair it, two callbacks promised. I'm sorry those didn't happen. I'm {name}, and from this point I'm your contact on this; you won't be passed around again. Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 8814 right now — could you read it back to me when it arrives?",
+     "coach": "Resumo do histórico ANTES de qualquer pergunta — prova que leu. Assume posse nominal. Pede desculpa só pelo que a empresa de fato falhou (callbacks)."
+    },
+    {
+     "customer": "Okay — it's just come through. 4 4 0 2 7 6.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: the boiler has been out since the first night, the radiators are cold, a plumber came and couldn't fix it, and two callbacks were promised and never happened. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Right. So?",
+     "customer_if_weak": "That's what the last two said.",
+     "expects": [
+      "policy",
+      "options",
+      "expectations"
+     ],
+     "model": "So here's where it stands and what I'm doing. No heating in January is covered — it's one of the clearest cases there is. You've got two options and I can start either now: I rebook you somewhere with working heating for the remaining nights, or if you'd rather stay put because of location, we refund the nights without heating and I chase a second engineer today. I'll give you my honest view: with four nights left and a boiler nobody can fix, moving is the better outcome for you.",
+     "coach": "Opções com recomendação honesta. Cita 'covered' com confiança porque é caso claro (AirCover: heating in winter)."
+    },
+    {
+     "customer": "Move us. And I want the three nights we've had refunded, we've been sleeping in coats.",
+     "expects": [
+      "policy",
+      "expectations",
+      "future"
+     ],
+     "model": "Understood — rebooking it is, and I'm starting the search now. On the three nights: they're the nights affected, so that's exactly what I'm putting forward for refund, with the plumber's visit as evidence. I won't promise the reviewer's answer, but I'll tell you I'd be surprised by anything else. I'll message you options within the hour, and I'll call you back at four o'clock today whether or not I have news — you have my word on that one, and you'll be able to hold me to it on the case notes.",
+     "coach": "Callback com hora exata, registrado — repara a quebra de confiança anterior com um compromisso verificável."
+    },
+    {
+     "customer": "Four o'clock. Fine.",
+     "expects": [
+      "future"
+     ],
+     "model": "Four o'clock. Your reference is 7715, and any message on it comes to me. Put the kettle on — that at least still works.",
+     "coach": "Fecho com o compromisso repetido. Humor leve permitido porque há progresso."
+    },
+    {
+     "customer": "Right.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, no heating since Tuesday night, a failed repair, and two callbacks that didn't happen — I'm sorry about those. Second, we're rebooking you somewhere with working heating for the remaining nights, and the three nights without heating are going forward for refund with the plumber's visit as evidence. And third, you'll get rebooking options by message within the hour, and I'll call you at four o'clock today whether or not there's news. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 7715. Thank you for your time, Tom.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Rebook for remaining nights; refund the 3 heating-less nights; scheduled callback honoured.",
+    "policy_ref": "aircover_guests",
+    "why": "Heating failure in winter is explicitly covered; repeat-contact failure requires ownership and a verifiable commitment."
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Tom Reid",
+    "verified_phone_ends": "8814",
+    "pin": "440276"
+   },
+   "callback": false,
+   "value_tier": "high",
+   "reference": "7715"
+  },
+  {
+   "id": "mis-in-01",
+   "title": "'Three bedrooms' was two plus a sofa bed",
+   "category": "mismatch",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "entitled",
+   "accent": "en-US",
+   "caller": {
+    "name": "Brooke",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "'3-bed house', Scottsdale",
+    "booking": "5 nights, 6 adults",
+    "policy": "Strict",
+    "facts": [
+     "listing shows 3 bedrooms; third 'bedroom' is a den with a sofa bed",
+     "guest says she's 'spent over $40k on this platform'",
+     "discovered on arrival, reported same day",
+     "host says the den is listed as a sleeping area in the description text"
+    ]
+   },
+   "lexicon": [
+    "sofa bed",
+    "bedroom",
+    "listed",
+    "as advertised",
+    "den"
+   ],
+   "turns": [
+    {
+     "customer": "So the third bedroom is a den with a sofa bed. Six adults, two real bedrooms. I've spent over forty thousand dollars on this platform, I'm a Superhost myself, and I expect this handled properly.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "Hi Brooke, this is {name} with Elevated Support. I can see your history with us, and I want to handle this properly — that's why it's with this team. Six adults across two real bedrooms and a sofa bed is not what 'three-bedroom' means to most people, so I understand the problem. Let me confirm: the house in Scottsdale, five nights, arrived today? Before we go any further, I need to verify the account, and as you're not calling from the number we have on file I'll need a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Reconhece o status sem prometer exceção. Valida o fato (3 quartos ≠ 2 + sofá-cama). Verifica."
+    },
+    {
+     "customer": "You should have this already, but fine. Brooke Ellison. 480-555-0199. Date of birth 29 May 1984. And the card ends in 3370.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you — that all matches. You're verified. So, just to make sure I've got this right: the listing says three bedrooms, the third is a den with a sofa bed, and there are six adults staying for a wedding weekend. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Correct. I want a full refund and I'm staying — we have nowhere else, it's a wedding weekend.",
+     "customer_if_weak": "Do you know who you're talking to? I could have this listing pulled.",
+     "expects": [
+      "policy",
+      "clarify",
+      "options"
+     ],
+     "model": "Let me be straight about how this works, because I'd rather you hear it from me than be surprised later. A room count that doesn't match the listing is covered — it's exactly the kind of thing the policy is for. What the policy does with it depends on how much of the stay is affected: if you stay all five nights, a full refund isn't how it's assessed; a partial refund reflecting the missing bedroom is. Separately, I'll check the description — if the host disclosed the den as a sofa bed in the text, that changes the picture, and I'd rather find that now. Can you give me two minutes to read it?",
+     "coach": "Honesto: ficar + reembolso total não é como a política avalia. Nomeia a variável (parte afetada). Checa a defesa do host antes de prometer."
+    },
+    {
+     "customer": "…Fine. But partial had better mean something.",
+     "expects": [
+      "policy",
+      "expectations",
+      "future"
+     ],
+     "model": "The description does mention 'a den that sleeps two', but the title and the room count say three bedrooms, and the photos show three beds — I'll be honest, that's a listing I'd flag as misleading, and I'm noting it that way. For the refund, I'm putting forward the difference for a missing bedroom across the five nights, with your photos attached. Review is normally a day or two; I'll message you by tomorrow evening. Reference 6108.",
+     "coach": "Lê a evidência e dá o veredito honesto nos dois sentidos (menção existe, mas título/fotos enganam). Prazo, número."
+    },
+    {
+     "customer": "Alright. Thank you for actually looking.",
+     "expects": [
+      "future"
+     ],
+     "model": "That's the job. If anything else isn't as listed this week, photograph it and message the case — it all goes into the same review. Enjoy the wedding.",
+     "coach": "Fecho com instrução útil para dúvidas futuras e um toque humano."
+    },
+    {
+     "customer": "Alright.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the third 'bedroom' is a den with a sofa bed, which doesn't match a three-bedroom listing. Second, I've flagged the listing as misleading and put forward a partial refund for the missing bedroom across the five nights, with your photos. And third, review usually takes a day or two and I'll message you by tomorrow evening. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 6108. Thank you for your time, Brooke.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Partial refund for missing bedroom; listing flagged; not a full refund while staying.",
+    "policy_ref": "rebooking_refund",
+    "why": "Mismatch covered; refund proportional to portion affected; status does not change policy."
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Brooke Ellison",
+    "phone": "480-555-0199",
+    "dob": "29 May 1984",
+    "payment_last4": "3370"
+   },
+   "callback": false,
+   "value_tier": "high",
+   "reference": "6108"
+  },
+  {
+   "id": "mis-in-02",
+   "title": "Second floor, no lift, elderly mother",
+   "category": "mismatch",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "elderly_slow",
+   "accent": "en-IN",
+   "caller": {
+    "name": "Mr. Raghavan",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Flat, Lisbon",
+    "booking": "10 nights",
+    "policy": "Moderate",
+    "facts": [
+     "listing did not mention no lift",
+     "mother aged 82 cannot climb two flights",
+     "arrived this morning; sitting in a café",
+     "host offered nothing yet",
+     "guest not confident with the app"
+    ]
+   },
+   "lexicon": [
+    "lift",
+    "second floor",
+    "did not mention",
+    "climb"
+   ],
+   "turns": [
+    {
+     "customer": "Hello, good morning. I am calling regarding my booking. The flat is on the second floor and there is no lift. My mother is eighty-two years old, she cannot climb. The listing did not mention this anywhere. We are sitting in a café now with the luggage.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "Good morning, Mr. Raghavan, this is {name} at Airbnb Elevated Support. Thank you for explaining that so clearly. Two flights of stairs with your mother at eighty-two is not something you should have to work around, and I'll help you now. Let me confirm the booking — the flat in Lisbon, ten nights, arriving today? Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Ritmo mais lento, frases curtas. Elogia a clareza (respeito). Nada de pressa."
+    },
+    {
+     "customer": "It's Suresh Raghavan.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Suresh — that matches what I have here. So, just to make sure I've got this right: the flat is on the second floor with no lift, the listing didn't mention it, and your mother, who is eighty-two, can't manage the stairs. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yes, yes. That is correct. What can be done?",
+     "expects": [
+      "clarify",
+      "policy",
+      "options"
+     ],
+     "model": "Here is what I can do, one step at a time. First, I'll check the listing on my side — if there is no mention of stairs or 'no lift', that's important, because a home that's not accessible in a way that wasn't disclosed is covered. Second, I'd like to look for a ground-floor place or one with a lift, nearby, for your ten nights. Would you like me to do that search for you, rather than you doing it on the phone?",
+     "coach": "Um passo por vez. Oferece FAZER pelo cliente (barreira de app). Explica por que está checando o anúncio."
+    },
+    {
+     "customer": "Yes, please, that would be very kind. I am not so comfortable with the app.",
+     "customer_if_weak": "I am sorry, you are speaking very fast. Can you repeat?",
+     "expects": [
+      "ownership",
+      "expectations",
+      "future"
+     ],
+     "model": "Not a problem at all. I'll do the search and I'll call you back on this number in about thirty minutes with two or three options — I'll read them to you, and you choose. Please stay in the café; you don't need to do anything else. Your case number is 2290; I'll say it again slowly: two, two, nine, zero.",
+     "coach": "Callback com prazo, cliente não precisa fazer nada, número do caso repetido devagar."
+    },
+    {
+     "customer": "Two, two, nine, zero. Thank you very much, sir.",
+     "expects": [],
+     "model": "You're very welcome. Speak to you in half an hour, Mr. Raghavan.",
+     "coach": "Curto e caloroso. Repete o compromisso."
+    },
+    {
+     "customer": "Yes, I understand. Thank you, sir.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the flat has no lift and that wasn't in the listing, which is a problem for your mother. Second, I'm searching for a ground-floor place or one with a lift, nearby, for your ten nights, and I'll do the search for you. And third, I'll call you back on this number in about thirty minutes with two or three options, and you don't need to do anything until then. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 2290. Thank you for your time, Suresh.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Rebook to accessible listing; refund if not possible; listing flagged for undisclosed access limits.",
+    "policy_ref": "rebooking_refund",
+    "why": "Undisclosed material feature = not as advertised."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Suresh Raghavan"
+   },
+   "callback": false,
+   "value_tier": "high",
+   "reference": "2290"
+  },
+  {
+   "id": "mis-in-03",
+   "title": "Undisclosed dog — severe allergy",
+   "category": "mismatch",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "confused",
+   "accent": "en-ZA",
+   "caller": {
+    "name": "Naledi",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Private room in a house, Cape Town",
+    "booking": "3 nights",
+    "policy": "Flexible",
+    "facts": [
+     "a large dog lives in the house; not disclosed",
+     "guest has a documented dog allergy, already wheezing",
+     "host says 'everyone loves Bruno'",
+     "guest unsure whether this counts as anything"
+    ]
+   },
+   "lexicon": [
+    "undisclosed",
+    "pet",
+    "allergy",
+    "private room",
+    "disclose"
+   ],
+   "turns": [
+    {
+     "customer": "Hi, sorry, I'm not sure if this is even a thing you can help with. There's a big dog in the house — it's not on the listing anywhere — and I'm allergic, I'm already wheezing. The host just laughed and said everyone loves Bruno. Is this… does this count as something?",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "Hi Naledi, this is {name} at Airbnb Elevated Support — yes, this is very much something I can help with, and I'm glad you called. First, how are you breathing right now? If it's getting worse, your health comes before anything on this call. Let me confirm: the private room in Cape Town, three nights?",
+     "coach": "Confusão: responde a pergunta direta ('sim, conta'). Segurança física primeiro (wheezing). Verifica."
+    },
+    {
+     "customer": "I'm okay if I stay outside, I've got my inhaler. So what does it count as?",
+     "expects": [
+      "policy",
+      "clarify",
+      "options",
+      "auth"
+     ],
+     "model": "Okay, good — stay where you can breathe. In plain terms: a listing has to tell you if a pet lives there. It didn't, so this is what we call 'not as advertised', and it's covered. That means you don't have to stay. I can rebook you somewhere comparable tonight, or refund the stay if you'd rather sort your own place. Two quick things: did you take a photo of the dog in the house, and what time did you arrive? Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 2213 right now — could you read it back to me when it arrives?",
+     "coach": "Define o termo em inglês simples, dá a consequência prática ('you don't have to stay'), duas perguntas de decisão."
+    },
+    {
+     "customer": "Okay — it's just come through. 7 1 9 4 4 8.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: there's a large dog living in the house that isn't on the listing, you're allergic and already wheezing, and the host laughed it off. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "I've got a photo, yes. I arrived about an hour ago. Rebook, please — I don't know the area.",
+     "customer_if_weak": "Sorry — 'covered' means what, exactly? I'm confused.",
+     "expects": [
+      "ownership",
+      "expectations",
+      "future"
+     ],
+     "model": "Then rebooking it is, and I'm starting now. You'll get options by message in the next twenty minutes — pick one and I'll move the booking. The photo's attached to the case, reference 4487. Keep the inhaler handy and stay outside till we've got you sorted. I'll stay on the case until you're in the new place.",
+     "coach": "Ação imediata, prazo, número, cuidado com a saúde, continuidade."
+    },
+    {
+     "customer": "Okay, I think so.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the listing didn't disclose a dog, and with your allergy you can't stay there. Second, this counts as not as advertised and it's covered; I'm rebooking you somewhere comparable tonight and your photo is on the case. And third, you'll get options by message in the next twenty minutes — stay outside with your inhaler until we've got you sorted. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 4487. Thank you for your time, Naledi.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Rebook tonight; undisclosed pet is a mismatch; health prioritised.",
+    "policy_ref": "rebooking_refund",
+    "why": "Listing failed to disclose a pet present."
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Naledi Mokoena",
+    "verified_phone_ends": "2213",
+    "pin": "719448"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "4487"
+  },
+  {
+   "id": "hc-in-01",
+   "title": "Host cancelled two days before a wedding trip",
+   "category": "host_cancel",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "angry",
+   "accent": "en-NG",
+   "caller": {
+    "name": "Chidi",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Villa, Lagos",
+    "booking": "4 nights, check-in in 2 days",
+    "policy": "Strict (irrelevant — host cancelled)",
+    "facts": [
+     "host cancelled citing 'family emergency' with no documentation",
+     "comparable villas now 2× the price",
+     "guest is bringing 8 family members for a wedding"
+    ]
+   },
+   "lexicon": [
+    "cancelled",
+    "two days before",
+    "double the price",
+    "rebook",
+    "host cancellation"
+   ],
+   "turns": [
+    {
+     "customer": "The host cancelled on us! Two days before! Eight of us are coming for my sister's wedding and now everywhere is double the price. This is not acceptable. What are you people doing about it?",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "This is {name} with Airbnb Elevated Support — a host cancelling two days before a family wedding is exactly the kind of thing this team exists for, and I'm going to work on it with you now. Let me confirm the booking: the villa in Lagos, four nights, checking in the day after tomorrow, eight guests? Before we go any further, I need to verify the account, and as you're not calling from the number we have on file I'll need a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Raiva: fato específico + ação, sem defender o host. Verifica."
+    },
+    {
+     "customer": "Seriously? Fine. Chidi Okonkwo. +234 803 555 0102. Date of birth 11 November 1986. And the card ends in 7745.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you — that all matches. You're verified. So, just to make sure I've got this right: the host cancelled two days before check-in citing a family emergency, eight of you are coming for your sister's wedding, and comparable places are now double the price. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yes! And he said 'family emergency' — no proof, nothing. He probably got a better offer.",
+     "customer_if_weak": "You are just reading from a script. I want action, not sympathy.",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "Here's what's certain, whatever the host's reason: you get a full refund, including fees, and we help you rebook. That part isn't up for review — it's automatic when a host cancels. What I'm going to do now is look for comparable villas for the same dates, and where the price is higher, there's support I can look at for the difference; I can't promise the exact amount until I see the options, but I can promise I'll present them with the numbers. Give me a few minutes on the line.",
+     "coach": "Separa o certo (reembolso automático) do a avaliar (diferença de preço). Não especula sobre a motivação do host."
+    },
+    {
+     "customer": "And the host? He just gets away with it?",
+     "expects": [
+      "policy",
+      "future"
+     ],
+     "model": "No. A host who cancels this close to check-in without a valid, documented reason faces a penalty fee, their calendar gets blocked for those dates, and they can lose Superhost status or be removed. I can't share the details of what happens to his account, but I can tell you it isn't nothing. Your job is the wedding; mine is the villa. Reference 8801 — I'll message options within the hour and call you back before six.",
+     "coach": "Responde com a política real de penalidade sem revelar dados do host. Redireciona para o que importa ao cliente."
+    },
+    {
+     "customer": "Fine. Go on.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the host cancelled two days out; you get a full refund including fees, automatically, and we help you rebook. Second, I'm searching comparable villas for the same dates and will present options with the numbers, including what support may apply to the price difference. And third, the host faces the cancellation penalty under policy; you'll get options within the hour and I'll call you back before six. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 8801. Thank you for your time, Chidi.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Full refund incl. fees; rebooking assistance; host penalised per policy.",
+    "policy_ref": "host_cancellation_policy",
+    "why": "Host cancellation before check-in = full refund and rebooking help; host penalty tier by notice window."
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Chidi Okonkwo",
+    "phone": "+234 803 555 0102",
+    "dob": "11 November 1986",
+    "payment_last4": "7745"
+   },
+   "callback": false,
+   "value_tier": "high",
+   "reference": "8801"
+  },
+  {
+   "id": "hc-out-01",
+   "title": "Calling a host who cancelled 5 days out",
+   "category": "host_cancel",
+   "callType": "outbound_host",
+   "severity": 2,
+   "emotion": "host_pleading",
+   "accent": "en-IE",
+   "caller": {
+    "name": "Siobhán",
+    "role": "host"
+   },
+   "context": {
+    "listing": "Cottage, Galway",
+    "booking": "guest family, 3 nights",
+    "facts": [
+     "host cancelled 5 days before check-in — burst pipe flooded the cottage",
+     "host has a plumber's report",
+     "this is her only listing and main income",
+     "penalty applies unless documented valid reason"
+    ]
+   },
+   "lexicon": [
+    "burst pipe",
+    "flooded",
+    "penalty",
+    "documentation",
+    "calendar blocked"
+   ],
+   "turns": [
+    {
+     "customer": "Hello? Oh, Airbnb — please, I didn't want to cancel, the pipe burst in the night, the whole ground floor is under water. This is my only income, I've kids, I can't take a fine on top of this.",
+     "expects": [
+      "opening",
+      "auth",
+      "empathy",
+      "recording"
+     ],
+     "model": "Hi Siobhán, this is {name} from Airbnb's Elevated Support team, calling about the cancellation for the cottage in Galway. I've seen your message about the pipe, and I'm calling to make sure your side is properly documented — because that's what decides whether a penalty applies. A flooded ground floor is a real emergency; let's get it on the record. Before we go on, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Apresentação outbound; enquadra a ligação como AJUDA para documentar — o que é verdade. Reconhece a emergência sem prometer."
+    },
+    {
+     "customer": "Yeah, that's fine. It's Siobhán Walsh.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you. Thank you, Siobhán — that matches what I have here. So, just to make sure I've got this right: a pipe burst in the night, the ground floor flooded, you cancelled five days before check-in, and this is your only listing. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yes — yes, I have the plumber's report, and photos, God, so many photos.",
+     "customer_if_weak": "Are you going to fine me or not? Just tell me.",
+     "expects": [
+      "policy",
+      "clarify",
+      "ownership"
+     ],
+     "model": "That's exactly what's needed. Here's how it works: a cancellation five days out normally carries a fee, but a valid reason outside your control — and a burst pipe with a plumber's report is a textbook example — can waive it. I can't decide that on this call; a reviewer does. What I can do is attach the report and photos myself, right now, and flag it as documented. Can you upload the report in the app, or send it to me on the case?",
+     "coach": "Explica a regra e a exceção com honestidade ('normally a fee… can waive'). Diz o limite ('I can't decide') e a ação ('I'll attach')."
+    },
+    {
+     "customer": "I'll send it now. And the guests — they're not going to hate me?",
+     "expects": [
+      "policy",
+      "expectations",
+      "future"
+     ],
+     "model": "The guests get a full refund and we help them rebook — that happens automatically, so they're taken care of. Your calendar for those dates will show as blocked; that's standard after any cancellation. You'll have the reviewer's decision by message, usually within a couple of days. Reference for you is 5502. I know this is a hard week — you've done the right thing by documenting it.",
+     "coach": "Responde à preocupação humana (os hóspedes), explica o bloqueio de calendário sem dramatizar, prazo, número, sem falsa esperança."
+    },
+    {
+     "customer": "Okay. Thank you.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, you cancelled because of a burst pipe and a flooded ground floor, and you have the plumber's report and photos. Second, a cancellation five days out normally carries a fee, but a documented reason outside your control can waive it; I'm attaching your evidence and flagging it as documented — a reviewer decides. And third, the guests are refunded and rebooked automatically, your calendar shows blocked for those dates, and you'll have the decision by message within a couple of days. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 5502. Thank you for your time, Siobhán.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Penalty likely waived with documentation; guests refunded and rebooked; calendar blocked for dates.",
+    "policy_ref": "host_cancellation_policy",
+    "why": "Valid reason outside host's control, with documentation, can exempt the fee."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Siobhán Walsh"
+   },
+   "callback": true,
+   "value_tier": "high",
+   "reference": "5502"
+  },
+  {
+   "id": "gc-in-01",
+   "title": "Cancelling a Strict booking 10 days out",
+   "category": "guest_cancel",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "disappointed",
+   "accent": "en-US",
+   "caller": {
+    "name": "Megan",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Cabin, Lake Tahoe",
+    "booking": "4 nights, check-in in 10 days",
+    "policy": "Strict",
+    "facts": [
+     "booked 3 weeks ago (outside the 48h window)",
+     "guest's work trip was cancelled — no longer needs it",
+     "no reservation issue",
+     "host has not offered anything"
+    ]
+   },
+   "lexicon": [
+    "Strict",
+    "cancel",
+    "48 hours",
+    "28 days",
+    "refund"
+   ],
+   "turns": [
+    {
+     "customer": "Hi, I need to cancel my cabin. My work trip got cancelled so I don't need it anymore. It's in ten days. I'm hoping I can get my money back.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth",
+      "clarify"
+     ],
+     "model": "Hi Megan, this is {name} at Airbnb. Sorry the trip fell through — let me look at what the booking allows so you know exactly where you stand. The cabin at Lake Tahoe, four nights, checking in in ten days — and when did you book it? Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Tom calmo (decepção, não raiva). Pergunta a data da reserva — decisiva para Strict."
+    },
+    {
+     "customer": "It's Megan Foster.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Megan — that matches what I have here. So, just to make sure I've got this right: your work trip was cancelled, you no longer need the cabin in ten days' time, and you're hoping for a refund. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "About three weeks ago.",
+     "expects": [
+      "policy",
+      "empathy"
+     ],
+     "model": "Okay. I'll be straight with you: the cabin is on a Strict policy, which gives a full refund only if you cancel within 48 hours of booking and at least 28 days before check-in. You're outside both — booked three weeks ago, ten days out — so the policy itself doesn't give a refund on this cancellation. I know that's not what you were hoping to hear.",
+     "coach": "Negativa clara, com a regra explicada, sem 'unfortunately'. Reconhece a decepção depois do fato, não antes."
+    },
+    {
+     "customer": "Nothing at all? That's brutal. Can't you ask the host?",
+     "customer_if_weak": "Seriously? I've never had a problem with this app before.",
+     "expects": [
+      "options",
+      "ownership",
+      "future"
+     ],
+     "model": "There are two things worth trying, and I'll be honest about the odds. First, you can message the host and ask if they'd offer a partial refund — some do, especially if they can re-let the dates; it's their call, not ours, but it costs nothing to ask, and I can help you word it. Second, if the host re-books those nights, some choose to refund then. What I can't do is override the policy from here. Would you like me to help with the message to the host?",
+     "coach": "Honesto sobre 'it's their call'. Dá uma ação concreta (ajudar a escrever). Não promete o que não controla."
+    },
+    {
+     "customer": "Yeah, okay. Help me write it.",
+     "expects": [
+      "ownership",
+      "future"
+     ],
+     "model": "Sure. Something like: 'Hi, my work trip was cancelled and I no longer need the cabin. I understand the policy is Strict; if you're able to re-book the dates, would you consider a partial refund? Thank you.' Short and polite works best. Send that, and if the host replies, message me on case 3390 and I'll help with next steps.",
+     "coach": "Entrega o texto pronto. Fecha com número e caminho."
+    },
+    {
+     "customer": "Okay.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, you need to cancel the cabin because your trip fell through. Second, the booking is on a Strict policy and, at ten days out and booked three weeks ago, the policy itself doesn't refund it. And third, you're going to message the host to ask for a partial refund if they can re-let the dates — I gave you the wording — and if they reply, message me on the case. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 3390. Thank you for your time, Megan.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "No refund under Strict; guest may request goodwill refund from host; no override.",
+    "policy_ref": "cancellation_policies_guest",
+    "why": "Outside both Strict windows; no reservation issue."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Megan Foster"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "3390"
+  },
+  {
+   "id": "gc-in-02",
+   "title": "Cancelling after a death in the family",
+   "category": "guest_cancel",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "grieving",
+   "accent": "en-GB",
+   "caller": {
+    "name": "Helen",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Apartment, Rome",
+    "booking": "6 nights, check-in in 4 days",
+    "policy": "Firm",
+    "facts": [
+     "guest's father died yesterday",
+     "guest is not sure what she's asking for",
+     "extenuating circumstances path exists and requires documentation"
+    ]
+   },
+   "lexicon": [
+    "bereavement",
+    "documentation",
+    "extenuating circumstances",
+    "cancel"
+   ],
+   "turns": [
+    {
+     "customer": "Hello. I… I need to cancel Rome. My dad died yesterday. I don't really know what I'm asking for, I just can't go.",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth"
+     ],
+     "model": "Helen, I'm so sorry about your dad. This is {name} at Airbnb — you don't need to know what you're asking for; I'll take care of the details. Let's just get Rome off your list. Is it all right if I ask you two or three short questions, and then you don't have to think about this again today? Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Condolências curtas e sinceras. Tira o peso ('I'll take care of the details'). Pede permissão para as perguntas."
+    },
+    {
+     "customer": "It's Helen Marsh.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Helen — that matches what I have here. So, just to make sure I've got this right: your father died yesterday and you need to cancel Rome. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yes. Okay.",
+     "expects": [
+      "policy",
+      "clarify",
+      "ownership"
+     ],
+     "model": "Thank you. There's a process for situations like this — it's separate from the normal cancellation rules, and it's there for exactly this. It does ask for a document at some point, like a death certificate or a notice from the funeral director; there's no rush on that, and I'll message you what's accepted so you don't have to search. Today, I'll cancel the booking and open that process on your behalf. Is the email on the account the best place to send you the summary?",
+     "coach": "Menciona a documentação com cuidado, sem pressa, oferecendo a lista. Faz o trabalho por ela."
+    },
+    {
+     "customer": "Yes. Thank you. I'm sorry, I'm a mess.",
+     "customer_if_weak": "I just… can you please just do it? I can't do forms today.",
+     "expects": [
+      "empathy",
+      "future"
+     ],
+     "model": "You're not a mess; you're someone whose dad died yesterday. Everything's done on my side — the booking is cancelled and the case is open, reference 1174. You'll get one message from me with what's needed, and there's no deadline you need to worry about this week. Take care of yourself and your family, Helen.",
+     "coach": "Confirma que está feito, sem tarefas para hoje, número, encerramento humano."
+    },
+    {
+     "customer": "Yes. Thank you.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the Rome booking is cancelled. Second, I've opened the extenuating-circumstances process on your behalf; it asks for one document at some point and I'll message you what's accepted — there's no deadline you need to worry about this week. And third, you'll get one message from me with what's needed, and nothing else is required from you today. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 1174. Thank you for your time, Helen.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Cancel; open extenuating circumstances review; documentation requested gently, later.",
+    "policy_ref": "cancellation_policies_guest",
+    "why": "Extenuating circumstances path is separate from the listing's policy tier."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Helen Marsh"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "1174"
+  },
+  {
+   "id": "gc-in-03",
+   "title": "Monthly stay — wants out after week one",
+   "category": "guest_cancel",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "confused",
+   "accent": "en-AU",
+   "caller": {
+    "name": "Liam",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Flat, Sydney",
+    "booking": "3-month stay, currently week 1",
+    "policy": "Long-term",
+    "facts": [
+     "guest got a job in another city",
+     "thinks he can just cancel and get the rest back",
+     "monthly stays: next month is non-refundable after start"
+    ]
+   },
+   "lexicon": [
+    "monthly stay",
+    "28 nights",
+    "non-refundable",
+    "next month",
+    "change dates"
+   ],
+   "turns": [
+    {
+     "customer": "G'day. So I've got the three-month place in Sydney but I've just landed a job in Brisbane. I'm a week in. I'll just cancel and get the rest back, yeah?",
+     "expects": [
+      "opening",
+      "auth",
+      "clarify"
+     ],
+     "model": "Hi Liam, {name} at Airbnb — congrats on the job. Let me check the booking so I give you the right answer, because stays of 28 nights or more work differently. The flat in Sydney, three months, you're in week one? Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 6630 right now — could you read it back to me when it arrives?",
+     "coach": "Sinaliza cedo que a regra é diferente, sem entregar a má notícia antes de verificar."
+    },
+    {
+     "customer": "Okay — it's just come through. 3 3 8 1 0 9.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: you're a week into a three-month stay in Sydney, you've got a job in Brisbane, and you want to cancel. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yeah, that's it. Differently how?",
+     "expects": [
+      "policy",
+      "empathy"
+     ],
+     "model": "For long stays, the rule is: once the stay has started, the next month is non-refundable when you cancel. So if you cancel today, you'd still be charged for the coming month, and the months after that would be refunded. I know that's a chunk — I'd rather tell you clearly than have it surprise you on the statement.",
+     "coach": "Regra em uma frase, com o exemplo aplicado ao caso. Reconhece o impacto."
+    },
+    {
+     "customer": "Ah, that's rough. Is there any way around it?",
+     "customer_if_weak": "Wait, so I pay a month for nothing? How is that fair?",
+     "expects": [
+      "options",
+      "ownership",
+      "future"
+     ],
+     "model": "Two things to try. One: ask the host for a change of dates instead of a cancellation — if they can re-let the flat, some will agree, and that avoids the non-refundable month; I can help you word the message. Two: the host can choose to refund more than the policy requires; it's up to them. I can't change the rule from here, but I can make sure you ask the right way. Want me to draft it?",
+     "coach": "Alternativa real (mudança de datas) antes de cancelar. Honesto sobre o que é decisão do host."
+    },
+    {
+     "customer": "Okay, I think so.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, for stays of 28 nights or more, once the stay has started, the next month is non-refundable on cancellation. Second, before cancelling, you're going to ask the host for a change of dates, or a voluntary extra refund if they re-let — I'll draft the message. And third, if the host agrees, message me on the case and I'll help with the change. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 2105. Thank you for your time, Liam.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Explain next-month non-refundable rule; suggest date change or host goodwill.",
+    "policy_ref": "monthly_stays",
+    "why": "Long-term policy applies after 28 nights."
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Liam Hartley",
+    "verified_phone_ends": "6630",
+    "pin": "338109"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "2105"
+  },
+  {
+   "id": "hd-out-01",
+   "title": "Host damage claim — worn sofa vs broken frame",
+   "category": "host_damage",
+   "callType": "outbound_host",
+   "severity": 2,
+   "emotion": "host_indignant",
+   "accent": "en-US",
+   "caller": {
+    "name": "Dana",
+    "role": "host"
+   },
+   "context": {
+    "listing": "Condo, Austin",
+    "booking": "guest checked out 9 days ago",
+    "facts": [
+     "host claims $1,200 for a sofa",
+     "photos show a sagging, stained cushion and a cracked wooden leg",
+     "host has NOT yet requested via Resolution Center",
+     "14-day Resolution Center window still open (5 days left)",
+     "wear and tear excluded; physical damage covered"
+    ]
+   },
+   "lexicon": [
+    "wear and tear",
+    "damage",
+    "Resolution Center",
+    "14 days",
+    "itemised",
+    "quote"
+   ],
+   "turns": [
+    {
+     "customer": "Finally. So are you paying for my sofa or not? Twelve hundred dollars. That guest destroyed it and you people take forever.",
+     "expects": [
+      "opening",
+      "auth",
+      "listen",
+      "recording"
+     ],
+     "model": "Hi Dana, this is {name} from Airbnb's Elevated Support team, about the condo in Austin and the sofa. I've looked at your photos, and I'm calling because there's a step that hasn't happened yet that affects whether this can be paid at all — I want to walk you through it so nothing gets lost. First, can you tell me what the sofa looked like before this guest, and how old it is? Before we go on, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Não responde 'sim ou não' ao ultimato. Sinaliza que há um passo faltando (Resolution Center) e enquadra como ajuda. Pergunta factual."
+    },
+    {
+     "customer": "Yeah, that's fine. It's Dana Whitfield.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you. Thank you, Dana — that matches what I have here. So, just to make sure I've got this right: you're claiming twelve hundred dollars for a four-year-old sofa with a sagging, stained cushion and a cracked leg. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "It was fine! It's maybe four years old. Now the cushion's wrecked and the leg's cracked.",
+     "customer_if_weak": "Is this a trick question? Just tell me if I'm getting paid.",
+     "expects": [
+      "policy",
+      "clarify"
+     ],
+     "model": "Okay, that helps me be precise. The policy covers physical damage caused by the guest — a cracked leg fits that. It excludes normal wear and tear — and a four-year-old cushion that's sagged and stained is likely to be read as wear, unless there's a specific stain the guest caused. So realistically we're talking about the frame repair, not a new sofa. Do you have a repair quote for the leg, and the original receipt?",
+     "coach": "Ensina a linha da política com o caso concreto (perna coberta, almofada provavelmente não). Ajusta a expectativa de $1.200 para o conserto. Pede evidência específica."
+    },
+    {
+     "customer": "I can get a quote. So what's the step I missed?",
+     "expects": [
+      "policy",
+      "ownership",
+      "expectations"
+     ],
+     "model": "Before Airbnb can pay anything, you need to request the amount from the guest through the Resolution Center — that has to happen within 14 days of check-out, and you're on day nine, so there are five days left. Do that today with the quote and photos. If the guest doesn't pay within the window, you then submit the claim to us, and you have 30 days from check-out for that. I'll message you the exact path in the app right after this call.",
+     "coach": "Prazo crítico com contagem (dia 9 de 14). Dois passos em ordem. Compromisso de enviar o caminho."
+    },
+    {
+     "customer": "Nine days. Okay. I'll do it today. Thanks for the heads up, I guess.",
+     "expects": [
+      "future"
+     ],
+     "model": "Do it today and you're in good shape. Once it's in, message me on case 7761 and I'll keep an eye on it. Thanks, Dana.",
+     "coach": "Fecho com o compromisso de acompanhamento."
+    },
+    {
+     "customer": "Fine.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, a cracked leg is physical damage and can be covered; a sagging four-year-old cushion is likely wear and tear, which is excluded — so realistically this is the frame repair. Second, before Airbnb can pay anything you need to request it from the guest through the Resolution Center within 14 days of check-out — you're on day nine, so five days left. And third, do that today with a repair quote and photos; if the guest doesn't pay, submit the claim to us within 30 days of check-out — I'll message you the exact steps. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 7761. Thank you for your time, Dana.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Cracked leg likely covered; cushion likely wear and tear; Resolution Center request must be made within 14 days (5 left).",
+    "policy_ref": "host_damage_protection",
+    "why": "Wear and tear excluded; process order and deadlines are decisive."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Dana Whitfield"
+   },
+   "callback": true,
+   "value_tier": "high",
+   "reference": "7761"
+  },
+  {
+   "id": "hd-out-02",
+   "title": "Host claims mould damage after guest",
+   "category": "host_damage",
+   "callType": "outbound_host",
+   "severity": 2,
+   "emotion": "host_defensive",
+   "accent": "en-GB",
+   "caller": {
+    "name": "Graham",
+    "role": "host"
+   },
+   "context": {
+    "listing": "Basement flat, Manchester",
+    "booking": "guest stayed 2 weeks",
+    "facts": [
+     "host claims £900 for mould remediation, says guest 'never opened a window'",
+     "mould/fungi are explicitly excluded from Host Damage Protection",
+     "host is on day 12 post check-out"
+    ]
+   },
+   "lexicon": [
+    "mould",
+    "excluded",
+    "remediation",
+    "ventilation",
+    "damp"
+   ],
+   "turns": [
+    {
+     "customer": "Yes, it's about the mould. Nine hundred pounds to sort it. The guest never opened a window in two weeks — it's their fault, plain and simple.",
+     "expects": [
+      "opening",
+      "auth",
+      "listen",
+      "recording"
+     ],
+     "model": "Hi Graham, this is {name} from Airbnb's Elevated Support team, calling about the basement flat and the mould claim. I want to give you a straight answer on this rather than let it sit in review for days. Before I do — was there any damp or mould in the flat before this guest, and is the flat below ground level? Before we go on, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Sinaliza que vai ser direto. Pergunta o fato que importa (pré-existência, porão)."
+    },
+    {
+     "customer": "Yeah, that's fine. It's Graham Pollard.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you. Thank you, Graham — that matches what I have here. So, just to make sure I've got this right: you're claiming nine hundred pounds for mould remediation in the basement flat, which you attribute to the guest not opening a window. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "It's a basement, they all get a bit damp. It was fine before. Look, are you covering it or not?",
+     "customer_if_weak": "I knew it. You always find a way not to pay.",
+     "expects": [
+      "policy",
+      "empathy"
+     ],
+     "model": "I'll tell you straight, because you asked straight: mould and fungi are specifically excluded from Host Damage Protection — it's in the exclusions alongside weather and normal wear. That's true regardless of whether the guest opened a window. I understand that's frustrating when you're looking at a nine-hundred-pound bill, and I'm not going to dress it up.",
+     "coach": "Negativa clara com a regra e a razão. Sem 'unfortunately'. Reconhece o impacto sem pedir desculpa pela regra."
+    },
+    {
+     "customer": "So I'm just out nine hundred quid?",
+     "expects": [
+      "options",
+      "future"
+     ],
+     "model": "From Airbnb's protection, yes — I won't pretend otherwise. Two things that might still be worth your time: if you believe the guest caused specific, unusual damage beyond damp — say, they blocked a vent — that's a different claim and you'd need evidence of it; and for a basement, this may be something your own home insurance handles, which I can't advise on but is worth a call. I'll put what I've told you in writing on case 8830 so you have it. I'm sorry it's not better news, Graham.",
+     "coach": "Honesto até o fim. Aponta caminhos reais sem inventar cobertura. Por escrito."
+    },
+    {
+     "customer": "Alright.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, mould and fungi are specifically excluded from Host Damage Protection, regardless of ventilation. Second, if you have evidence of specific damage beyond damp — say, a blocked vent — that's a separate claim; and your own home insurance may be worth a call, though I can't advise on it. And third, I'm putting what I told you in writing on the case. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 8830. Thank you for your time, Graham.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Claim excluded (mould/fungi); explain clearly; point to other avenues without promising.",
+    "policy_ref": "host_damage_protection",
+    "why": "Explicit exclusion; window behaviour does not change it."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Graham Pollard"
+   },
+   "callback": true,
+   "value_tier": "standard",
+   "reference": "8830"
+  },
+  {
+   "id": "app-in-01",
+   "title": "Appeal — denied for reporting after 72h",
+   "category": "appeal",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "threatening",
+   "accent": "en-US",
+   "caller": {
+    "name": "Kyle",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Apartment, Miami",
+    "booking": "5 nights, stayed all 5",
+    "facts": [
+     "AC blew warm air the whole stay; guest reported on day 6, after check-out",
+     "refund denied — outside 72h from discovery",
+     "guest threatens a one-star review and a chargeback",
+     "guest has a message to host from day 2 saying 'AC's not great'"
+    ]
+   },
+   "lexicon": [
+    "72 hours",
+    "dispute",
+    "chargeback",
+    "one-star review",
+    "uphold"
+   ],
+   "turns": [
+    {
+     "customer": "Your people denied my refund. The AC blew hot air for five days in Miami. I'm gonna leave a one-star review and I already told my bank to dispute it. So what are you gonna do?",
+     "expects": [
+      "opening",
+      "auth",
+      "listen"
+     ],
+     "model": "This is {name} with Airbnb Elevated Support. Five days in Miami with an AC blowing warm air sounds miserable, and I want to understand exactly why it was denied before we talk about anything else. Let me pull the case — the apartment in Miami, five nights, checked out on the 9th? Before we go any further, I need to verify the account, and as you're not calling from the number we have on file I'll need a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Ameaças: não reage a elas. Foco no caso. Verifica."
+    },
+    {
+     "customer": "Whatever. Kyle Brennan. 305-555-0177. Date of birth 7 July 1990. And the card ends in 4412.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you — that all matches. You're verified. So, just to make sure I've got this right: the AC blew warm air for the whole five-night stay, your refund was denied because the formal report came after check-out, and you'd told the host on day two that it wasn't great. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yeah. Denied because I 'reported late'. I told the host on day two it wasn't great!",
+     "customer_if_weak": "You're stalling. Review's going up tonight.",
+     "expects": [
+      "policy",
+      "clarify",
+      "empathy"
+     ],
+     "model": "Here's what the decision was based on: the formal report came in on day six, after check-out, and the policy window is 72 hours from when you discovered it — so on the face of it, the denial follows the rule. But you've just told me something that matters: you messaged the host on day two. That's a report to the host, and the policy counts that. Can I see that message? If it says the AC wasn't working, it changes the timeline.",
+     "coach": "Explica a base da negativa honestamente, E identifica o fato novo que pode reabrir (contato com o host no dia 2 conta como report). Pede evidência."
+    },
+    {
+     "customer": "It says 'AC's not great, kinda warm'. That's it.",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "Okay — I'll be honest with you about how a reviewer will read that. 'Not great, kinda warm' on day two shows you raised it early, which is in your favour. It's less clear than 'the AC is broken', which a reviewer might read as a comfort complaint rather than a fault. So it's a real basis to dispute, not a guaranteed win. What I'll do is submit the dispute with that message and a note that the issue was raised on day two, and I'll ask for it to be reviewed against the 72-hour rule specifically. Do you have any other messages or photos from the stay — a thermostat reading, anything?",
+     "coach": "Avaliação honesta da evidência (a favor e contra). Ação concreta (dispute + nota). Pede mais evidência."
+    },
+    {
+     "customer": "I might have a photo of the thermostat at 82. And the review? The chargeback?",
+     "expects": [
+      "policy",
+      "future"
+     ],
+     "model": "Send the thermostat photo — that's the strongest thing you've mentioned. On the review, that's entirely your right and I won't ask you not to; I'd only say the dispute is a better lever than the review for getting money back. On the chargeback: I'd be doing you a disservice if I didn't tell you that a bank dispute running at the same time as ours can complicate the refund if ours succeeds — it's your call, but you should know that. Reference 6642; I'll message you when the dispute's logged, within the hour.",
+     "coach": "Não pede para retirar a avaliação. Informa a consequência real do chargeback simultâneo, sem ameaçar. Número e prazo."
+    },
+    {
+     "customer": "Yeah, go ahead.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the denial was based on the 72-hour window, but your day-two message to the host counts as raising the issue early. Second, I'm submitting a dispute with that message and a note asking for review against the 72-hour rule — send the thermostat photo, it's your strongest evidence. And third, the review isn't guaranteed; the review is a better lever than the bank dispute, and running both at once can complicate a refund if ours succeeds — I'll message you when the dispute is logged, within the hour. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 6642. Thank you for your time, Kyle.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Submit dispute citing day-2 message to host as early report; outcome uncertain; inform about chargeback interaction.",
+    "policy_ref": "rebooking_refund",
+    "why": "Notifying the host counts; clarity of that notice determines strength."
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Kyle Brennan",
+    "phone": "305-555-0177",
+    "dob": "7 July 1990",
+    "payment_last4": "4412"
+   },
+   "callback": false,
+   "value_tier": "high",
+   "reference": "6642"
+  },
+  {
+   "id": "app-out-01",
+   "title": "Calling to explain a partial refund decision",
+   "category": "appeal",
+   "callType": "outbound_guest",
+   "severity": 2,
+   "emotion": "suspicious",
+   "accent": "en-IN",
+   "caller": {
+    "name": "Anita",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Flat, Toronto",
+    "booking": "7 nights",
+    "facts": [
+     "decision: refund of 2 nights (kitchen unusable days 1–2), not 7",
+     "guest expected full refund",
+     "guest is wary of phone calls claiming to be Airbnb"
+    ]
+   },
+   "lexicon": [
+    "partial refund",
+    "prorated",
+    "affected nights",
+    "verify",
+    "case reference"
+   ],
+   "turns": [
+    {
+     "customer": "Hello? Who is this? How do I know you are actually from Airbnb? I have read about these calls.",
+     "expects": [
+      "opening",
+      "auth",
+      "empathy",
+      "recording"
+     ],
+     "model": "That's exactly the right question to ask, and I'd rather you check than take my word. This is {name} from Airbnb's Elevated Support team, calling about your Toronto reservation and case 4419. I'm going to send you a message through the app right now, so you can see it's us — and I will never ask for your password or card details. Would you like to call back through the app instead? That's completely fine. Before we go on, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Valida a cautela, oferece canal verificável, promete não pedir dados sensíveis, oferece callback pelo app."
+    },
+    {
+     "customer": "Yeah, that's fine. …Okay, I suppose. It's Anita Desai.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you. Thank you, Anita — that matches what I have here. So, just to make sure I've got this right: you asked for a full refund of the seven nights because the kitchen was unusable, and the decision was two nights. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "…I see the message. Okay. So what is the decision? I asked for the full amount.",
+     "expects": [
+      "policy",
+      "empathy"
+     ],
+     "model": "Thank you for checking. I'll be clear about what was decided and why. The kitchen was unusable on days one and two, and that's what the evidence supports; from day three the repair was done and the rest of the week was as booked. So the refund approved is for two nights — the nights affected — rather than the full seven. I know that's less than you asked for.",
+     "coach": "Decisão + base + escopo. Reconhece a lacuna depois de explicar, não antes."
+    },
+    {
+     "customer": "But the whole trip was spoiled by this. Two days of eating out, the stress.",
+     "customer_if_weak": "This is not fair. I will report this call.",
+     "expects": [
+      "policy",
+      "options",
+      "future"
+     ],
+     "model": "I understand it coloured the whole week — that's real. The way the policy assesses it, though, is by the portion of the stay affected, and that's the two days. If you believe the kitchen affected more than that — say, you couldn't use it later in the week either — you can dispute the decision and add anything new: photos from later days, messages. I'll send the steps in the same app thread so you can verify it's us again. The two-night refund is already issued and should reach you within 15 days.",
+     "coach": "Reconhece a experiência, explica o critério objetivo, dá o caminho de contestação, confirma o que já está feito."
+    },
+    {
+     "customer": "Okay.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the kitchen was unusable on days one and two, and that's what the evidence supports; from day three the stay was as booked. Second, the refund approved is for those two nights and is already issued — usually within 15 days. And third, if you believe more of the stay was affected, you can dispute it and add photos or messages from later days — I'll send the steps in the same app thread. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 4419. Thank you for your time, Anita.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Two-night refund stands; dispute path offered; identity verified via app.",
+    "policy_ref": "rebooking_refund",
+    "why": "Refund proportional to portion affected."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Anita Desai"
+   },
+   "callback": true,
+   "value_tier": "high",
+   "reference": "4419"
+  },
+  {
+   "id": "rc-in-01",
+   "title": "Talks over you — wants a supervisor",
+   "category": "repeat_contact",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "escalation_demand",
+   "accent": "en-AU",
+   "caller": {
+    "name": "Rob",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "House, Gold Coast",
+    "booking": "4 nights",
+    "facts": [
+     "pool listed, pool green and unusable",
+     "guest has called twice; wants 'someone who can actually decide'",
+     "agent can approve a partial for the pool amenity within limits"
+    ]
+   },
+   "lexicon": [
+    "pool",
+    "amenity",
+    "supervisor",
+    "authorised",
+    "goodwill"
+   ],
+   "turns": [
+    {
+     "customer": "No — no, listen, I've done this twice already, I don't want to explain it again, I want a supervisor, someone who can actually make a decision, the pool's green, it's in the listing, it's the whole reason we booked, so get me someone senior, alright?",
+     "expects": [
+      "opening",
+      "listen",
+      "empathy",
+      "ownership",
+      "auth"
+     ],
+     "model": "I can arrange that, Rob. Before I do — and I'm not trying to stop you — let me tell you what I'm able to decide myself, because it might save you a third call. This is {name}, Elevated Support; I've read both previous notes; the pool is listed and it's green and unusable. I can approve a refund for the pool as a missing amenity from this call. Would you like me to do that first, and then I'll still get you a supervisor if you want one? Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 9902 right now — could you read it back to me when it arrives?",
+     "coach": "Deixa terminar. Aceita a escalada em princípio. Mostra autoridade REAL (pode aprovar). Oferece resolver antes, sem bloquear."
+    },
+    {
+     "customer": "Okay — it's just come through. 6 0 5 7 2 1.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: the pool is listed, it's green and unusable, it's the whole reason you booked, and you've already called twice. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "…You can approve it? Why didn't the other two say that?",
+     "customer_if_weak": "Nah, I've heard that before. Supervisor. Now.",
+     "expects": [
+      "ownership",
+      "policy",
+      "expectations"
+     ],
+     "model": "I can't speak for the earlier calls, but I can speak for this one. The pool is a listed amenity that isn't usable, so it's covered under 'not as advertised'. For a missing amenity while you're staying, the refund is a portion of the nightly rate, not the full stay — I want to be clear on that so it's not a surprise. I'll put the figure through now and you'll see it in the app within a few minutes.",
+     "coach": "Não critica os colegas. Explica o escopo (parcial, não total) antes de aprovar. Ação imediata."
+    },
+    {
+     "customer": "Right. And if I still want to talk to someone senior about the runaround?",
+     "expects": [
+      "future"
+     ],
+     "model": "Then I'll set that up and brief them properly so you don't start from zero — I'll note it on case 2277 as a complaint about the earlier handling, separate from the refund. You'll get a message with the refund confirmation shortly. Thanks for giving me the chance to sort it.",
+     "coach": "Escala sem drama, com resumo, separando reclamação de reembolso."
+    },
+    {
+     "customer": "Go on.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the pool is a listed amenity that isn't usable, which is covered as not as advertised. Second, I've approved a refund for the pool as a missing amenity — a portion of the nightly rate, not the full stay — and you'll see it in the app within a few minutes. And third, I've also logged your complaint about the earlier handling separately, and I'll set up a supervisor call if you still want one. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 2277. Thank you for your time, Rob.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Partial refund for missing pool amenity approved on the call; supervisor offered with briefing.",
+    "policy_ref": "rebooking_refund",
+    "why": "Missing listed amenity = mismatch; proportional refund; escalation honoured."
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Rob Kelleher",
+    "verified_phone_ends": "9902",
+    "pin": "605721"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "2277"
+  },
+  {
+   "id": "unin-in-04",
+   "title": "Gas smell — emergency during the call",
+   "category": "uninhabitable",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "panicked",
+   "accent": "en-IE",
+   "caller": {
+    "name": "Aoife",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Flat, Dublin",
+    "booking": "2 nights",
+    "facts": [
+     "strong smell of gas in the kitchen right now",
+     "guest is inside the flat",
+     "safety protocol: leave, don't use switches, call emergency gas line"
+    ]
+   },
+   "lexicon": [
+    "gas leak",
+    "smell of gas",
+    "evacuate",
+    "emergency",
+    "hazard"
+   ],
+   "turns": [
+    {
+     "customer": "There's a really strong smell of gas in the kitchen, like properly strong, I've just got in and — what do I do, do I open the windows or —",
+     "expects": [
+      "opening",
+      "ownership"
+     ],
+     "model": "Aoife, listen to me: leave the flat now, don't touch any light switches or appliances on your way out, and don't use your phone inside — go outside and call me back, or stay on the line while you walk out. Are you moving?",
+     "coach": "Emergência: NÃO se apresenta, NÃO verifica. Instrução de segurança imediata. Voz firme. Isto é o que a rubrica chama de 'segurança primeiro'."
+    },
+    {
+     "customer": "I'm going, I'm on the stairs — okay I'm outside.",
+     "expects": [
+      "ownership",
+      "clarify"
+     ],
+     "model": "Good. Stay outside. Now, the next call you make is to the gas emergency number for Ireland — I'll message it to you this second so you don't have to remember it. Do you need me to stay on while you call them? The booking can wait; you can't.",
+     "coach": "Prioriza o serviço de emergência local sobre o Airbnb. Oferece ficar na linha. 'The booking can wait; you can't.'"
+    },
+    {
+     "customer": "Okay. Okay. What about the flat, my stuff, the two nights?",
+     "expects": [
+      "policy",
+      "future",
+      "auth"
+     ],
+     "model": "All of that is sorted on my side and none of it is your problem tonight: a suspected gas leak makes the place unsafe, so you won't be staying there, and I'll arrange somewhere else for tonight and refund the nights. I'm noting the host now. Call the gas line, then message me on case 9910 when you're somewhere safe and warm — I'll have options waiting. Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Só depois da segurança: política (unsafe = uninhabitable), remarcação, número, próximo passo. Nada de 'have a nice evening'."
+    },
+    {
+     "customer": "It's Aoife Byrne.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Aoife — that matches what I have here. So, just to make sure I've got this right: you'd just got in and there was a strong smell of gas in the kitchen; you're now outside. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Okay — yes.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, you're safe outside, and the next call is to the gas emergency line — I've messaged you the number. Second, the flat is unsafe, so you won't be staying there; I'm arranging somewhere else for tonight and refunding the nights. And third, message me on the case once you're somewhere safe and warm, and I'll have options waiting. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 9910. Thank you for your time, Aoife.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Evacuate; emergency services first; rebook tonight; refund; host notified.",
+    "policy_ref": "rebooking_refund",
+    "why": "Safety hazard = uninhabitable; safety protocol overrides call structure."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Aoife Byrne"
+   },
+   "callback": false,
+   "value_tier": "standard",
+   "reference": "9910"
+  },
+  {
+   "id": "mis-out-01",
+   "title": "Calling a guest back — the host has replied",
+   "category": "mismatch",
+   "callType": "outbound_guest",
+   "severity": 1,
+   "emotion": "exhausted",
+   "accent": "en-GB",
+   "caller": {
+    "name": "Sam",
+    "role": "guest"
+   },
+   "context": {
+    "listing": "Cabin, Lake District",
+    "booking": "3 nights",
+    "facts": [
+     "guest reported no hot tub (listed) at 22:40",
+     "host replied: hot tub heater fixed by 09:00, offers one night 50% off",
+     "it's 23:15; guest is tired",
+     "agent calling back as promised"
+    ]
+   },
+   "lexicon": [
+    "hot tub",
+    "listed amenity",
+    "goodwill",
+    "follow up",
+    "in writing"
+   ],
+   "turns": [
+    {
+     "customer": "Hi — yeah, it's late, sorry, I'm shattered. Is this about the hot tub?",
+     "expects": [
+      "opening",
+      "empathy",
+      "auth",
+      "recording"
+     ],
+     "model": "It is — this is {name} from Airbnb, calling back as I said I would. I'll keep it to two minutes so you can sleep. Just confirming it's Sam at the cabin in the Lake District? Before we go on, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Exausto: curto, promete duração, mantém a palavra do callback."
+    },
+    {
+     "customer": "Yeah, that's fine. It's Sam Ferris.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you. Thank you, Sam — that matches what I have here. So, just to make sure I've got this right: the hot tub, which is listed, isn't working tonight, and the host has offered a fix at nine tomorrow plus fifty percent off tonight. Is that everything?",
+     "coach": "Feche a autenticação com 'verified/that matches' ANTES de qualquer dado da conta. Depois, parafraseie o problema com as suas palavras e pergunte se faltou algo.",
+     "customer_if_weak": "Hang on — did you actually verify me, or are we just carrying on?"
+    },
+    {
+     "customer": "Yep. Go on.",
+     "expects": [
+      "options",
+      "policy",
+      "expectations"
+     ],
+     "model": "Two things. The host has an engineer coming at nine tomorrow morning to fix the heater, and they've offered fifty percent off tonight's rate as a goodwill gesture, which I think is a fair offer for one evening without the tub. If it's not fixed by tomorrow lunchtime, that changes — a listed amenity that's out for the stay is covered, and I'd look at a bigger refund. Does the host's offer work for you for tonight?",
+     "coach": "Resolve HOJE, deixa o resto para amanhã com um gatilho claro (não consertado até o almoço → outra política)."
+    },
+    {
+     "customer": "Yeah, that's fine. Cheers.",
+     "expects": [
+      "future"
+     ],
+     "model": "I'll accept it on your behalf and put everything in writing on the case now — reference 3081 — so you've got it in the morning. If the engineer's late, message the case and I'll pick it up. Sleep well.",
+     "coach": "Por escrito, número, gatilho para amanhã. 'Sleep well' é apropriado aqui."
+    },
+    {
+     "customer": "Yep.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the host has an engineer coming at nine tomorrow and has offered fifty percent off tonight's rate, which you've accepted for tonight. Second, if it isn't fixed by tomorrow lunchtime, that changes — a listed amenity out for the stay is covered and I'd look at a bigger refund. And third, I'm accepting the offer on your behalf and putting everything in writing on the case. Have I explained those steps clearly — is there anything you'd like me to go over again? … And is there anything else I can help you with today? … Then I'll go ahead and close this case. You'll have all of this in writing in the app under reference 3081. Thank you for your time, Sam.",
+     "coach": "Sequência obrigatória: resumo de TUDO (problema → feito → próximos passos com prazos → referência) → 'os passos ficaram claros?' → 'mais alguma coisa?' → 'vou fechar o caso' + por escrito no app. Pular o resumo é a falha que demite.",
+     "customer_if_weak": "Wait — so what exactly is happening now? I've lost track."
+    }
+   ],
+   "resolution": {
+    "correct": "Accept host goodwill for tonight; escalate if not fixed by tomorrow.",
+    "policy_ref": "rebooking_refund",
+    "why": "Minor, short-duration amenity outage handled with host goodwill; larger remedy if persists."
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Sam Ferris"
+   },
+   "callback": true,
+   "value_tier": "standard",
+   "reference": "3081"
+  },
+  {
+   "id": "hin-01",
+   "title": "Host: 'the guest left a broken window — what do I do?'",
+   "category": "host_damage",
+   "callType": "inbound_host",
+   "severity": 2,
+   "emotion": "calm",
+   "accent": "en-AU",
+   "value_tier": "high",
+   "callback": false,
+   "reference": "5610",
+   "caller": {
+    "name": "Karen",
+    "role": "host"
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Karen Whitlock"
+   },
+   "context": {
+    "listing": "Beach house, Byron Bay",
+    "booking": "guest checked out this morning",
+    "facts": [
+     "cracked window pane in the lounge, found at turnover",
+     "host has before/after photos and a glazier's quote for AUD 480",
+     "guest hasn't been contacted yet",
+     "host has 40+ five-star reviews — a host worth keeping"
+    ]
+   },
+   "lexicon": [
+    "glazier",
+    "quote",
+    "Resolution Center",
+    "14 days",
+    "itemised"
+   ],
+   "turns": [
+    {
+     "customer": "Hi, yeah — Karen here, I've got the beach house in Byron. The guests who left this morning have cracked the lounge window. I've got photos and a quote from the glazier. What's the process? I've never had to do this.",
+     "expects": [
+      "opening",
+      "auth",
+      "listen"
+     ],
+     "model": "Hi Karen, this is {name} with Airbnb Elevated Support — I can walk you through the whole process, it's straightforward when you do it in the right order. Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Host calmo e objetivo: espelhe o ritmo, sem empatia performática. Autentique primeiro."
+    },
+    {
+     "customer": "Karen Whitlock.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Karen — that matches what I have here. So, just to make sure I've got this right: the guests checked out this morning, you found a cracked window pane in the lounge at turnover, you have before-and-after photos and a glazier's quote for four hundred and eighty dollars, and you haven't contacted the guest yet. Is that everything?",
+     "coach": "'That matches' fecha a autenticação. Paráfrase com os fatos em ordem.",
+     "customer_if_weak": "Sorry — did you verify me? You didn't say."
+    },
+    {
+     "customer": "That's it exactly. So do I message them, or do I come to you?",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "You go to the guest first, through the Resolution Center — that's the required first step, and it has to happen within 14 days of check-out, so you've got plenty of time but don't sit on it. Upload the photos and the glazier's quote and request the four-eighty. If the guest pays, done. If they decline or don't respond, you then submit it to Airbnb under Host Damage Protection, and that deadline is 30 days from check-out. Your evidence is exactly what a reviewer wants — before-and-after and an itemised quote.",
+     "coach": "Ordem do processo com os dois prazos (14 e 30 dias). Elogia a evidência — é o que decide.",
+     "customer_if_weak": "Right, but which one first? You said two things."
+    },
+    {
+     "customer": "Perfect. And this won't affect my rating or anything, will it?",
+     "expects": [
+      "policy",
+      "empathy",
+      "options"
+     ],
+     "model": "No — filing a damage request doesn't touch your ratings or your Superhost status; it's a normal part of hosting. And Karen, I'll say this because it's true: forty-plus five-star reviews and evidence this organised is exactly the kind of host we want to keep. I'll message you the Resolution Center path right after this call so you can do it in two minutes.",
+     "coach": "Responde ao medo real (rating), com verdade. Retenção: reconhece o host de alto valor sem prometer nada fora da regra."
+    },
+    {
+     "customer": "Great, thanks.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the cracked window is physical damage caused by the guest, which is what Host Damage Protection is for, and your photos and quote are the right evidence. Second, step one is to request the four hundred and eighty dollars from the guest in the Resolution Center within 14 days of check-out — I'm sending you the path by message now. Third, if the guest doesn't pay, you submit to Airbnb within 30 days of check-out, and none of this affects your ratings. Have I explained those steps clearly? … And is there anything else I can help you with today? … Then I'll go ahead and close this case — you'll have it all in writing in the app under reference 5610. Thanks for calling, Karen.",
+     "coach": "Resumo completo → passos claros? → mais ajuda? → fechar. Referência e 'por escrito'.",
+     "customer_if_weak": "Hang on, what was the first step again?"
+    }
+   ],
+   "resolution": {
+    "correct": "Guide the host: Resolution Center request within 14 days, then Host Damage Protection within 30 days; evidence is sufficient.",
+    "policy_ref": "host_damage_protection",
+    "why": "Process order and deadlines; physical damage covered."
+   }
+  },
+  {
+   "id": "hin-02",
+   "title": "Host: 'the guest says it was dirty — I have the cleaner's photos'",
+   "category": "uninhabitable",
+   "callType": "inbound_host",
+   "severity": 2,
+   "emotion": "host_defensive",
+   "accent": "en-US",
+   "value_tier": "high",
+   "callback": false,
+   "reference": "6720",
+   "caller": {
+    "name": "Luis",
+    "role": "host"
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Luis Herrera",
+    "verified_phone_ends": "3391",
+    "pin": "517204"
+   },
+   "context": {
+    "listing": "Condo, San Diego",
+    "booking": "guest arrived yesterday, 4 nights",
+    "facts": [
+     "guest reported 'filthy on arrival' with photos of a stained sofa and dust",
+     "host has the cleaner's timestamped photos from 2 hours before check-in",
+     "the sofa stain appears in the cleaner's photos too — it's pre-existing",
+     "host is worried about payout and about the review"
+    ]
+   },
+   "lexicon": [
+    "timestamped",
+    "pre-existing",
+    "stain",
+    "turnover",
+    "reasonably clean"
+   ],
+   "turns": [
+    {
+     "customer": "Hey, so I just got a notification that my guest reported the condo as 'filthy'. That's ridiculous — my cleaner was there two hours before check-in, I have her photos with timestamps. What happens to my payout now?",
+     "expects": [
+      "opening",
+      "auth",
+      "listen"
+     ],
+     "model": "Hi Luis, this is {name} with Airbnb Elevated Support. I'm glad you called straight away, and timestamped photos from the turnover are exactly the right thing to have — let's get them on the record. Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 3391 right now — could you read it back to me when it arrives?",
+     "coach": "Host defensivo: valide a evidência dele antes de qualquer coisa. Autentique por PIN.",
+     "customer_if_weak": "So you're already on their side."
+    },
+    {
+     "customer": "Got it — five one seven two zero four.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: the guest reported the condo as filthy on arrival with photos of a stained sofa and some dust; your cleaner was there two hours before check-in and you have her timestamped photos; and you want to know what this means for your payout. Is that everything?",
+     "coach": "Fecha a auth. Paráfrase separa o que o guest alega do que o host tem.",
+     "customer_if_weak": "Did that go through? You didn't say."
+    },
+    {
+     "customer": "Yes. And the sofa stain is in HER photos too — it's been there for a year, it's not dirt, it's an old mark.",
+     "expects": [
+      "clarify",
+      "policy",
+      "empathy"
+     ],
+     "model": "That's an important detail, and it works in your favour: if the same mark is visible in the cleaner's photos, it's pre-existing, not a cleaning failure. The standard the policy uses is 'reasonably clean and sanitary' — not spotless — so an old mark on a sofa doesn't make a place unclean. Could you upload the cleaner's photos to the case now? And one question so I have the full picture: apart from the sofa, is there anything in the guest's photos your cleaner wouldn't have covered?",
+     "coach": "Ensina o critério ('reasonably clean', não 'spotless') e pede a evidência. Pergunta honesta sobre o resto — imparcialidade."
+    },
+    {
+     "customer": "Dust on a top shelf, maybe. That's it. So what happens?",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "Here's how it works. Nothing is decided on this call — a reviewer looks at both sides' photos. With timestamped turnover photos showing the same sofa mark, the guest's claim of 'filthy' is going to be hard to support; some dust on a top shelf isn't an uninhabitable condition. Your payout isn't touched unless a reviewer finds a genuine cleanliness failure, and I'll note the pre-existing mark clearly. If the guest is unhappy, the usual path is that you can offer a small goodwill gesture yourself through the Resolution Center — entirely your choice, and it often heads off a bad review. I'll message you a summary within the hour.",
+     "coach": "Não decide na ligação; explica o critério e a probabilidade com honestidade; oferece ao host a ferramenta de retenção (gesto próprio) sem pressionar.",
+     "customer_if_weak": "So am I losing money or not? Yes or no."
+    },
+    {
+     "customer": "Alright. That's fair.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the guest reported the condo as unclean, and you have timestamped cleaner photos from two hours before check-in that show the sofa mark is pre-existing. Second, I've asked you to upload those photos to the case, and I've noted that the mark is old and that the standard is 'reasonably clean', not spotless; a reviewer will look at both sides and your payout isn't affected unless they find a genuine failure. Third, if you want, you can offer the guest a small goodwill gesture through the Resolution Center — your call. Have I explained those steps clearly? … And is there anything else I can help you with today? … Then I'll close this case, and you'll have it all in writing in the app under reference 6720. Thanks, Luis.",
+     "coach": "Sumarização completa antes das duas perguntas e do fechamento.",
+     "customer_if_weak": "Wait, do I upload something or not?"
+    }
+   ],
+   "resolution": {
+    "correct": "Evidence goes to review; pre-existing mark noted; payout likely unaffected; host may offer own goodwill.",
+    "policy_ref": "cleanliness",
+    "why": "'Reasonably clean' standard; impartial review of both sides' evidence."
+   }
+  },
+  {
+   "id": "hin-03",
+   "title": "Host: needs to cancel — mother in hospital",
+   "category": "host_cancel",
+   "callType": "inbound_host",
+   "severity": 2,
+   "emotion": "host_pleading",
+   "accent": "en-IN",
+   "value_tier": "standard",
+   "callback": false,
+   "reference": "7308",
+   "caller": {
+    "name": "Meera",
+    "role": "host"
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Meera Krishnan",
+    "phone": "+91 98 4455 0128",
+    "dob": "3 February 1979",
+    "payment_last4": "2264"
+   },
+   "context": {
+    "listing": "Apartment, Bengaluru",
+    "booking": "guest arriving in 6 days, 3 nights",
+    "facts": [
+     "host's mother was admitted to hospital last night; host must travel",
+     "host is calling from a relative's phone",
+     "host has a hospital admission letter",
+     "cancellation 6 days out normally carries a 25% fee (48h–30d window)"
+    ]
+   },
+   "lexicon": [
+    "admission letter",
+    "documentation",
+    "penalty",
+    "valid reason",
+    "calendar blocked"
+   ],
+   "turns": [
+    {
+     "customer": "Hello, good evening. I am a host, I have an apartment in Bengaluru. My mother was admitted to hospital last night and I have to travel to her. I have a guest coming in six days — I need to cancel, but I am worried about the penalty. Please, what can I do?",
+     "expects": [
+      "opening",
+      "auth",
+      "empathy",
+      "listen"
+     ],
+     "model": "Good evening, Meera, this is {name} with Airbnb Elevated Support. I'm sorry about your mother — let's sort the booking so it's one less thing on your mind. Before we go any further, I need to verify the account, and as you're not calling from the number we have on file I'll need a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Empatia curta e sincera, depois autenticação manual explicada (número diferente).",
+     "customer_if_weak": "I am sorry, why do you need all this? I only want to cancel."
+    },
+    {
+     "customer": "Yes, of course. Meera Krishnan. The number on the account is plus nine one, nine eight, four four five five, zero one two eight. Date of birth third February 1979. And the card ends in two two six four.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you — that all matches. You're verified. So, just to make sure I've got this right: your mother was admitted to hospital last night, you need to travel to be with her, you have a guest arriving in six days for three nights, and you want to cancel without being penalised. Is that everything?",
+     "coach": "Fecha a autenticação manual e parafraseia.",
+     "customer_if_weak": "Sir, did it match? You did not say."
+    },
+    {
+     "customer": "Yes. I have the hospital letter also, the admission letter.",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "That letter is exactly what matters. Here's how it works: a host cancellation six days out normally carries a fee — twenty-five percent in that window — but a valid reason outside your control, with documentation, can waive it, and a hospital admission for a parent is a clear example. I can't decide the waiver on this call; a reviewer does. What I'll do now is process the cancellation, attach your admission letter, and flag it as documented. Can you upload the letter in the app, or send it to me on the case?",
+     "coach": "Regra + exceção + limite do agente + ação concreta. Sem prometer o waiver.",
+     "customer_if_weak": "So I will be charged or not? Please tell me clearly."
+    },
+    {
+     "customer": "I will upload now. And the guest? I feel bad for them.",
+     "expects": [
+      "policy",
+      "empathy",
+      "expectations"
+     ],
+     "model": "The guest gets a full refund and help rebooking — that happens automatically, so they're looked after. Your calendar will show those dates as blocked, which is standard after any cancellation. You'll have the reviewer's decision on the fee by message, usually within a couple of days. And Meera — go be with your mother; the case is in hand.",
+     "coach": "Responde à preocupação com o guest, explica o bloqueio de calendário sem drama, prazo, toque humano."
+    },
+    {
+     "customer": "Thank you, sir. Thank you very much.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, you need to cancel the reservation in six days' time because your mother is in hospital, and you have the admission letter. Second, I've processed the cancellation, and once you upload the letter I'll attach it and flag the case as documented — a reviewer decides on waiving the fee, usually within a couple of days. Third, the guest is refunded and rebooked automatically, and your calendar shows those dates as blocked. Have I explained those steps clearly? … Is there anything else I can help you with today? … Then I'll close this case, and you'll have all of it in writing in the app under reference 7308. Take care, Meera.",
+     "coach": "Resumo → claro? → mais ajuda? → fechar. Tom humano mantido.",
+     "customer_if_weak": "Sorry, what should I upload again?"
+    }
+   ],
+   "resolution": {
+    "correct": "Cancel; attach hospital letter; fee waiver decided by reviewer; guest refunded and rebooked.",
+    "policy_ref": "host_cancellation_policy",
+    "why": "Documented valid reason outside host's control can exempt the fee."
+   }
+  },
+  {
+   "id": "acc-in-03",
+   "title": "Couldn't find the place — pin was 2 km off",
+   "category": "access",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "frustrated",
+   "accent": "en-GB",
+   "value_tier": "standard",
+   "callback": false,
+   "reference": "5133",
+   "caller": {
+    "name": "Oliver",
+    "role": "guest"
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Oliver Grant"
+   },
+   "context": {
+    "listing": "Townhouse, Lisbon",
+    "booking": "4 nights, arrived last night",
+    "policy": "Moderate",
+    "facts": [
+     "map pin in the listing was about 2 km from the actual house",
+     "guest and host exchanged 14 messages over 90 minutes before he found it",
+     "arrived at 00:40 instead of 23:00; host was apologetic",
+     "guest wants the first night refunded"
+    ]
+   },
+   "lexicon": [
+    "map pin",
+    "directions",
+    "street",
+    "taxi",
+    "first night"
+   ],
+   "turns": [
+    {
+     "customer": "Evening. Look, we got in eventually, but the map pin on the listing is two kilometres from the actual house. Ninety minutes, three taxis, fourteen messages with the host. We walked in at twenty to one. I'd like the first night refunded, frankly.",
+     "expects": [
+      "opening",
+      "auth",
+      "empathy",
+      "listen"
+     ],
+     "model": "Good evening, this is {name} with Airbnb Elevated Support. Ninety minutes and three taxis to find a house you'd already paid for is a rotten end to a travel day, and I'm glad you're in. Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "coach": "Empatia específica (90 min, três táxis) antes do processo. Autenticação por Alura."
+    },
+    {
+     "customer": "Oliver Grant.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Oliver — that matches what I have here. So, just to make sure I've got this right: the pin on the listing was about two kilometres off, it took you ninety minutes and fourteen messages with the host to find the house, you got in at twenty to one instead of eleven, and you'd like the first night refunded. Is that everything?",
+     "coach": "Fecha a auth e parafraseia com os números do cliente.",
+     "customer_if_weak": "Did you verify me or not? You just moved on."
+    },
+    {
+     "customer": "That's it. And the host was nice about it, to be fair, but nice doesn't get me the evening back.",
+     "expects": [
+      "clarify",
+      "policy",
+      "options"
+     ],
+     "model": "Fair. Here's how I'd frame it: a wrong location on the listing is one of the things the policy calls 'not as advertised', and a delayed first night because of it is exactly the kind of impact a reviewer looks at. What I need from you is the message thread with the host — that's your evidence, and it's strong because it shows the time. Two quick things: what time was check-in meant to be, and did the rest of the house match the listing once you were in?",
+     "coach": "Nomeia a categoria ('not as advertised' — localização) e pede a evidência que já existe. Perguntas de decisão."
+    },
+    {
+     "customer": "Check-in was from eleven. And yes, the house itself is fine, lovely actually.",
+     "expects": [
+      "policy",
+      "options",
+      "expectations",
+      "ownership"
+     ],
+     "model": "Good — that matters, because it means we're talking about the first night, not the stay. I'm putting the first night forward for a partial or full refund on the basis of the wrong location and the delay, with the message thread attached; I won't promise the reviewer's number, but the case is clear and the evidence is on the app. Separately, I'm flagging the pin on the listing so the next guest doesn't do the same. You'll hear from me by message within a day or two.",
+     "coach": "Escopo honesto (noite 1, não a estadia). Ação, evidência, prazo, sem promessa de valor.",
+     "customer_if_weak": "So is it a yes or a no?"
+    },
+    {
+     "customer": "Alright. Thanks.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the map pin was two kilometres off and it delayed your check-in from eleven to twenty to one, which falls under 'not as advertised'. Second, I've put the first night forward for refund with your message thread as evidence, and flagged the listing's pin. Third, you'll have the reviewer's decision by message within a day or two, and the rest of the stay stands as booked. Have I explained those steps clearly? … And is there anything else I can help you with today? … Then I'll go ahead and close this case; you'll have all of this in writing in the app under reference 5133. Enjoy the rest of Lisbon, Oliver.",
+     "coach": "Resumo completo, as duas perguntas, fechamento com referência.",
+     "customer_if_weak": "Hang on, what exactly did you put forward?"
+    }
+   ],
+   "resolution": {
+    "correct": "First night forwarded for refund (wrong location = mismatch); listing pin flagged; rest of stay stands.",
+    "policy_ref": "rebooking_refund",
+    "why": "Inaccurate location is a listed mismatch; impact limited to the first night."
+   }
+  },
+  {
+   "id": "acc-in-04",
+   "title": "Smart lock dead, slept in the car",
+   "category": "access",
+   "callType": "inbound_guest",
+   "severity": 3,
+   "emotion": "angry",
+   "accent": "en-US",
+   "value_tier": "high",
+   "callback": false,
+   "reference": "7702",
+   "caller": {
+    "name": "Marcus",
+    "role": "guest"
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Marcus Bell",
+    "phone": "617-555-0122",
+    "dob": "19 April 1983",
+    "payment_last4": "8806"
+   },
+   "context": {
+    "listing": "Loft, Nashville",
+    "booking": "3 nights, check-in was last night",
+    "policy": "Strict",
+    "facts": [
+     "smart lock battery dead; keypad unresponsive",
+     "host didn't answer from 22:10 until 07:30",
+     "guest slept in his rental car outside",
+     "guest is calling from a friend's phone — his own died"
+    ]
+   },
+   "lexicon": [
+    "smart lock",
+    "battery",
+    "keypad",
+    "unresponsive",
+    "slept in the car"
+   ],
+   "turns": [
+    {
+     "customer": "I slept in my car last night. The smart lock on your listing is dead — keypad does nothing, no light, nothing — and the host didn't answer a single message from ten till this morning. I'm on my buddy's phone because mine died. Somebody better fix this.",
+     "expects": [
+      "opening",
+      "auth",
+      "empathy",
+      "listen"
+     ],
+     "model": "This is {name} with Airbnb Elevated Support. Sleeping in your car outside a place you'd paid for, with no answer from the host all night, is unacceptable, and I'm going to deal with it now. Because you're calling from a different number, I need to verify the account first with a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Raiva: fato + ação, sem defender. Explica POR QUE é autenticação manual (número diferente)."
+    },
+    {
+     "customer": "Seriously? Fine. Marcus Bell. Six one seven, five five five, zero one two two. April nineteenth, eighty-three. Card ends in eight eight zero six.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Marcus — that all matches, you're verified. So, just to make sure I've got this right: the smart lock's keypad was completely dead when you arrived, the host didn't respond from ten last night until half seven this morning, and you slept in your car outside the loft. Is that everything?",
+     "coach": "Fecha a auth manual e parafraseia sem julgamento.",
+     "customer_if_weak": "Did that go through? Because I'm not repeating it."
+    },
+    {
+     "customer": "That's it. And now he's texting 'so sorry, battery' like that fixes anything.",
+     "expects": [
+      "policy",
+      "options",
+      "ownership",
+      "clarify"
+     ],
+     "model": "It doesn't. Here's where it stands: a check-in time that passed with no way in and no host response is an access failure, full stop — the battery is the host's responsibility, not yours. The night you couldn't use is refundable, and I'm putting that through now. Then there's today: is the lock working now, and do you actually want to stay there, or would you rather I rebook you somewhere else for the remaining two nights?",
+     "coach": "Política clara e decisiva (access failure). Separa a noite perdida da decisão sobre o resto; dá escolha."
+    },
+    {
+     "customer": "He says it's working. I'll stay — I don't have the energy to move. But I want that night back and I want him to know this isn't okay.",
+     "expects": [
+      "policy",
+      "expectations",
+      "ownership",
+      "retention"
+     ],
+     "model": "Understood, and both of those are happening. The first night is going forward for refund as an access failure — with the message timestamps as evidence, I'd be surprised by anything else, though the reviewer signs it off, not me. The host is being notified formally, and this goes on their record. And Marcus, given the night you had, I'm adding a credit as a goodwill gesture, separate from the refund. You'll see both in the app; refunds usually land within 15 days.",
+     "coach": "Cliente de alto valor com caso claro: reembolso pela regra + gesto separado. Prazo real.",
+     "customer_if_weak": "Great, more words. What am I actually getting?"
+    },
+    {
+     "customer": "Fine.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the smart lock was dead and the host was unreachable all night, so last night is an access failure and is going forward for refund. Second, you're staying for the remaining two nights now that the lock works, the host has been formally notified, and I've added a goodwill credit separately. Third, you'll see the refund and the credit in the app, with the refund usually landing within 15 days. Have I explained those steps clearly? … Is there anything else I can help you with today? … Then I'll close this case; you'll have it all in writing under reference 7702. Get some sleep, Marcus.",
+     "coach": "Resumo, confirmação, fechamento — e um toque humano proporcional.",
+     "customer_if_weak": "Wait, what's the refund for again?"
+    }
+   ],
+   "resolution": {
+    "correct": "Night 1 refunded (access failure); host notified; goodwill credit for high-value guest; stay continues.",
+    "policy_ref": "checkin_trouble",
+    "why": "Check-in time passed, no access, no host response."
+   }
+  },
+  {
+   "id": "hin-04",
+   "title": "Host: 'they left the place filthy'",
+   "category": "host_damage",
+   "callType": "inbound_host",
+   "severity": 2,
+   "emotion": "frustrated",
+   "accent": "en-IE",
+   "value_tier": "high",
+   "callback": false,
+   "reference": "6045",
+   "caller": {
+    "name": "Niamh",
+    "role": "host"
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Niamh Keane",
+    "verified_phone_ends": "7719",
+    "pin": "640218"
+   },
+   "context": {
+    "listing": "Cottage, Kerry",
+    "booking": "guests checked out this morning after 5 nights",
+    "facts": [
+     "rubbish left in every room, dishes unwashed, sticky floors, a red-wine stain on a cream rug",
+     "host's cleaner says it's 5 extra hours; rug may need professional cleaning",
+     "host has photos from this morning and the cleaner's turnover photos from before check-in",
+     "host has 60+ reviews at 4.9 — worth keeping"
+    ]
+   },
+   "lexicon": [
+    "rubbish",
+    "unwashed",
+    "sticky",
+    "stain",
+    "rug",
+    "extra cleaning"
+   ],
+   "turns": [
+    {
+     "customer": "Hi, Niamh here, the cottage in Kerry. The lot that checked out this morning left it in a state — rubbish in every room, dishes in the sink, floors sticky, and a red-wine stain the size of a dinner plate on my cream rug. My cleaner's saying five extra hours. What can I actually claim?",
+     "expects": [
+      "opening",
+      "auth",
+      "listen"
+     ],
+     "model": "Hi Niamh, this is {name} with Airbnb Elevated Support. I can tell you exactly what's claimable and how, and it's clearer than you might think. Before we go any further, I need to verify the account: I'm sending a PIN to the phone number ending in 7719 right now — could you read it back to me when it arrives?",
+     "coach": "Host frustrada e prática: promete clareza, autentica por PIN."
+    },
+    {
+     "customer": "Grand — six four zero two one eight.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: the guests checked out this morning after five nights, the cottage was left with rubbish everywhere, unwashed dishes and sticky floors, there's a red-wine stain on a cream rug, your cleaner estimates five extra hours, and you've got photos from this morning and from before check-in. Is that everything?",
+     "coach": "Fecha a auth; paráfrase separa o desarrumado do dano.",
+     "customer_if_weak": "Sorry — did that PIN go through? You didn't say."
+    },
+    {
+     "customer": "That's it. So, the five hours and the rug?",
+     "expects": [
+      "policy",
+      "clarify",
+      "empathy"
+     ],
+     "model": "Here's the line the policy draws, and it matters for what you ask for. Normal mess after a stay — dishes, bins, floors — is expected turnover and usually isn't claimable as damage. What IS covered is extra cleaning caused by the guest beyond the ordinary, and stains are named specifically. So the rug is a strong claim: get a professional cleaning quote, or a replacement quote if it won't come out. The five hours is arguable if you can show it was well beyond a normal turnover — your before-and-after photos help there. One question: was there anything else — smoke smell, extra people, damage to furniture?",
+     "coach": "Ensina a linha (turnover normal × limpeza extra/manchas) com honestidade — inclusive o que é 'arguable'. Pergunta o que pode aumentar o claim."
+    },
+    {
+     "customer": "No smoke, no damage that I saw. Just filth. So how do I do it?",
+     "expects": [
+      "policy",
+      "options",
+      "ownership",
+      "expectations"
+     ],
+     "model": "Two steps in order. First, request the amount from the guest in the Resolution Center within 14 days of check-out — you're on day zero, so plenty of time, but do it while the photos are fresh. Put the rug quote and the cleaner's invoice for the extra hours, itemised, with the before-and-after photos. Second, if the guest doesn't pay or declines, submit it to Airbnb under Host Damage Protection within 30 days of check-out. I'll message you the path right after this call. And Niamh — sixty reviews at four-point-nine; hosts like you are exactly who this protection is for.",
+     "coach": "Ordem, prazos, evidência itemizada. Retenção genuína de host de alto valor."
+    },
+    {
+     "customer": "Okay. That's clear. Thanks.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the rug stain is claimable as guest-caused extra cleaning, and the five extra hours can be included if your photos show it was well beyond a normal turnover; ordinary mess on its own isn't. Second, step one is a Resolution Center request to the guest within 14 days, with the rug quote, the itemised cleaning invoice and your before-and-after photos — I'm sending you the path now. Third, if the guest doesn't pay, you submit to Airbnb within 30 days of check-out. Have I explained those steps clearly? … Is there anything else I can help you with today? … Then I'll close this case; you'll have all of it in writing under reference 6045. Thanks for calling, Niamh.",
+     "coach": "Resumo com a linha da política, os dois passos e os prazos.",
+     "customer_if_weak": "Sorry, what goes in the request again?"
+    }
+   ],
+   "resolution": {
+    "correct": "Rug stain claimable; extra hours arguable with evidence; ordinary mess not; Resolution Center 14d then HDP 30d.",
+    "policy_ref": "host_damage_protection",
+    "why": "Stains and extra cleaning are named; normal turnover is not damage."
+   }
+  },
+  {
+   "id": "hd-out-03",
+   "title": "Calling a host: the guest broke the TV",
+   "category": "host_damage",
+   "callType": "outbound_host",
+   "severity": 2,
+   "emotion": "calm",
+   "accent": "en-ZA",
+   "value_tier": "standard",
+   "callback": true,
+   "reference": "8121",
+   "caller": {
+    "name": "Thabo",
+    "role": "host"
+   },
+   "auth": {
+    "path": "alura",
+    "customer_name": "Thabo Nkosi"
+   },
+   "context": {
+    "listing": "Flat, Cape Town",
+    "booking": "guest checked out 3 days ago",
+    "facts": [
+     "host opened a Resolution Center request for a cracked 55-inch TV — R 7,500",
+     "guest replied 'it was already cracked' and declined",
+     "host has a check-in photo showing the TV intact, dated the morning of arrival",
+     "you're calling to walk him through submitting to Airbnb"
+    ]
+   },
+   "lexicon": [
+    "cracked",
+    "screen",
+    "receipt",
+    "proof of purchase",
+    "declined"
+   ],
+   "turns": [
+    {
+     "customer": "Hello, Thabo speaking.",
+     "expects": [
+      "opening",
+      "recording",
+      "auth"
+     ],
+     "model": "Hi Thabo, this is {name} calling from Airbnb's Elevated Support team about the TV in your Cape Town flat. Before we start, two quick things: this call is being recorded for training and quality purposes — is that okay with you? And just to confirm I'm speaking with the right person, could I have your first and last name?",
+     "coach": "Callback: aviso de gravação com pergunta + confirmar a pessoa, antes de qualquer conteúdo."
+    },
+    {
+     "customer": "Ja, that's fine. Thabo Nkosi.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thank you, Thabo — that matches. So, just to make sure I've got this right: you asked the guest for seven and a half thousand rand for a cracked fifty-five-inch TV through the Resolution Center, the guest said it was already cracked and declined, and you have a photo from the morning of check-in showing the screen intact. Is that everything?",
+     "coach": "Fecha a auth; parafraseia o caso e a evidência.",
+     "customer_if_weak": "Sorry, did you say it matched? I missed that."
+    },
+    {
+     "customer": "That's right. And the guest's story is nonsense — my photo is timestamped.",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "That timestamped check-in photo is the single most useful thing you have, so let's build around it. The guest declining doesn't end it — it moves it to the next step: you submit a Host Damage Protection request to Airbnb, and you have until 30 days after check-out, so about 27 days left. A reviewer will look at both sides; your photo, a receipt or proof of purchase for the TV, and a repair or replacement quote is the set they'll want. Do you have the receipt, or at least the model number?",
+     "coach": "Não chama o guest de mentiroso; deixa a evidência falar. Prazo contado. Pede o que falta."
+    },
+    {
+     "customer": "I have the receipt from last year, and a quote from the shop.",
+     "expects": [
+      "policy",
+      "expectations",
+      "ownership"
+     ],
+     "model": "Then you're in good shape. Submit the request from the reservation page with the check-in photo, the check-out photo of the crack, the receipt and the quote — I'll message you the exact path now. One honest note: the reviewer may take depreciation into account on a year-old TV, so the figure could come back below the quote; I'd rather you hear that from me now. Decisions usually take a few days.",
+     "coach": "Expectativa honesta (depreciação) antes que vire surpresa. Prazo.",
+     "customer_if_weak": "So will I get the full amount or not?"
+    },
+    {
+     "customer": "Fair enough. Thanks for the call.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the guest declined your Resolution Center request, so the next step is a Host Damage Protection request to Airbnb, due within 30 days of check-out — about 27 days from now. Second, you'll submit the timestamped check-in photo, the photo of the crack, last year's receipt and the shop's quote; I'm sending you the path by message. Third, a reviewer decides in a few days and may apply depreciation on a year-old TV. Have I explained those steps clearly? … Is there anything else I can help you with today? … Then I'll close this case; you'll have it all in writing under reference 8121. Thanks, Thabo.",
+     "coach": "Resumo com prazo, evidência e a ressalva honesta.",
+     "customer_if_weak": "Wait — how many days did you say?"
+    }
+   ],
+   "resolution": {
+    "correct": "Host submits HDP request within 30 days with photos, receipt, quote; depreciation possible.",
+    "policy_ref": "host_damage_protection",
+    "why": "Guest declined in Resolution Center; process moves to Airbnb review."
+   }
+  },
+  {
+   "id": "app-in-02",
+   "title": "Guest accused of damage — 'that stain was there'",
+   "category": "appeal",
+   "callType": "inbound_guest",
+   "severity": 2,
+   "emotion": "suspicious",
+   "accent": "en-IN",
+   "value_tier": "high",
+   "callback": false,
+   "reference": "9207",
+   "caller": {
+    "name": "Priyanka",
+    "role": "guest"
+   },
+   "auth": {
+    "path": "pin",
+    "customer_name": "Priyanka Nair",
+    "verified_phone_ends": "2044",
+    "pin": "391775"
+   },
+   "context": {
+    "listing": "Apartment, Dubai",
+    "booking": "checked out 6 days ago",
+    "facts": [
+     "host requested AED 900 for a sofa stain via Resolution Center",
+     "guest says the stain was there at check-in and she has a check-in video showing it",
+     "guest is worried about being 'charged automatically'",
+     "guest has stayed 40+ nights on the platform this year"
+    ]
+   },
+   "lexicon": [
+    "stain",
+    "check-in video",
+    "declined",
+    "charged",
+    "dispute"
+   ],
+   "turns": [
+    {
+     "customer": "Hello, I have received a request for nine hundred dirhams for a sofa stain. This stain was already there when I checked in — I have a video from the first day showing it clearly. I am worried you will just charge my card. Can you tell me how this works?",
+     "expects": [
+      "opening",
+      "auth",
+      "empathy",
+      "listen"
+     ],
+     "model": "Hello, this is {name} with Airbnb Elevated Support — and no, nothing gets charged to your card automatically, so let's take that worry off the table first. A check-in video showing the stain is exactly the right evidence. Before we go further, I need to verify the account: I'm sending a PIN to the number ending in 2044 right now — could you read it back to me when it arrives?",
+     "coach": "Responde ao medo concreto primeiro ('nada é cobrado automaticamente'), valida a evidência, autentica por PIN."
+    },
+    {
+     "customer": "Okay, it is here — three nine one seven seven five.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Perfect, that matches — you're verified. So, just to make sure I've got this right: the host has asked for nine hundred dirhams for a sofa stain, you're certain the stain was there at check-in, you have a video from day one that shows it, and you want to know how to respond without being charged. Is that everything?",
+     "coach": "Fecha a auth e parafraseia com o pedido real da cliente.",
+     "customer_if_weak": "Sorry — was the PIN correct? You did not confirm."
+    },
+    {
+     "customer": "Yes, exactly. What should I do?",
+     "expects": [
+      "policy",
+      "options",
+      "ownership"
+     ],
+     "model": "Here's how it works, step by step. The host's request came through the Resolution Center; you can decline it and, in the same place, add your check-in video and a short note saying the stain was present on arrival. If the host then escalates to Airbnb, a reviewer looks at both sides' evidence — and a dated check-in video is about as strong as evidence gets. You are never charged without that review, and you'll be able to see and respond to everything in the app. Would you like me to stay on while you upload the video?",
+     "coach": "Processo em ordem, direito de resposta, força da evidência, oferta de ajuda concreta."
+    },
+    {
+     "customer": "Yes please. I have stayed more than forty nights this year; I do not want a problem on my account.",
+     "expects": [
+      "retention",
+      "empathy",
+      "expectations"
+     ],
+     "model": "I can see that history, Priyanka, and I want to say clearly: a host's request is not a mark against you — it's a request, and declining it with evidence is exactly what the process expects. Nothing on your account changes because of this. Once the video is up, I'll add a note on the case that you responded promptly with dated evidence. If it does go to review, that usually takes a few days and you'll be told by message.",
+     "coach": "Cliente de alto valor com medo de 'ficar marcada': tranquiliza com fatos, não com promessas de resultado."
+    },
+    {
+     "customer": "Thank you. That is a relief.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the host's nine-hundred-dirham request is a Resolution Center request — nothing is charged to your card automatically. Second, you're declining it and uploading your check-in video with a note that the stain was present on arrival, and I'm noting on the case that you responded with dated evidence. Third, if the host escalates, a reviewer looks at both sides and you'll hear by message within a few days; your account isn't affected by the request itself. Have I explained those steps clearly? … Is there anything else I can help you with today? … Then I'll close this case; you'll have it all in writing under reference 9207. Thank you, Priyanka.",
+     "coach": "Resumo, confirmação, fechamento.",
+     "customer_if_weak": "Sorry — so do I pay or not?"
+    }
+   ],
+   "resolution": {
+    "correct": "Guest declines with check-in video; no automatic charge; review only if host escalates.",
+    "policy_ref": "resolution_center",
+    "why": "Both sides' evidence is reviewed; dated check-in video is strong."
+   }
+  },
+  {
+   "id": "hin-05",
+   "title": "Host: 'they checked out three hours late and left a mess'",
+   "category": "host_damage",
+   "callType": "inbound_host",
+   "severity": 1,
+   "emotion": "host_indignant",
+   "accent": "en-AU",
+   "value_tier": "standard",
+   "callback": false,
+   "reference": "3388",
+   "caller": {
+    "name": "Bruce",
+    "role": "host"
+   },
+   "auth": {
+    "path": "manual",
+    "customer_name": "Bruce Callaghan",
+    "phone": "+61 412 555 090",
+    "dob": "27 September 1970",
+    "payment_last4": "1147"
+   },
+   "context": {
+    "listing": "Unit, Surfers Paradise",
+    "booking": "guests checked out today, 3 hours late",
+    "facts": [
+     "late check-out pushed the cleaner and delayed the next guests by 2 hours",
+     "unit left messy: pizza boxes, towels on the floor, nothing broken",
+     "house rules state 10 am check-out and a AUD 80 late fee",
+     "host is calling from his work phone"
+    ]
+   },
+   "lexicon": [
+    "check-out",
+    "late fee",
+    "house rules",
+    "next guests",
+    "towels"
+   ],
+   "turns": [
+    {
+     "customer": "Yeah, g'day, Bruce here. Bunch of blokes just checked out of my unit three hours late — pizza boxes everywhere, towels on the floor — and my next guests had to wait two hours in the car park. My house rules say ten o'clock and an eighty-dollar late fee. I want that fee and I want them to know about it.",
+     "expects": [
+      "opening",
+      "auth",
+      "listen"
+     ],
+     "model": "G'day Bruce, this is {name} with Airbnb Elevated Support. Late check-out that knocks on to your next guests is a genuine problem, and I'll tell you exactly what you can do about it. As you're calling from a number that isn't the one on the account, I need to verify a few details first: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method.",
+     "coach": "Indignação: reconhece o impacto real (próximos hóspedes), autentica manual explicando o motivo."
+    },
+    {
+     "customer": "Bruce Callaghan. Oh-four-one-two, five-five-five, oh-nine-oh. Twenty-seventh of September, nineteen seventy. Card ends one one four seven.",
+     "expects": [
+      "auth",
+      "paraphrase"
+     ],
+     "model": "Thanks, Bruce — that all matches, you're verified. So, just to make sure I've got this right: the guests left three hours after your ten o'clock check-out, the unit was messy but nothing was broken, your next guests waited two hours, and your house rules set an eighty-dollar late check-out fee that you'd like to charge. Is that everything?",
+     "coach": "Fecha a auth manual; paráfrase separa atraso (regra) de bagunça (turnover) e registra 'nada quebrado'.",
+     "customer_if_weak": "Mate, did that go through or not?"
+    },
+    {
+     "customer": "That's it. So can I charge it?",
+     "expects": [
+      "policy",
+      "options",
+      "empathy"
+     ],
+     "model": "You can request it, and the way to do that is the Resolution Center: request the eighty-dollar late fee from the guest, citing the house rule, with the check-out time — messages or the smart-lock log if you have one. On the mess: pizza boxes and towels on the floor are unpleasant, but with nothing broken and no stains, that's normal turnover and isn't a damage claim. I'd keep the request to the late fee — a clean, rule-based ask is far more likely to be paid than a padded one. Do you have anything that shows the actual check-out time?",
+     "coach": "Ferramenta certa (Resolution Center para a taxa da house rule); honesto que bagunça comum não é dano; aconselha pedido limpo."
+    },
+    {
+     "customer": "The lock log says 12:58. Fair enough on the mess, I suppose.",
+     "expects": [
+      "options",
+      "expectations",
+      "ownership"
+     ],
+     "model": "Twelve fifty-eight against a ten o'clock rule — that's clear. Put the request in today with that log and the house rule quoted; the guest has time to respond, and if they decline, you can ask Airbnb to look at it. I'll message you the Resolution Center path now. And for the next guests who waited: if you'd like to send them a small gesture, you can do that from the same place — your call, but it tends to save the review.",
+     "coach": "Evidência concreta, ação hoje, e uma dica de retenção para os próximos hóspedes."
+    },
+    {
+     "customer": "Righto. Cheers.",
+     "expects": [
+      "summary",
+      "confirm",
+      "close"
+     ],
+     "model": "Before we finish, let me go over everything we covered today. First, the guests checked out at twelve fifty-eight against a ten o'clock house rule, and you're requesting the eighty-dollar late fee through the Resolution Center with the lock log and the rule quoted — I'm sending you the path now. Second, the mess itself is normal turnover with nothing broken, so it isn't a damage claim. Third, if the guest declines, you can escalate to Airbnb, and you may want to send your next guests a small gesture for the wait. Have I explained those steps clearly? … Is there anything else I can help you with today? … Then I'll close this case; you'll have it all in writing under reference 3388. Cheers, Bruce.",
+     "coach": "Resumo, confirmação, fechamento.",
+     "customer_if_weak": "Hang on, what am I requesting again?"
+    }
+   ],
+   "resolution": {
+    "correct": "Late fee requested via Resolution Center with lock log; ordinary mess not a damage claim.",
+    "policy_ref": "resolution_center",
+    "why": "House-rule fees go through Resolution Center; normal turnover is not damage."
+   }
+  }
+ ],
+ "auth_paths": {
+  "alura": "Já autenticado pela Alura — pedir nome e sobrenome",
+  "pin": "Pré-autenticado — enviar PIN ao número verificado",
+  "manual": "Manual — nome completo, telefone, data de nascimento, 4 últimos dígitos do pagamento"
+ }
+}

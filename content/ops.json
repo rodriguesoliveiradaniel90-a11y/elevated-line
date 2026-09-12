@@ -1,0 +1,33 @@
+{
+  "_about": "Regras OPERACIONAIS da linha (TP · Airbnb Elevated Support), informadas pelo Daniel em 2026-09-11. NÃO vêm do Help Center — vêm da operação. Três delas são motivo de desligamento se o time de qualidade ouvir a chamada e elas faltarem.",
+  "source": "Instruções operacionais (Daniel, 2026-09-11)",
+  "critical": [
+    {"id":"auth","title":"Autenticação — antes de qualquer informação ou ação na conta",
+     "rule":"Toda chamada começa por autenticar. Existem três caminhos, e o certo depende de como a chamada chega:",
+     "paths":[
+       {"id":"alura","label":"Já autenticado pela Alura","how":"O sistema já verificou. Você pede apenas nome e sobrenome e confirma com o que está na tela.","say":"Could I have your first and last name, please? … Thank you, that matches."},
+       {"id":"pin","label":"Pré-autenticado (conta identificada, não verificada)","how":"Você envia um PIN para o número verificado na plataforma e pede para o cliente ler de volta.","say":"I'm sending a PIN to the phone number ending in 4471 — could you read it back to me when it arrives?"},
+       {"id":"manual","label":"Autenticação manual","how":"Quando o cliente não liga do número verificado, ou o PIN não é possível. Você pede: nome completo, número de telefone, data de nascimento, e os QUATRO ÚLTIMOS dígitos do método de pagamento.","say":"As you're not calling from the number on file, I'll need to verify the account with a few details: your full name, the phone number on the account, your date of birth, and the last four digits of the payment method."}
+     ],
+     "never":"Nunca pedir senha, número completo do cartão, CVV ou código de segurança. Os 4 últimos dígitos são permitidos — e exigidos — no caminho manual.",
+     "if_fails":"Se não conseguir autenticar, não dê nenhuma informação específica da conta. Ofereça: mensagem pelo app, ou que o cliente ligue de volta do número verificado.",
+     "consequence":"Não autenticar = falha grave; motivo de desligamento."},
+    {"id":"recording","title":"Aviso de gravação em callback",
+     "rule":"Sempre que VOCÊ liga (callback ou qualquer outbound), diga que a ligação está sendo gravada para fins de treinamento e qualidade e pergunte se está tudo bem. Se o cliente não permitir, você pode parar a gravação. Se permitir, continua.",
+     "say":"Before we start: this call is being recorded for training and quality purposes — is that okay with you? … If you'd rather it wasn't, I can stop the recording now.",
+     "consequence":"Esquecer isso numa chamada que o time de qualidade ouve = desligamento."},
+    {"id":"summary","title":"Sumarização antes de fechar",
+     "rule":"Ao final do caso — chat ou ligação — você resume TUDO o que foi tratado. Só depois pergunta se o cliente entendeu os passos, se precisa de mais ajuda, e então diz que vai fechar o caso.",
+     "sequence":["1. Resumir tudo o que foi tratado (problema → o que foi feito → próximos passos e prazos → referência)","2. Perguntar se os passos ficaram claros","3. Perguntar se precisa de mais alguma coisa","4. Dizer que vai fechar o caso; confirmar que o resumo vai por escrito no app"],
+     "say":"Before we finish, let me go over everything we covered today… Have I explained those steps clearly? … Is there anything else I can help you with? … Then I'll go ahead and close this case — you'll have all of this in writing in the app.",
+     "consequence":"Esquecer = desligamento."}
+  ],
+  "rules": [
+    {"id":"paraphrase","title":"Parafrasear o problema","rule":"Depois que o cliente expõe o problema, reformule com as suas palavras e pergunte se faltou algo. É o que prova escuta e evita resolver o caso errado.","say":"So, just to make sure I've got this right: … Is that everything?"},
+    {"id":"holds","title":"Holds","rule":"Até 2 holds seguidos, de 3 minutos cada. Sempre pedir permissão e dizer o tempo. Ao voltar, retomar com conteúdo, não com desculpa.","say":"May I place you on a brief hold, for up to three minutes, while I check this? … Thanks for holding — here's what I found."},
+    {"id":"chat","title":"Transferir para o chat","rule":"Se precisar pesquisar mais do que os holds permitem, ofereça continuar pelo chat — só com permissão do cliente — e siga o atendimento por lá.","say":"Would you be happy to continue this over chat? I can keep researching on my side and you won't have to wait on the line."},
+    {"id":"impartial","title":"Imparcial — com inclinação ao guest, sem pagar injustiça","rule":"O Elevated Support é imparcial, mas mais voltado para o guest. Você não dá dinheiro a um guest que está claramente errado ou fez algo injusto. Mas os clientes dessa linha gastam mais de US$ 1.000 na plataforma e não podem ser perdidos — e há hosts excelentes que também não queremos perder. Nos casos limítrofes, o gesto de boa vontade (separado da decisão) é a ferramenta.","say":"Separately from the decision, I'd like to offer a credit as a goodwill gesture — it doesn't change the outcome, but I'd like you to have it."},
+    {"id":"csat","title":"CSAT máximo","rule":"Educação, atendimento especializado e PERSONALIZADO para cada cliente — nome, detalhes do caso, ritmo do cliente. O objetivo é o cliente sair satisfeito e avaliar você e, principalmente, o Airbnb com a nota máxima."},
+    {"id":"callback","title":"Callbacks","rule":"Alguns clientes pedem retorno. Toda ligação de retorno é outbound: aviso de gravação + confirmar com quem está falando + referência do caso."}
+  ]
+}

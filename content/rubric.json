@@ -1,0 +1,54 @@
+{
+  "_about": "Rubrica de correção v2. Onze dimensões (0–3), três delas CRÍTICAS: falhar em auth, recording (quando aplicável) ou summary = falha crítica — a nota é limitada a 8/24 e a tela mostra reprovação, porque na operação real isso é motivo de desligamento. Usada offline (heurística) e online (instrução ao Claude).",
+  "dimensions": [
+    {"id":"auth","label":"Autenticação","weight":2.5,"critical":true,
+     "bands":{"0":"Não autenticou, ou pediu dado proibido (senha, cartão completo, CVV).","1":"Tentou autenticar, mas incompleto ou fora do caminho certo (ex.: pediu só o nome quando era manual).","2":"Autenticou pelo caminho certo (Alura: nome e sobrenome · PIN: enviou e ouviu de volta · manual: nome completo, telefone, data de nascimento, 4 últimos dígitos).","3":"Autenticou pelo caminho certo, explicando o porquê em uma frase, sem atrito, e confirmou 'verified' antes de qualquer dado da conta."}},
+    {"id":"recording","label":"Aviso de gravação (callback/outbound)","weight":1.5,"critical":true,
+     "bands":{"0":"Em callback/outbound, não avisou que a ligação é gravada para treinamento e qualidade.","1":"Avisou, mas não perguntou se está tudo bem.","2":"Avisou e pediu permissão.","3":"Avisou, pediu permissão, e ofereceu parar a gravação caso o cliente não queira. (Se não for callback/outbound: pontuação máxima automática.)"}},
+    {"id":"empathy","label":"Empatia específica","weight":1.5,
+     "bands":{"0":"Sem reconhecimento, ou genérico ('I understand how you feel').","1":"Reconhece a emoção, não o fato.","2":"Reconhece o fato específico que o cliente contou.","3":"Reconhece o fato específico E um detalhe que prova escuta (hora, criança, terceiro contato)."}},
+    {"id":"paraphrase","label":"Paráfrase do problema","weight":1,
+     "bands":{"0":"Não reformulou o problema com as próprias palavras.","1":"Repetiu literalmente ou de forma vaga.","2":"Reformulou o problema com precisão.","3":"Reformulou com precisão E perguntou se faltou algo ('Is that everything?')."}},
+    {"id":"ownership","label":"Posse sem confissão de responsabilidade","weight":1.5,
+     "bands":{"0":"Transfere culpa ('not my department') OU admite responsabilidade da empresa antes de apurar.","1":"Assume ajudar, de forma vaga.","2":"Diz o que VAI fazer, com verbo concreto.","3":"Diz o que vai fazer, quando, e como o cliente vai saber — sem prometer o resultado da análise."}},
+    {"id":"policy","label":"Precisão de política","weight":2,
+     "bands":{"0":"Política errada ou número errado (ex.: 72h do check-in).","1":"Política certa, incompleta.","2":"Política certa, número certo, fator relevante (72h da descoberta, parte afetada, evidência).","3":"Política certa em inglês simples COM o motivo da regra, diferenciando o que se aplica do que não se aplica."}},
+    {"id":"structure","label":"Estrutura e clareza","weight":1,
+     "bands":{"0":"Sem estrutura; cliente sai sem próximo passo.","1":"Próximo passo enterrado.","2":"Fases visíveis na ordem certa.","3":"Fases visíveis, uma ideia por frase, ritmo ajustado ao estado do cliente."}},
+    {"id":"language","label":"Inglês natural e acolhedor","weight":1,
+     "bands":{"0":"Erros que mudam o sentido, ou registro errado.","1":"Compreensível, com marcas de tradução literal ('since now', 'definitively').","2":"Natural, com contrações e ritmo de fala.","3":"Natural, caloroso, adaptado ao cliente (curto no pânico, lento com idoso, simples na barreira de idioma)."}},
+    {"id":"retention","label":"Julgamento comercial e personalização (CSAT)","weight":1.5,
+     "bands":{"0":"Paga a um cliente claramente errado para evitar conflito, OU dá uma negativa seca a cliente de alto valor sem gesto nem caminho.","1":"Aplica a política sem olhar quem é o cliente.","2":"Usa o nome e os detalhes do caso; oferece o máximo que a política permite; imparcial.","3":"Tudo isso E, num caso limítrofe com cliente de alto valor (guest ou host), usa um gesto de boa vontade claramente separado da decisão — sem jamais pagar o que é injusto."}},
+    {"id":"summary","label":"Sumarização final do caso","weight":2,"critical":true,
+     "bands":{"0":"Encerrou sem resumir o que foi tratado.","1":"Resumo parcial ou só o próximo passo.","2":"Resumiu problema, o que foi feito e o próximo passo.","3":"Resumiu tudo em ordem, com prazos e referência, e disse que vai por escrito no app."}},
+    {"id":"closing","label":"Confirmação e fechamento","weight":1,
+     "bands":{"0":"Não perguntou se entendeu nem se precisa de mais algo.","1":"Uma das duas perguntas.","2":"Perguntou se os passos ficaram claros E se precisa de mais alguma coisa, antes de dizer que vai fechar o caso.","3":"Tudo isso, na ordem certa (resumo → passos claros? → mais ajuda? → 'vou fechar o caso'), com tom humano."}}
+  ],
+  "critical_failures": [
+    {"id":"auth_missing","label":"Não autenticou o cliente","when":"Qualquer chamada, antes de dar informação da conta ou tomar ação","consequence":"Reprovação. Na operação real, motivo de desligamento."},
+    {"id":"recording_missing","label":"Callback sem aviso de gravação","when":"Toda ligação que você inicia (callback / outbound)","consequence":"Reprovação. O time de qualidade ouve a chamada."},
+    {"id":"summary_missing","label":"Fechou sem sumarizar","when":"Antes de perguntar se entendeu e se precisa de mais ajuda","consequence":"Reprovação."},
+    {"id":"sensitive_data","label":"Pediu senha, cartão completo ou CVV","when":"Nunca. Os 4 últimos dígitos são permitidos e exigidos na autenticação manual.","consequence":"Reprovação e incidente de segurança."},
+    {"id":"hold_abuse","label":"Mais de 2 holds, ou hold acima de 3 minutos, ou sem permissão","when":"Regra: até 2 holds seguidos de 3 minutos cada, sempre com permissão; ou transferir para o chat se o cliente permitir.","consequence":"Penalidade forte."}
+  ],
+  "red_flags": [
+    {"id":"liability","pattern":"admite culpa da empresa antes de apurar ('we damaged', 'our mistake')","penalty":"−2 em ownership"},
+    {"id":"promise","pattern":"promete resultado de análise ('you'll definitely get', 'I guarantee')","penalty":"−2 em ownership"},
+    {"id":"calm_down","pattern":"'calm down', 'relax', 'no need to shout'","penalty":"−2 em empathy"},
+    {"id":"unfortunately_opener","pattern":"começa a má notícia com 'unfortunately' ou 'as per policy'","penalty":"−1 em language"},
+    {"id":"blame","pattern":"trata a versão de uma parte como fato contra a outra","penalty":"−2 em policy"},
+    {"id":"72h_wrong","pattern":"72 horas contadas do check-in ou da reserva","penalty":"−3 em policy"},
+    {"id":"jargon","pattern":"siglas/termos internos sem explicar","penalty":"−1 em language"},
+    {"id":"pay_unfair","pattern":"aprova dinheiro a cliente claramente errado ou injusto só para encerrar","penalty":"−3 em retention"},
+    {"id":"lose_customer","pattern":"negativa seca a cliente de alto valor, sem gesto dentro da política nem caminho","penalty":"−2 em retention"},
+    {"id":"sensitive_data","pattern":"pede senha, número completo do cartão, CVV ou código de segurança","penalty":"falha crítica"},
+    {"id":"hold_no_permission","pattern":"coloca em espera sem pedir permissão e dizer o tempo","penalty":"−2 em structure"}
+  ],
+  "scoring": {
+    "max": 24,
+    "critical_cap": 8,
+    "bands":[{"min":21,"label":"Pronto para a linha","tone":"good"},{"min":15,"label":"Sólido — ajustar detalhes","tone":"good"},{"min":9,"label":"Funciona, mas frágil sob pressão","tone":"warn"},{"min":0,"label":"Refazer com o modelo ao lado","tone":"crit"}],
+    "critical_band":{"label":"FALHA CRÍTICA — reprovação","tone":"crit"}
+  },
+  "feedback_format": "Sempre: (1) uma frase do que ficou BOM, específica; (2) o maior problema, com a frase exata do agente e a versão corrigida; (3) uma reescrita completa em inglês natural; (4) até 3 correções de inglês (erro → correção → por quê), priorizando falsos amigos e tradução literal; (5) nota por dimensão; (6) se houver falha crítica, dizer em uma frase por que isso demite."
+}

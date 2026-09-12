@@ -1,0 +1,381 @@
+{
+ "_about": "Drills de escuta. O app fala o texto na voz/sotaque indicado; o aluno transcreve; o app compara palavra a palavra. 'lexicon' = as palavras-alvo que precisam ser reconhecidas. difficulty 1–3 (velocidade e densidade).",
+ "accents": {
+  "en-US": {
+   "label": "American",
+   "flag": "🇺🇸",
+   "code": "US"
+  },
+  "en-GB": {
+   "label": "British",
+   "flag": "🇬🇧",
+   "code": "GB"
+  },
+  "en-AU": {
+   "label": "Australian",
+   "flag": "🇦🇺",
+   "code": "AU"
+  },
+  "en-IN": {
+   "label": "Indian",
+   "flag": "🇮🇳",
+   "code": "IN"
+  },
+  "en-IE": {
+   "label": "Irish",
+   "flag": "🇮🇪",
+   "code": "IE"
+  },
+  "en-ZA": {
+   "label": "South African",
+   "flag": "🇿🇦",
+   "code": "ZA"
+  },
+  "en-NG": {
+   "label": "Nigerian",
+   "flag": "🇳🇬",
+   "code": "NG"
+  }
+ },
+ "drills": [
+  {
+   "id": "d01",
+   "accent": "en-GB",
+   "difficulty": 1,
+   "text": "The tap in the bathroom won't stop dripping, and the boiler's making a banging noise.",
+   "lexicon": [
+    "tap",
+    "dripping",
+    "boiler"
+   ]
+  },
+  {
+   "id": "d02",
+   "accent": "en-US",
+   "difficulty": 1,
+   "text": "The faucet is leaking under the sink and there's water pooling on the floor.",
+   "lexicon": [
+    "faucet",
+    "leaking",
+    "pooling"
+   ]
+  },
+  {
+   "id": "d03",
+   "accent": "en-IN",
+   "difficulty": 2,
+   "text": "We found droppings inside the kitchen cupboards this morning, and there is a very strong odour coming from the drain.",
+   "lexicon": [
+    "droppings",
+    "cupboards",
+    "odour",
+    "drain"
+   ]
+  },
+  {
+   "id": "d04",
+   "accent": "en-AU",
+   "difficulty": 2,
+   "text": "Mate, the lockbox code the host sent doesn't work, and it's half past eleven at night with the kids in the car.",
+   "lexicon": [
+    "lockbox",
+    "code",
+    "half past eleven"
+   ]
+  },
+  {
+   "id": "d05",
+   "accent": "en-IE",
+   "difficulty": 2,
+   "text": "The whole flat smells musty, there's black mould on the bathroom ceiling, and the extractor fan doesn't work at all.",
+   "lexicon": [
+    "musty",
+    "mould",
+    "extractor fan"
+   ]
+  },
+  {
+   "id": "d06",
+   "accent": "en-ZA",
+   "difficulty": 2,
+   "text": "The listing said there was a cot, but there's no cot, and the sofa bed is completely broken.",
+   "lexicon": [
+    "cot",
+    "sofa bed"
+   ]
+  },
+  {
+   "id": "d07",
+   "accent": "en-GB",
+   "difficulty": 3,
+   "text": "I reported it to the host straight away, he said he'd send someone round, nobody came, and now it's been three days with no hot water and the radiators stone cold.",
+   "lexicon": [
+    "straight away",
+    "send someone round",
+    "radiators",
+    "stone cold"
+   ]
+  },
+  {
+   "id": "d08",
+   "accent": "en-US",
+   "difficulty": 2,
+   "text": "We woke up covered in bites and I'm pretty sure it's bed bugs — I've got photos of the mattress seams.",
+   "lexicon": [
+    "bites",
+    "bed bugs",
+    "mattress seams"
+   ]
+  },
+  {
+   "id": "d09",
+   "accent": "en-IN",
+   "difficulty": 3,
+   "text": "The AC unit is only blowing warm air, the water pressure in the shower is very low, and the intercom downstairs is not responding to anyone.",
+   "lexicon": [
+    "AC unit",
+    "water pressure",
+    "intercom"
+   ]
+  },
+  {
+   "id": "d10",
+   "accent": "en-NG",
+   "difficulty": 2,
+   "text": "The host cancelled on us two days before check-in, and now everything nearby is double the price.",
+   "lexicon": [
+    "cancelled",
+    "two days before",
+    "double the price"
+   ]
+  },
+  {
+   "id": "d11",
+   "accent": "en-AU",
+   "difficulty": 3,
+   "text": "Look, I'm not trying to be difficult, but the place was filthy — sticky worktops, hair in the plughole, and the bins hadn't been emptied.",
+   "lexicon": [
+    "filthy",
+    "worktops",
+    "plughole",
+    "bins"
+   ]
+  },
+  {
+   "id": "d12",
+   "accent": "en-GB",
+   "difficulty": 2,
+   "text": "There's a wasp nest right above the front door and my daughter is allergic.",
+   "lexicon": [
+    "wasp nest",
+    "allergic"
+   ]
+  },
+  {
+   "id": "d13",
+   "accent": "en-US",
+   "difficulty": 3,
+   "text": "I'm a host, and the guest left the place trashed — a cracked countertop, a dented fridge door, and cigarette smell in every room.",
+   "lexicon": [
+    "trashed",
+    "cracked",
+    "countertop",
+    "dented"
+   ]
+  },
+  {
+   "id": "d14",
+   "accent": "en-IE",
+   "difficulty": 3,
+   "text": "The directions were wrong altogether — it sent us to the wrong side of the estate, and the buzzer for number twelve does nothing.",
+   "lexicon": [
+    "directions",
+    "estate",
+    "buzzer"
+   ]
+  },
+  {
+   "id": "d15",
+   "accent": "en-ZA",
+   "difficulty": 3,
+   "text": "The geyser burst in the night and the whole passage is flooded; we've had to move to a guest house.",
+   "lexicon": [
+    "geyser",
+    "burst",
+    "passage",
+    "flooded"
+   ],
+   "note": "South African: 'geyser' = water heater; 'passage' = hallway"
+  },
+  {
+   "id": "d16",
+   "accent": "en-IN",
+   "difficulty": 2,
+   "text": "Kindly note that we have raised the request already; the amount is showing as pending only.",
+   "lexicon": [
+    "kindly",
+    "raised the request",
+    "pending only"
+   ],
+   "note": "Indian English: 'kindly', 'raised', 'only' como ênfase"
+  },
+  {
+   "id": "d17",
+   "accent": "en-GB",
+   "difficulty": 3,
+   "text": "The tumble dryer's knackered, the hob's only got one ring working, and the cooker hood's hanging off the wall.",
+   "lexicon": [
+    "tumble dryer",
+    "knackered",
+    "hob",
+    "ring",
+    "cooker hood"
+   ],
+   "note": "'knackered' = broken/exhausted (informal UK)"
+  },
+  {
+   "id": "d18",
+   "accent": "en-US",
+   "difficulty": 1,
+   "text": "The trash wasn't taken out and there are roaches in the pantry.",
+   "lexicon": [
+    "trash",
+    "roaches",
+    "pantry"
+   ]
+  },
+  {
+   "id": "d19",
+   "accent": "en-AU",
+   "difficulty": 2,
+   "text": "The ute's blocking the driveway and the host reckons it's not his problem.",
+   "lexicon": [
+    "ute",
+    "driveway",
+    "reckons"
+   ],
+   "note": "'ute' = pickup truck; 'reckons' = thinks"
+  },
+  {
+   "id": "d20",
+   "accent": "en-NG",
+   "difficulty": 3,
+   "text": "I have been calling since morning, nobody is picking, and the light has gone off in the whole compound.",
+   "lexicon": [
+    "picking",
+    "light has gone off",
+    "compound"
+   ],
+   "note": "Nigerian English: 'picking' = answering; 'light' = electricity"
+  },
+  {
+   "id": "d21",
+   "accent": "en-IE",
+   "difficulty": 2,
+   "text": "The immersion's not working so there's no hot water, and the place is freezing.",
+   "lexicon": [
+    "immersion",
+    "freezing"
+   ],
+   "note": "Irish/UK: 'immersion' = electric water heater"
+  },
+  {
+   "id": "d22",
+   "accent": "en-GB",
+   "difficulty": 2,
+   "text": "I'd like to dispute the decision — I've got an itemised receipt and a quote from the plumber.",
+   "lexicon": [
+    "dispute",
+    "itemised receipt",
+    "quote"
+   ]
+  },
+  {
+   "id": "d23",
+   "accent": "en-US",
+   "difficulty": 2,
+   "text": "Are you going to reimburse me for the hotel? I'm out of pocket four hundred dollars.",
+   "lexicon": [
+    "reimburse",
+    "out of pocket"
+   ]
+  },
+  {
+   "id": "d24",
+   "accent": "en-ZA",
+   "difficulty": 2,
+   "text": "The robot at the corner is out, so it's chaos, and we've been sitting in traffic for an hour.",
+   "lexicon": [
+    "robot",
+    "chaos"
+   ],
+   "note": "South African: 'robot' = traffic light"
+  },
+  {
+   "id": "d25",
+   "accent": "en-IN",
+   "difficulty": 3,
+   "text": "The flat is on the second floor but there is no lift, and my mother cannot climb; the listing did not mention this anywhere.",
+   "lexicon": [
+    "second floor",
+    "lift",
+    "did not mention"
+   ]
+  },
+  {
+   "id": "d26",
+   "accent": "en-AU",
+   "difficulty": 3,
+   "text": "The smoke alarm's been chirping all night, there's exposed wiring by the kettle, and honestly it doesn't feel safe.",
+   "lexicon": [
+    "smoke alarm",
+    "chirping",
+    "exposed wiring"
+   ]
+  },
+  {
+   "id": "d27",
+   "accent": "en-GB",
+   "difficulty": 3,
+   "text": "We've had no reply from the host since yesterday afternoon, the check-in was meant to be four o'clock, and it's now gone nine.",
+   "lexicon": [
+    "no reply",
+    "meant to be",
+    "gone nine"
+   ]
+  },
+  {
+   "id": "d28",
+   "accent": "en-US",
+   "difficulty": 3,
+   "text": "I'm gonna be honest with you, I already filed a chargeback with my bank, so I just need to know where this stands.",
+   "lexicon": [
+    "chargeback",
+    "where this stands"
+   ]
+  },
+  {
+   "id": "d29",
+   "accent": "en-NG",
+   "difficulty": 2,
+   "text": "The gate man said he was not informed about any guest, so we could not enter.",
+   "lexicon": [
+    "gate man",
+    "not informed",
+    "could not enter"
+   ]
+  },
+  {
+   "id": "d30",
+   "accent": "en-IE",
+   "difficulty": 3,
+   "text": "Grand, so — if you can just send that in writing, I'll leave it with you, but I do need to hear back by tomorrow.",
+   "lexicon": [
+    "grand",
+    "in writing",
+    "leave it with you",
+    "hear back"
+   ]
+  }
+ ]
+}

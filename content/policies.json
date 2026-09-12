@@ -1,0 +1,184 @@
+{
+  "_about": "Referência DERIVADA do Airbnb Help Center (paráfrase, não cópia). Cada item traz a URL oficial. Verifique a fonte antes de citar números ao cliente: políticas mudam.",
+  "_updated": "2026-09-11",
+  "policies": [
+    {
+      "id": "rebooking_refund",
+      "title": "Rebooking & Refund Policy (Reservation Issues)",
+      "source": "https://www.airbnb.com/help/article/2868",
+      "effective": "2025-02-06",
+      "summary": "Se a estadia tem um 'Reservation Issue', o Airbnb ajuda a remarcar ou reembolsa (total ou parcial). Quatro categorias: (1) Host cancela antes do check-in; (2) Host não dá acesso; (3) Acomodação inabitável — não razoavelmente limpa/sanitária, ou com risco à saúde/segurança; (4) Significativamente diferente do anúncio — tipo de espaço, número/tipo de cômodos, localização, presença não divulgada de host/pessoa/pet, amenidades anunciadas ausentes ou sem funcionar (ex.: piscina, banheira, eletrodomésticos, aquecimento, ar-condicionado).",
+      "key_numbers": [
+        "Reportar em até 72 horas após DESCOBRIR o problema",
+        "Antes de acionar o Airbnb, quando viável, o hóspede deve avisar o host e tentar resolver diretamente",
+        "Evidência: fotos, vídeos ou confirmação do host"
+      ],
+      "decision_factors": [
+        "gravidade do problema",
+        "impacto no hóspede",
+        "parte da estadia afetada",
+        "se o hóspede deixou a acomodação",
+        "outros fatores atenuantes",
+        "força da evidência"
+      ],
+      "exclusions": [
+        "Problemas causados pelo próprio hóspede, acompanhantes, convidados ou pets",
+        "Inconvenientes menores (o AirCover cita a torradeira quebrada como exemplo)",
+        "Aplica-se a homes; não a experiences/services"
+      ],
+      "host_side": "Quando há Reservation Issue, o host não recebe o payout ou tem o payout reduzido no valor reembolsado ao hóspede.",
+      "agent_must_say": [
+        "Qual foi o momento em que você descobriu o problema? (ancora as 72h)",
+        "Você conseguiu falar com o anfitrião sobre isso? O que ele respondeu?",
+        "Você tem fotos ou vídeo? Pode enviar pelo app?",
+        "Você ainda está na acomodação ou saiu?"
+      ],
+      "common_misreadings": [
+        "Achar que 72h contam do check-in — contam da DESCOBERTA",
+        "Prometer reembolso total antes de ver evidência e a parte da estadia afetada",
+        "Tratar amenidade menor (torradeira) como Mismatch coberto"
+      ]
+    },
+    {
+      "id": "aircover_guests",
+      "title": "AirCover for guests",
+      "source": "https://www.airbnb.com/help/article/3218",
+      "summary": "Proteção incluída em toda reserva de home. Cobre problemas sérios: host cancela antes do check-in; aquecimento sem funcionar no inverno; número de quartos diferente do anunciado; tipo de imóvel diferente (quarto privado vs casa inteira); amenidades principais anunciadas ausentes (piscina, cozinha). Resolução: remarcação em lugar similar (conforme disponibilidade e preço comparável) ou reembolso total/parcial incluindo taxas de serviço.",
+      "key_numbers": [
+        "72 horas para reportar após a descoberta",
+        "Reembolsos: emitidos quase imediatamente; a maioria chega em até 15 dias (pode variar por método/região)"
+      ],
+      "exclusions": [
+        "Inconvenientes menores (torradeira quebrada)",
+        "Problemas de viagem em geral (atraso por tempestade, mala danificada)"
+      ],
+      "agent_must_say": [
+        "O que o AirCover cobre é o que impede a estadia de ser o que foi anunciado — não é seguro-viagem",
+        "Se cabe remarcação, oferecemos primeiro; se não há opção comparável ou você preferir, reembolso"
+      ]
+    },
+    {
+      "id": "cancellation_policies_guest",
+      "title": "Políticas de cancelamento do anúncio (cancelamento pelo hóspede)",
+      "source": "https://www.airbnb.com/help/article/475",
+      "summary": "O anúncio escolhe uma política; ela governa o que o hóspede recebe ao cancelar por vontade própria.",
+      "tiers": [
+        {"name":"Flexible","full_refund_until":"24h antes do check-in","after":"host recebe a 1ª noite; se cancelar após o check-in, noites usadas + 1"},
+        {"name":"Moderate","full_refund_until":"5 dias antes do check-in","after":"noites usadas + 1 noite + 50% das noites não usadas"},
+        {"name":"Limited","full_refund_until":"14 dias antes","after":"entre 7 e 14 dias: host recebe 50%; menos de 7 dias: host recebe 100%"},
+        {"name":"Firm","full_refund_until":"30 dias antes","after":"conforme regras da política Firm (verificar no anúncio)"},
+        {"name":"Strict","full_refund_until":"somente se cancelar em até 48h da reserva E com 28+ dias até o check-in","after":"host recebe 100% de todas as noites (com limites por noites restantes)"},
+        {"name":"Non-refundable (opção com desconto)","full_refund_until":"nunca (salvo Reservation Issue ou circunstâncias extenuantes)","after":"sem reembolso"}
+      ],
+      "agent_must_say": [
+        "Sua reserva foi feita na política <tier>; pela política, o reembolso seria <valor>",
+        "Isso muda se houver um Reservation Issue documentado — nesse caso entra outra política",
+        "Sempre confirmar a política exata no anúncio antes de citar percentuais"
+      ],
+      "common_misreadings": [
+        "Aplicar a regra 'genérica' sem checar a política do anúncio específico",
+        "Confundir cancelamento voluntário com Reservation Issue"
+      ]
+    },
+    {
+      "id": "host_cancellation_policy",
+      "title": "Host Cancellation Policy (cancelamento pelo anfitrião)",
+      "source": "https://www.airbnb.com/help/article/990",
+      "summary": "Host que cancela sem razão válida sofre penalidade e não recebe payout. Razões válidas: Major Disruptive Event ou motivos fora do controle — exigem documentação.",
+      "penalties": [
+        {"window":"48h ou menos antes do check-in (ou depois)","fee":"50% do valor das noites não utilizadas"},
+        {"window":"entre 48h e 30 dias antes","fee":"25% do valor da reserva"},
+        {"window":"mais de 30 dias antes","fee":"10% do valor da reserva"},
+        {"window":"mínimo em qualquer caso","fee":"USD 50"}
+      ],
+      "other_consequences": ["calendário bloqueado nas datas", "perda de Superhost", "suspensão ou remoção do anúncio/conta"],
+      "guest_side": "Hóspede é reembolsado integralmente e recebe ajuda para remarcar.",
+      "agent_must_say": [
+        "Ao ligar para o host: explicar que a política prevê taxa por faixa de prazo e que documentação pode isentar",
+        "Ao falar com o guest: reembolso integral + ajuda para remarcar"
+      ]
+    },
+    {
+      "id": "host_damage_protection",
+      "title": "Host Damage Protection (AirCover for Hosts)",
+      "source": "https://www.airbnb.com/help/article/2869",
+      "summary": "Cobre perda/dano físico à propriedade elegível causado diretamente pelo hóspede responsável (incluindo pets), limpeza extra por manchas/fumaça/convidados não autorizados, e perda de renda de reservas canceladas por causa do dano. Teto: USD 3.000.000.",
+      "key_numbers": [
+        "14 dias após o check-out: host deve pedir ao hóspede via Resolution Center primeiro",
+        "30 dias após o check-out: prazo máximo para enviar o formulário completo ao Airbnb",
+        "Teto USD 3.000.000"
+      ],
+      "evidence": ["recibos", "fotos e vídeos", "inventário com descrição, data de compra e condição", "orçamentos detalhados de reparo", "comprovante de propriedade", "boletim de ocorrência (roubo/crime)"],
+      "exclusions": [
+        "Danos descobertos após o check-out do hóspede (sem nexo)",
+        "Desgaste natural (wear and tear) e deterioração",
+        "MOFO, fungos e micróbios",
+        "Atos da natureza (terremoto, clima)",
+        "Consumíveis (exceto os especificados)",
+        "Bens fora da acomodação; veículos/embarcações em movimento"
+      ],
+      "agent_must_say": [
+        "Ao host: o que é desgaste natural não é dano indenizável",
+        "Ao host: precisa ter pedido ao hóspede no Resolution Center em 14 dias",
+        "Ao guest acusado: você tem direito de responder; a decisão considera evidência dos dois lados"
+      ],
+      "common_misreadings": [
+        "Achar que mofo é indenizável — está excluído",
+        "Perder o prazo de 14 dias do Resolution Center"
+      ]
+    },
+    {
+      "id": "monthly_stays",
+      "title": "Estadias mensais (28+ noites) — cancelamento pelo hóspede",
+      "source": "https://www.airbnb.com/help/article/1361",
+      "summary": "Aplica-se política de longa duração. Primeiro pagamento pode ser não reembolsável. Se cancelar após o início da estadia, o mês seguinte é não reembolsável. Host pode oferecer reembolso extra voluntariamente. Alternativa: pedir mudança de datas.",
+      "agent_must_say": ["Confirmar se a reserva é 28+ noites — muda a política inteira"]
+    },
+    {
+      "id": "resolution_center",
+      "title": "Resolution Center",
+      "source": "https://www.airbnb.com/help/article/767",
+      "summary": "Canal para host e guest pedirem ou enviarem dinheiro um ao outro depois do início da reserva (ex.: host manda reembolso parcial por amenidade ausente; guest paga por uma caneca quebrada).",
+      "key_numbers": [
+        "Até 60 dias após o check-out para abrir um pedido",
+        "Reembolsos: quase imediatos; maioria chega em até 15 dias",
+        "Em mediação, a parte tem 1 hora para responder"
+      ],
+      "limits": ["Não serve para cobrar custos adicionais nem para reembolsar noites, contagem de hóspedes ou pets"],
+      "agent_must_say": ["Explicar ao guest/host como chegar: Trips (guest) ou Today (host) → reserva → Resolution Center"]
+    },
+    {
+      "id": "checkin_trouble",
+      "title": "Problemas no check-in",
+      "source": "https://www.airbnb.com/help/article/4123",
+      "summary": "Hóspede deve ligar/mensagem para o host primeiro. Se o horário de check-in já passou, não consegue localizar/acessar e o host não respondeu em tempo razoável, contatar o Airbnb. Isso é Access Failure.",
+      "agent_must_say": [
+        "Que horas era o check-in? Que horas você tentou falar com o host? Ele respondeu?",
+        "Você está em segurança agora? Precisa de acomodação para esta noite?",
+        "Vamos tentar o host de novo enquanto conversamos; se não houver resposta, buscamos remarcação"
+      ]
+    },
+    {
+      "id": "reporting_issue_flow",
+      "title": "Fluxo para reportar problema durante a estadia",
+      "source": "https://www.airbnb.com/help/article/248",
+      "summary": "1) Documentar (fotos/vídeo). 2) Contatar o host — melhor ponto de contato. 3) Se sério e o host não resolve, pedir ajuda ao Airbnb. Se o AirCover cobrir: remarcação em lugar similar (conforme disponibilidade e preço comparável) ou reembolso total/parcial.",
+      "key_numbers": ["72 horas a partir da descoberta"],
+      "agent_must_say": ["Guiar o hóspede pelos três passos; confirmar cada um antes de decidir"]
+    },
+    {
+      "id": "cleanliness",
+      "title": "Acomodação suja no check-in",
+      "source": "https://www.airbnb.com/help/article/2993",
+      "summary": "Documentar, avisar o host, dar chance de corrigir quando razoável; se não for razoavelmente limpo e sanitário, pode ser Uninhabitable Condition.",
+      "agent_must_say": ["Diferenciar 'não do meu padrão' de 'não razoavelmente limpo/sanitário' — com evidência"]
+    }
+  ],
+  "decision_tree": [
+    {"q":"O hóspede cancelou por vontade própria, sem problema na acomodação?","yes":"cancellation_policies_guest (ou monthly_stays se 28+ noites)","no":"próxima"},
+    {"q":"O host cancelou antes do check-in?","yes":"host_cancellation_policy + reembolso integral ao guest","no":"próxima"},
+    {"q":"Houve problema na acomodação (acesso, inabitável, diferente do anúncio)?","yes":"rebooking_refund → checar 72h, contato com host, evidência, parte afetada","no":"próxima"},
+    {"q":"É host pedindo indenização por dano?","yes":"host_damage_protection → 14d Resolution Center, 30d formulário, exclusões","no":"próxima"},
+    {"q":"É disputa de valor entre as partes após a estadia?","yes":"resolution_center (60 dias)","no":"escalar / esclarecer"}
+  ]
+}

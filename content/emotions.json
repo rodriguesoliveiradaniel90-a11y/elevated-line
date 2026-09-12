@@ -1,0 +1,773 @@
+{
+ "_about": "Matriz de soft skills: como reconhecer o estado emocional do cliente pela fala e o que fazer/dizer/evitar. 'trap' = o erro que o agente costuma cometer nesse estado.",
+ "emotions": [
+  {
+   "id": "angry",
+   "label": "Anger",
+   "label_pt": "Raiva",
+   "color": "crit",
+   "signals": [
+    "fala alta e rápida",
+    "interrupções",
+    "'this is unacceptable'",
+    "palavrões",
+    "'I want to speak to your manager'"
+   ],
+   "needs": "ser levado a sério e ver ação, não desculpas genéricas",
+   "do": [
+    "deixar terminar sem interromper",
+    "reconhecer o fato específico, não a emoção em geral",
+    "dizer o que você VAI fazer agora, com verbo e prazo",
+    "baixar o volume e desacelerar — o cliente tende a espelhar"
+   ],
+   "dont": [
+    "'please calm down'",
+    "'I understand how you feel' (soa script)",
+    "justificar a empresa",
+    "pedir desculpas repetidamente"
+   ],
+   "phrases": [
+    "You're right to be upset — arriving at eleven at night and not being able to get in is not acceptable, and I'm going to work on this with you right now.",
+    "Let me make sure I have this exactly right, because I don't want to get any part of it wrong.",
+    "Here's what I can do in the next five minutes."
+   ],
+   "trap": "Defender a política antes de reconhecer o fato. A ordem certa é fato → ação → política.",
+   "sequence": [
+    "ouvir até o fim",
+    "nomear o fato específico",
+    "assumir a próxima ação",
+    "só então explicar limites"
+   ]
+  },
+  {
+   "id": "frustrated",
+   "label": "Frustration",
+   "label_pt": "Frustração",
+   "color": "warn",
+   "signals": [
+    "suspiros",
+    "'I've already explained this'",
+    "'nobody has called me back'",
+    "tom cansado mais que bravo"
+   ],
+   "needs": "não repetir tudo de novo; sentir progresso",
+   "do": [
+    "mostrar que você LEU o histórico antes de perguntar",
+    "resumir o caso de volta em duas frases",
+    "assumir a continuidade: 'from here, I'm your point of contact'"
+   ],
+   "dont": [
+    "'can you tell me what happened?' sem ler o caso",
+    "transferir sem contexto",
+    "prometer callback que não vai acontecer"
+   ],
+   "phrases": [
+    "I can see this is your third contact about this, and I'm sorry you've had to repeat yourself. I've read the notes — let me confirm what I have.",
+    "You shouldn't have to chase this. I'm going to own it from here."
+   ],
+   "trap": "Começar do zero. O cliente frustrado já contou a história; peça só o que falta.",
+   "sequence": [
+    "reconhecer o histórico",
+    "resumir",
+    "assumir posse",
+    "dar um próximo passo com prazo"
+   ]
+  },
+  {
+   "id": "panicked",
+   "label": "Panic",
+   "label_pt": "Pânico",
+   "color": "crit",
+   "signals": [
+    "fala entrecortada",
+    "'I don't know what to do'",
+    "referência a hora/segurança/crianças",
+    "perguntas em cascata"
+   ],
+   "needs": "segurança imediata e uma instrução por vez",
+   "do": [
+    "primeiro: 'are you safe right now?'",
+    "uma instrução por vez, curta",
+    "voz firme e lenta",
+    "confirmar que você vai ficar na linha"
+   ],
+   "dont": [
+    "explicar política agora",
+    "listar opções demais",
+    "transferir"
+   ],
+   "phrases": [
+    "First thing: are you somewhere safe right now? Good. I'm staying on the line with you.",
+    "Let's do one thing at a time. Right now, I need the address you're at."
+   ],
+   "trap": "Tentar resolver o caso inteiro. Em pânico, o objetivo é estabilizar; o caso vem depois.",
+   "sequence": [
+    "segurança",
+    "estabilizar",
+    "um passo por vez",
+    "só depois: caso"
+   ]
+  },
+  {
+   "id": "crying",
+   "label": "Tears",
+   "label_pt": "Choro",
+   "color": "warn",
+   "signals": [
+    "voz embargada",
+    "pausas longas",
+    "pedido de desculpa por chorar"
+   ],
+   "needs": "tempo e permissão para se recompor sem constrangimento",
+   "do": [
+    "dar tempo em silêncio (3–5 s)",
+    "normalizar: 'take your time'",
+    "voz mais baixa",
+    "oferecer continuar por mensagem se preferir"
+   ],
+   "dont": [
+    "'don't cry'",
+    "preencher o silêncio com política",
+    "apressar"
+   ],
+   "phrases": [
+    "Take your time — there's no rush at all. I'm here.",
+    "We can do this at whatever pace works for you."
+   ],
+   "trap": "Ficar desconfortável com o silêncio e falar demais.",
+   "sequence": [
+    "silêncio",
+    "permissão",
+    "ritmo do cliente",
+    "continuar"
+   ]
+  },
+  {
+   "id": "grieving",
+   "label": "Grief",
+   "label_pt": "Luto",
+   "color": "warn",
+   "signals": [
+    "viagem por funeral/doença",
+    "cancelamento por morte na família",
+    "voz apagada"
+   ],
+   "needs": "humanidade primeiro; burocracia depois e com o mínimo de atrito",
+   "do": [
+    "condolências curtas e sinceras",
+    "explicar que existe caminho para circunstâncias extenuantes e o que precisa",
+    "reduzir ao mínimo o que o cliente precisa fazer"
+   ],
+   "dont": [
+    "condolências longas ou performáticas",
+    "pedir documentação de forma fria",
+    "citar percentuais antes de explicar o caminho"
+   ],
+   "phrases": [
+    "I'm very sorry for your loss. Let me take as much of this off your plate as I can.",
+    "There is a process for situations like this. I'll walk you through exactly what's needed, and it's less than you might think."
+   ],
+   "trap": "Ir direto para 'we'll need a death certificate'.",
+   "sequence": [
+    "condolências",
+    "caminho existe",
+    "mínimo necessário",
+    "você cuida do resto"
+   ]
+  },
+  {
+   "id": "entitled",
+   "label": "Entitlement",
+   "label_pt": "Exigência / 'eu mereço'",
+   "color": "warn",
+   "signals": [
+    "'I'm a Superhost'",
+    "'I've spent thousands on this platform'",
+    "'I know my rights'",
+    "exigência de exceção"
+   ],
+   "needs": "ser reconhecido, mas a regra não muda por status",
+   "do": [
+    "reconhecer o histórico com a plataforma genuinamente",
+    "separar 'o que reconheço' de 'o que a política permite'",
+    "oferecer o que está dentro da regra com generosidade"
+   ],
+   "dont": [
+    "ceder à pressão fora da política",
+    "ironizar o status",
+    "dizer 'rules are rules'"
+   ],
+   "phrases": [
+    "I can see you've been with us a long time, and I want to get this right for you. What I'm able to do is X — and I'll do that fully.",
+    "Your history matters to us. It doesn't change what the policy allows here, but it does change how carefully I'm going to handle it."
+   ],
+   "trap": "Confundir reconhecimento com exceção.",
+   "sequence": [
+    "reconhecer status",
+    "limite claro",
+    "tudo que cabe na regra",
+    "sem promessas fora dela"
+   ]
+  },
+  {
+   "id": "confused",
+   "label": "Confusion",
+   "label_pt": "Confusão",
+   "color": "good",
+   "signals": [
+    "'wait, so what does that mean?'",
+    "repete perguntas",
+    "mistura termos (AirCover, refund, cancellation)"
+   ],
+   "needs": "uma coisa por vez, sem jargão, com checagem",
+   "do": [
+    "definir cada termo na primeira vez",
+    "checar compreensão: 'does that make sense so far?'",
+    "resumir em três pontos no fim"
+   ],
+   "dont": [
+    "siglas sem explicar",
+    "falar rápido",
+    "empilhar opções"
+   ],
+   "phrases": [
+    "Let me explain that in plain terms, and stop me if anything isn't clear.",
+    "So, in short: one, two, three. Shall I send that in writing as well?"
+   ],
+   "trap": "Explicar a política inteira quando o cliente só precisa de uma resposta.",
+   "sequence": [
+    "um termo por vez",
+    "checar",
+    "resumir",
+    "enviar por escrito"
+   ]
+  },
+  {
+   "id": "elderly_slow",
+   "label": "Older caller / slower pace",
+   "label_pt": "Pessoa mais velha / ritmo lento",
+   "color": "good",
+   "signals": [
+    "pede para repetir",
+    "dificuldade com o app",
+    "fala pausada",
+    "desconforto com tecnologia"
+   ],
+   "needs": "paciência genuína e passos concretos",
+   "do": [
+    "falar devagar sem infantilizar",
+    "um passo por vez, esperando confirmação",
+    "oferecer fazer pelo cliente o que for possível",
+    "perguntar se há alguém que possa ajudar com o app"
+   ],
+   "dont": [
+    "apressar",
+    "'just tap the button'",
+    "suspirar"
+   ],
+   "phrases": [
+    "No problem at all — I'll go step by step, and you tell me when you're ready for the next one.",
+    "Would it help if I did that part on my end?"
+   ],
+   "trap": "Assumir que a lentidão é falta de inteligência.",
+   "sequence": [
+    "ritmo do cliente",
+    "passo",
+    "confirmação",
+    "próximo"
+   ]
+  },
+  {
+   "id": "language_barrier",
+   "label": "Language barrier",
+   "label_pt": "Barreira de idioma",
+   "color": "good",
+   "signals": [
+    "inglês limitado",
+    "tradução literal",
+    "silêncio após pergunta complexa",
+    "'sorry, my English'"
+   ],
+   "needs": "frases curtas, vocabulário simples, confirmação frequente",
+   "do": [
+    "frases curtas, sem phrasal verbs",
+    "reformular em vez de repetir mais alto",
+    "confirmar por escrito no app",
+    "perguntar se prefere outro idioma disponível"
+   ],
+   "dont": [
+    "falar mais alto",
+    "gírias",
+    "perguntas duplas"
+   ],
+   "phrases": [
+    "I'll keep this simple. Is the problem with the KEY, or with the DOOR?",
+    "I will write this in the app too, so you have it."
+   ],
+   "trap": "Repetir a mesma frase mais alto.",
+   "sequence": [
+    "simplificar",
+    "uma pergunta por vez",
+    "confirmar",
+    "escrever"
+   ]
+  },
+  {
+   "id": "sarcastic",
+   "label": "Sarcasm",
+   "label_pt": "Sarcasmo",
+   "color": "warn",
+   "signals": [
+    "'oh, great, another one'",
+    "'sure, that's helpful'",
+    "riso seco"
+   ],
+   "needs": "ser tratado como adulto; ver competência, não simpatia forçada",
+   "do": [
+    "não entrar no jogo nem se defender",
+    "responder ao conteúdo, não ao tom",
+    "ser direto e competente"
+   ],
+   "dont": [
+    "rir junto",
+    "'I sense some frustration'",
+    "ficar defensivo"
+   ],
+   "phrases": [
+    "Fair enough. Let me show you rather than tell you — here's what I'm doing right now.",
+    "I'd rather give you something concrete than more words."
+   ],
+   "trap": "Tentar 'quebrar o gelo'. Sarcasmo cede a competência, não a simpatia.",
+   "sequence": [
+    "ignorar o tom",
+    "conteúdo",
+    "ação visível",
+    "seguir"
+   ]
+  },
+  {
+   "id": "threatening",
+   "label": "Threats (review / lawyer / chargeback / social media)",
+   "label_pt": "Ameaças",
+   "color": "crit",
+   "signals": [
+    "'I'll leave a one-star review'",
+    "'my lawyer'",
+    "'I'll dispute it with my bank'",
+    "'I'll post this everywhere'"
+   ],
+   "needs": "perceber que a ameaça não é necessária para ser levado a sério",
+   "do": [
+    "reconhecer o direito do cliente sem reagir à ameaça",
+    "manter o foco no que você pode fazer",
+    "documentar no caso",
+    "se houver ameaça pessoal: seguir protocolo de segurança da operação"
+   ],
+   "dont": [
+    "pedir para não avaliar mal",
+    "argumentar sobre a ameaça",
+    "ceder por medo",
+    "'that's your right' em tom seco"
+   ],
+   "phrases": [
+    "You're free to do that, of course. What I'd like to do first is give you a reason not to need to — let me show you what I can resolve today.",
+    "I'll note everything we discussed on the case so it's on record."
+   ],
+   "trap": "Negociar contra a ameaça. Trate o caso; a ameaça perde força quando o caso anda.",
+   "sequence": [
+    "não reagir",
+    "foco no caso",
+    "ação",
+    "registrar"
+   ]
+  },
+  {
+   "id": "talking_over",
+   "label": "Talks over you",
+   "label_pt": "Fala por cima",
+   "color": "warn",
+   "signals": [
+    "não deixa terminar frases",
+    "monólogo",
+    "repete o mesmo ponto"
+   ],
+   "needs": "ser ouvido completamente antes de ouvir",
+   "do": [
+    "parar de falar e deixar esgotar",
+    "anotar enquanto fala",
+    "retomar com o nome: 'Mr. Okafor, may I…'",
+    "frases curtas quando retomar"
+   ],
+   "dont": [
+    "falar ao mesmo tempo",
+    "aumentar o volume",
+    "'if you let me finish'"
+   ],
+   "phrases": [
+    "I want to hear all of it — go on.",
+    "May I take thirty seconds to tell you what I'm going to do? Then I'm all yours again."
+   ],
+   "trap": "Disputar o turno de fala. Você perde sempre.",
+   "sequence": [
+    "ceder",
+    "anotar",
+    "pedir turno curto",
+    "cumprir"
+   ]
+  },
+  {
+   "id": "repeating",
+   "label": "Repeats themselves",
+   "label_pt": "Repete a mesma coisa",
+   "color": "good",
+   "signals": [
+    "mesma frase 3+ vezes",
+    "não registra suas respostas"
+   ],
+   "needs": "sinal explícito de que foi entendido",
+   "do": [
+    "repetir de volta com as palavras do cliente",
+    "escrever no app e dizer que escreveu",
+    "perguntar: 'is there anything I've missed?'"
+   ],
+   "dont": [
+    "'as I said…'",
+    "seguir sem confirmar"
+   ],
+   "phrases": [
+    "Let me say it back to you so you know I've got it: …. Is that exactly it?",
+    "I've written that on the case, word for word."
+   ],
+   "trap": "Achar que o cliente não ouviu. Ele não se sentiu ouvido.",
+   "sequence": [
+    "espelhar",
+    "confirmar",
+    "registrar",
+    "avançar"
+   ]
+  },
+  {
+   "id": "escalation_demand",
+   "label": "Demands a supervisor",
+   "label_pt": "Exige supervisor",
+   "color": "warn",
+   "signals": [
+    "'get me your manager'",
+    "'I want someone who can actually help'"
+   ],
+   "needs": "acreditar que quem está na linha pode resolver",
+   "do": [
+    "não recusar nem ceder de imediato: 'I can do that. Before I do, let me tell you what I'm able to resolve myself, so you don't have to start over'",
+    "demonstrar autoridade real (o que você PODE aprovar)",
+    "se persistir, escalar com resumo completo"
+   ],
+   "dont": [
+    "'there's no supervisor available'",
+    "transferir sem contexto",
+    "levar para o pessoal"
+   ],
+   "phrases": [
+    "I can arrange that. First, let me tell you what I'm authorised to do right now — it may save you a second call.",
+    "If you'd still like a supervisor after that, I'll set it up and brief them fully."
+   ],
+   "trap": "Bloquear a escalada. Ofereça valor primeiro; escale sem drama depois.",
+   "sequence": [
+    "aceitar em princípio",
+    "mostrar autoridade própria",
+    "resolver ou escalar com resumo"
+   ]
+  },
+  {
+   "id": "silent",
+   "label": "Monosyllabic / silent",
+   "label_pt": "Monossilábico / calado",
+   "color": "good",
+   "signals": [
+    "'yeah', 'ok', 'fine'",
+    "pausas longas",
+    "respostas de uma palavra"
+   ],
+   "needs": "perguntas abertas e permissão para discordar",
+   "do": [
+    "perguntas abertas: 'what would a good outcome look like for you?'",
+    "tolerar pausas",
+    "checar se está satisfeito de verdade"
+   ],
+   "dont": [
+    "preencher com fala",
+    "assumir concordância"
+   ],
+   "phrases": [
+    "I want to make sure this actually works for you. What would you need to feel this is sorted?",
+    "You've gone quiet — did I miss something?"
+   ],
+   "trap": "Ler 'ok' como acordo.",
+   "sequence": [
+    "pergunta aberta",
+    "pausa",
+    "confirmar satisfação real"
+   ]
+  },
+  {
+   "id": "suspicious",
+   "label": "Suspects a scam",
+   "label_pt": "Desconfiado (acha que é golpe)",
+   "color": "warn",
+   "signals": [
+    "'how do I know you're really Airbnb?'",
+    "recusa dar dados",
+    "'I'll call back through the app'"
+   ],
+   "needs": "verificação que ele controla",
+   "do": [
+    "elogiar a cautela genuinamente",
+    "oferecer canal verificável (mensagem no app, número oficial)",
+    "nunca pedir senha/cartão",
+    "dar o número do caso para ele conferir"
+   ],
+   "dont": [
+    "insistir",
+    "pedir dados sensíveis",
+    "levar para o pessoal"
+   ],
+   "phrases": [
+    "That's exactly the right instinct. I'll send a message through the app right now so you can see it's us — and you're welcome to call back through the official channel.",
+    "I'll never ask for your password or card details."
+   ],
+   "trap": "Tentar convencer. Deixe-o verificar.",
+   "sequence": [
+    "validar cautela",
+    "canal verificável",
+    "nunca dados sensíveis",
+    "aguardar"
+   ]
+  },
+  {
+   "id": "embarrassed",
+   "label": "Embarrassed (caused the problem)",
+   "label_pt": "Envergonhado (causou o problema)",
+   "color": "good",
+   "signals": [
+    "'it was kind of my fault'",
+    "riso nervoso",
+    "minimiza o dano"
+   ],
+   "needs": "honestidade sem julgamento",
+   "do": [
+    "agradecer a honestidade",
+    "explicar o processo sem moralizar",
+    "apresentar o caminho mais leve dentro da regra"
+   ],
+   "dont": [
+    "'well, you should have…'",
+    "tom de bronca"
+   ],
+   "phrases": [
+    "Thanks for being straight with me — that genuinely makes this easier. Here's how this normally goes.",
+    "These things happen. Let's just get it sorted."
+   ],
+   "trap": "Qualquer tom de julgamento fecha o cliente.",
+   "sequence": [
+    "agradecer",
+    "processo",
+    "caminho leve"
+   ]
+  },
+  {
+   "id": "exhausted",
+   "label": "Exhausted (late, long day)",
+   "label_pt": "Exausto",
+   "color": "good",
+   "signals": [
+    "'I just want to sleep'",
+    "meia-noite local",
+    "voz arrastada"
+   ],
+   "needs": "decisão rápida para esta noite; o resto amanhã",
+   "do": [
+    "separar 'esta noite' de 'o caso'",
+    "resolver o imediato",
+    "marcar o resto por mensagem"
+   ],
+   "dont": [
+    "processar o caso inteiro agora"
+   ],
+   "phrases": [
+    "Let's sort tonight first, and I'll message you tomorrow with the rest so you don't have to stay on the line.",
+    "What do you need in the next hour?"
+   ],
+   "trap": "Ser completo quando o cliente precisa de rápido.",
+   "sequence": [
+    "hoje",
+    "depois",
+    "mensagem"
+   ]
+  },
+  {
+   "id": "host_defensive",
+   "label": "Host: defensive (accused)",
+   "label_pt": "Host defensivo",
+   "color": "warn",
+   "signals": [
+    "'that guest is lying'",
+    "'my cleaner was there that morning'",
+    "lista de reviews positivos"
+   ],
+   "needs": "sentir que sua versão conta e que o processo é justo",
+   "do": [
+    "dizer que você ligou justamente para ouvir o lado dele",
+    "pedir evidência do lado dele (fotos pré check-in, mensagens)",
+    "explicar critérios objetivos da decisão",
+    "não revelar mais do que o necessário do outro lado"
+   ],
+   "dont": [
+    "'the guest says…' como se fosse fato",
+    "decidir na ligação",
+    "tom de acusação"
+   ],
+   "phrases": [
+    "I'm calling because your side of this matters, and I want it on the record before anything is decided.",
+    "Do you have photos from before check-in, or messages with the guest? Those help a lot."
+   ],
+   "trap": "Soar como se a decisão já estivesse tomada.",
+   "sequence": [
+    "ouvir",
+    "evidência do host",
+    "critérios",
+    "próximos passos e prazo"
+   ]
+  },
+  {
+   "id": "host_indignant",
+   "label": "Host: indignant (losing payout)",
+   "label_pt": "Host indignado (vai perder pagamento)",
+   "color": "crit",
+   "signals": [
+    "'you're taking money out of my pocket'",
+    "'I'll delist'",
+    "'whose side are you on?'"
+   ],
+   "needs": "entender o porquê com clareza e ter um caminho de recurso",
+   "do": [
+    "explicar a base da decisão com os fatos",
+    "ser claro sobre o valor e o motivo",
+    "apresentar o caminho de contestação e o prazo",
+    "não discutir a política, explicar como ela se aplica"
+   ],
+   "dont": [
+    "'I'm just following policy'",
+    "pedir desculpa pela decisão",
+    "prometer revisão que não existe"
+   ],
+   "phrases": [
+    "I want to be completely clear about what was decided and why, because you deserve that. The payout was reduced by X because Y.",
+    "If you believe something was missed, here's how to dispute it and the timeframe."
+   ],
+   "trap": "Amaciar a notícia até ela ficar confusa. Clareza é respeito.",
+   "sequence": [
+    "notícia clara",
+    "motivo",
+    "valor",
+    "recurso e prazo"
+   ]
+  },
+  {
+   "id": "host_pleading",
+   "label": "Host: pleading (small operator)",
+   "label_pt": "Host implorando (pequeno anfitrião)",
+   "color": "warn",
+   "signals": [
+    "'this is my only income'",
+    "'please, I have kids'",
+    "voz trêmula"
+   ],
+   "needs": "humanidade e informação exata sobre o que ainda pode fazer",
+   "do": [
+    "reconhecer o impacto real",
+    "ser exato sobre o que depende dele (evidência, prazos)",
+    "não dar esperança falsa"
+   ],
+   "dont": [
+    "'I wish I could help' vazio",
+    "prometer o que não pode"
+   ],
+   "phrases": [
+    "I hear how much this matters, and I'm not going to pretend otherwise. What I can do is make sure nothing on your side is missed — here's exactly what would help.",
+    "I can't change the outcome on this call, but I can make sure your case is as strong as it can be."
+   ],
+   "trap": "Ceder emocionalmente e prometer.",
+   "sequence": [
+    "reconhecer",
+    "exatidão",
+    "o que ele controla",
+    "sem falsa esperança"
+   ]
+  },
+  {
+   "id": "disappointed",
+   "label": "Disappointment",
+   "label_pt": "Chateação / decepção",
+   "color": "warn",
+   "signals": [
+    "tom baixo, sem raiva",
+    "'I was really looking forward to this'",
+    "suspiros",
+    "'it is what it is'"
+   ],
+   "needs": "ter a perda reconhecida antes de ouvir a solução; não ser tratado como um ticket",
+   "do": [
+    "nomear o que foi perdido (a viagem, a comemoração, o descanso)",
+    "ir direto ao que dá para fazer, sem inflar",
+    "dar uma escolha real, mesmo pequena"
+   ],
+   "dont": [
+    "'at least…' (minimiza)",
+    "excesso de alegria no tom",
+    "prometer compensar o que não se compensa"
+   ],
+   "phrases": [
+    "I'm sorry — you'd planned this for months, and it didn't go the way it should have.",
+    "I can't give you the weekend back, but here's what I can do, and I'll do it properly."
+   ],
+   "trap": "Tratar a decepção como se fosse raiva contida e ficar defensivo. Decepção pede reconhecimento, não justificativa.",
+   "sequence": [
+    "nomear a perda",
+    "o que dá para fazer",
+    "escolha",
+    "próximo passo"
+   ]
+  },
+  {
+   "id": "calm",
+   "label": "Calm / matter-of-fact",
+   "label_pt": "Calmo / objetivo",
+   "color": "good",
+   "signals": [
+    "fala pausada",
+    "dá os fatos em ordem",
+    "sem carga emocional"
+   ],
+   "needs": "eficiência e precisão; não quer conversa, quer resolução",
+   "do": [
+    "espelhar o ritmo: objetivo e claro",
+    "confirmar os fatos em uma frase",
+    "ir para a política e o próximo passo rápido"
+   ],
+   "dont": [
+    "empatia performática ('I can only imagine…')",
+    "alongar"
+   ],
+   "phrases": [
+    "Got it — access failure at 11:40, host unreachable, you're inside the window. Here's what happens next.",
+    "I'll keep this brief."
+   ],
+   "trap": "Aplicar o roteiro de empatia em quem não pediu. Soa falso e perde tempo.",
+   "sequence": [
+    "confirmar fatos",
+    "política",
+    "próximo passo",
+    "fechar"
+   ]
+  }
+ ]
+}

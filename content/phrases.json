@@ -1,0 +1,670 @@
+{
+ "_about": "Banco de frases por FASE da chamada. 'warm' = versão mais acolhedora e natural; 'neutral' = versão sóbria. 'why' explica a escolha. 'avoid' lista o que soa robótico, defensivo ou juridicamente arriscado.",
+ "phases": [
+  {
+   "id": "opening",
+   "label": "Opening",
+   "label_pt": "Apresentação",
+   "inbound": [
+    {
+     "warm": "Thank you for calling Airbnb, this is {name} with the Elevated Support team. Who am I speaking with today?",
+     "why": "Nome + equipe + pergunta aberta pelo nome do cliente. 'Elevated Support' sinaliza que ele chegou a alguém com autoridade."
+    },
+    {
+     "neutral": "Airbnb Elevated Support, {name} speaking. How can I help?",
+     "why": "Curto, para quando o cliente já vem falando."
+    }
+   ],
+   "outbound_guest": [
+    {
+     "warm": "Hi, is this Ms. Okafor? This is {name} calling from Airbnb's Elevated Support team about your stay at the flat in Lisbon — is now a good time to talk for a few minutes?",
+     "why": "Confirma a pessoa, diz quem você é, diz sobre o quê, e pede permissão. Quatro coisas em uma frase; sem elas o cliente fica em guarda."
+    },
+    {
+     "neutral": "Good afternoon, this is {name} from Airbnb Elevated Support. I'm calling about case reference 4471. Do you have a moment?",
+     "why": "Versão sóbria com número de caso."
+    }
+   ],
+   "outbound_host": [
+    {
+     "warm": "Hi Marco, this is {name} from Airbnb's Elevated Support team. I'm calling about the reservation from the 14th to the 18th — I wanted to hear your side before anything moves forward. Is this a good time?",
+     "why": "'Hear your side' desarma a defensiva antes que ela comece."
+    },
+    {
+     "neutral": "This is {name} from Airbnb Elevated Support, regarding reservation HMK5T2. I need about ten minutes of your time — is now okay?",
+     "why": "Direto, com estimativa de tempo."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Hello? Yes? Airbnb.",
+     "why": "Sem nome, sem equipe, sem estrutura."
+    },
+    {
+     "text": "I'm calling to inform you that…",
+     "why": "Soa como notificação automática; dispara defesa."
+    }
+   ]
+  },
+  {
+   "id": "thanks",
+   "label": "Thanking for the contact",
+   "label_pt": "Agradecer o contato",
+   "lines": [
+    {
+     "warm": "Thanks for reaching out — I know it takes time to explain all this, and I appreciate it.",
+     "why": "Reconhece o esforço do cliente, não só o contato."
+    },
+    {
+     "warm": "I'm glad you called rather than letting this sit. Let's get it looked at properly.",
+     "why": "Valida a decisão de ligar."
+    },
+    {
+     "neutral": "Thank you for contacting us about this.",
+     "why": "Neutro, para chat."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Thank you for your patience.",
+     "why": "Quando o cliente NÃO teve paciência, soa irônico. Use só se for verdade."
+    }
+   ]
+  },
+  {
+   "id": "auth",
+   "label": "Authentication",
+   "label_pt": "Autenticação (crítico)",
+   "principle": "Toda chamada começa aqui, antes de qualquer informação da conta. Três caminhos: (1) já autenticado pela Alura → nome e sobrenome; (2) pré-autenticado → PIN no número verificado; (3) manual → nome completo, telefone, data de nascimento e os 4 ÚLTIMOS dígitos do método de pagamento. Nunca: senha, cartão completo, CVV. Não autenticar é motivo de desligamento.",
+   "alura": [
+    {
+     "warm": "Before we go any further, I just need to confirm the account — could I have your first and last name, please?",
+     "why": "Alura já verificou; você só confirma. 'Before we go any further' sinaliza que é obrigatório, não desconfiança."
+    },
+    {
+     "warm": "Thank you, {name_customer} — that matches what I have here. I've got your account in front of me.",
+     "why": "Diga explicitamente que confirmou. Isso fecha a etapa na gravação."
+    }
+   ],
+   "pin": [
+    {
+     "warm": "I need to verify the account before we continue. I'm sending a PIN to the phone number ending in 4471 right now — could you read it back to me when it arrives?",
+     "why": "Diz o que vai fazer, para onde vai, e o que espera. Os 4 últimos dígitos do telefone ajudam o cliente a confiar."
+    },
+    {
+     "warm": "Perfect — that matches. You're verified, and I can see the reservation now.",
+     "why": "Fecha a etapa com 'verified'."
+    },
+    {
+     "neutral": "It can take up to a minute to arrive. If it doesn't, I'll verify you another way — nothing to worry about.",
+     "why": "Antecipa o atraso do SMS sem abrir margem para pular a etapa."
+    }
+   ],
+   "manual": [
+    {
+     "warm": "As you're not calling from the number we have on file, I'll need to verify the account with a few details — it's a standard security step. Could I have your full name, the phone number on the account, your date of birth, and the last four digits of the payment method?",
+     "why": "Explica POR QUE é manual (número diferente) e nomeia os quatro dados de uma vez, para o cliente não sentir interrogatório."
+    },
+    {
+     "warm": "Thank you — that all matches. You're verified.",
+     "why": "Fecha a etapa."
+    },
+    {
+     "warm": "I'll never ask for your password, your full card number or the security code — only the last four digits.",
+     "why": "Protege o cliente e você. Diga quando o cliente hesitar."
+    }
+   ],
+   "if_fails": [
+    {
+     "warm": "I'm not able to verify the account with those details, and without that I can't share anything specific about the reservation — I'm sorry, it's there to protect you. Two options: I can message you through the app, or you can call back from the number registered on the account.",
+     "why": "Sem autenticação, sem informação. Ofereça os dois caminhos seguros."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Can I get your password to pull up the account?",
+     "why": "Nunca. Sinal de golpe, incidente de segurança."
+    },
+    {
+     "text": "What's the card number?",
+     "why": "Só os 4 últimos dígitos."
+    },
+    {
+     "text": "(pular a etapa porque o cliente está nervoso)",
+     "why": "Estabilize primeiro se for emergência; autentique assim que for seguro. Nunca pule."
+    }
+   ]
+  },
+  {
+   "id": "recording",
+   "label": "Recording notice (callbacks)",
+   "label_pt": "Aviso de gravação (crítico em callback)",
+   "principle": "Toda ligação que VOCÊ inicia: dizer que está sendo gravada para treinamento e qualidade, e perguntar se está tudo bem. Se não estiver, você pode parar a gravação. Esquecer isso numa chamada que a qualidade ouve é motivo de desligamento.",
+   "lines": [
+    {
+     "warm": "Before we start, just so you know: this call is being recorded for training and quality purposes — is that okay with you?",
+     "why": "Curto, antes de qualquer conteúdo, com pergunta explícita."
+    },
+    {
+     "warm": "No problem at all — I'll stop the recording now. Right, let's carry on.",
+     "why": "Se o cliente recusar: para, confirma, segue."
+    },
+    {
+     "warm": "Thank you. So, I'm calling about case 4471…",
+     "why": "Se permitir: agradece e entra no assunto — sem repetir o aviso."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "(começar direto no caso)",
+     "why": "O aviso vem ANTES do conteúdo."
+    },
+    {
+     "text": "This call may be recorded.",
+     "why": "'May' é vago. Diga que ESTÁ sendo gravada e pergunte."
+    }
+   ]
+  },
+  {
+   "id": "hold",
+   "label": "Hold & transfer",
+   "label_pt": "Espera e transferência (regra: 2 holds × 3 min)",
+   "lines": [
+    {
+     "warm": "May I place you on a brief hold — no more than three minutes — while I check the reservation? I'll come back and tell you what I've found.",
+     "why": "Permissão, tempo máximo, o que vai fazer."
+    },
+    {
+     "warm": "Thanks for holding. Here's what I found.",
+     "why": "Retoma com conteúdo, não com desculpa."
+    },
+    {
+     "warm": "I'm going to need a bit longer than a hold allows. Would you be happy to continue this over chat? I can keep researching on my side and you won't have to wait on the line.",
+     "why": "Depois do 2º hold, ou quando a pesquisa é longa: transferência para o chat, com permissão."
+    },
+    {
+     "warm": "I'm going to bring in our claims team, and I'll stay on the line to introduce you so you don't have to start over.",
+     "why": "Transferência quente."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Hold on.",
+     "why": "Sem permissão, sem tempo, sem motivo."
+    },
+    {
+     "text": "(um terceiro hold)",
+     "why": "Regra: máximo 2. Vá para o chat."
+    },
+    {
+     "text": "(voltar aos 5 minutos)",
+     "why": "Máximo 3 minutos por hold."
+    }
+   ],
+   "principle": "Até 2 holds seguidos, de 3 minutos cada — sempre com permissão e com o tempo dito. Se precisar de mais, ofereça continuar pelo chat (só com permissão do cliente) e pesquise por lá."
+  },
+  {
+   "id": "empathy",
+   "label": "Empathy without admitting liability",
+   "label_pt": "Empatia sem confessar responsabilidade",
+   "principle": "'I'm sorry you're dealing with this' reconhece a experiência do cliente. 'I'm sorry we did X' admite que a empresa errou — só diga isso quando for verdade e confirmado. A empatia certa é específica ao fato, não genérica à emoção.",
+   "lines": [
+    {
+     "warm": "I'm sorry you're dealing with this — arriving late and finding the place like that is not how anyone wants a trip to start.",
+     "why": "Específica ao fato, sem admitir culpa."
+    },
+    {
+     "warm": "That sounds genuinely stressful, especially with kids in the car at that hour.",
+     "why": "Nomeia o detalhe que o cliente contou — prova que você ouviu."
+    },
+    {
+     "warm": "You did the right thing taking photos straight away. That's going to help.",
+     "why": "Elogia a ação concreta; prepara a evidência."
+    },
+    {
+     "neutral": "I understand the situation, and I'll help you with it.",
+     "why": "Sóbria."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "I understand how you feel.",
+     "why": "Ninguém acredita. Substitua pelo fato específico."
+    },
+    {
+     "text": "I'm sorry we damaged your property.",
+     "why": "Admissão de responsabilidade antes de investigar."
+    },
+    {
+     "text": "Unfortunately…",
+     "why": "Anuncia má notícia antes de dizê-la; o cliente para de ouvir."
+    },
+    {
+     "text": "Calm down.",
+     "why": "Nunca funcionou na história das chamadas."
+    }
+   ]
+  },
+  {
+   "id": "paraphrase",
+   "label": "Paraphrase the problem",
+   "label_pt": "Parafrasear o problema",
+   "principle": "Depois que o cliente expõe o problema, reformule com as suas palavras — não repita literalmente — e pergunte se faltou algo. É o que prova escuta, evita resolver o caso errado, e acalma quem já explicou três vezes.",
+   "lines": [
+    {
+     "warm": "So, just to make sure I've got this right: you arrived at half eleven, the lockbox code was rejected six times, and the host hasn't answered in forty minutes. Is that everything?",
+     "why": "Fatos concretos na ordem em que aconteceram + pergunta de fechamento."
+    },
+    {
+     "warm": "Let me say that back to you so you know I've understood: … Have I missed anything?",
+     "why": "Versão para quem repete ou está frustrado."
+    },
+    {
+     "neutral": "If I've understood correctly, the issue is X and what you're asking for is Y — is that right?",
+     "why": "Separa o problema do pedido — útil em recursos e disputas."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Okay, so what happened?",
+     "why": "Faz o cliente repetir em vez de você reformular."
+    },
+    {
+     "text": "(repetir palavra por palavra)",
+     "why": "Parece papagaio. Reformule."
+    }
+   ]
+  },
+  {
+   "id": "clarify",
+   "label": "Clarifying questions",
+   "label_pt": "Perguntas de esclarecimento",
+   "lines": [
+    {
+     "warm": "Can I ask — when did you first notice the problem? I ask because there's a 72-hour window from that moment, and I want to make sure we're inside it.",
+     "why": "Explica POR QUE pergunta. A pergunta das 72h sem contexto soa como armadilha."
+    },
+    {
+     "warm": "Were you able to reach the host about it? What did they say?",
+     "why": "A política pede contato com o host quando viável."
+    },
+    {
+     "warm": "Do you have any photos or video? You can upload them in the app and I'll see them on my side.",
+     "why": "Evidência, com o caminho."
+    },
+    {
+     "warm": "Are you still at the property, or have you left?",
+     "why": "Fator de decisão explícito na política."
+    },
+    {
+     "warm": "Just so I understand the scale of it — is it one room, or the whole place?",
+     "why": "'Parte da estadia afetada'."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Did you report it within 72 hours?",
+     "why": "Fechada e acusatória. Pergunte QUANDO descobriu."
+    }
+   ]
+  },
+  {
+   "id": "options",
+   "label": "Explaining what's possible",
+   "label_pt": "Explicar a possibilidade de resolução",
+   "principle": "Diga o que você VAI fazer, o que PODE acontecer, e o que NÃO depende de você — nessa ordem. Nunca prometa o resultado de uma análise que ainda não foi feita.",
+   "lines": [
+    {
+     "warm": "Here's how this works. First, I'll document everything you've told me and the photos. Then it goes to review, and that's where the decision on a refund is made. What I can tell you now is which policy applies and what the possible outcomes are.",
+     "why": "Processo → decisão → escopo do que você pode afirmar."
+    },
+    {
+     "warm": "There are two paths here: we can look at rebooking you somewhere comparable for the remaining nights, or a refund for the nights affected. Which would be more useful to you?",
+     "why": "Duas opções, não cinco. Pergunta a preferência."
+    },
+    {
+     "warm": "I can't promise the outcome of the review, but I can promise it will be looked at today and that you'll hear from me either way.",
+     "why": "Honesto sobre o limite; compromisso com o que controla."
+    },
+    {
+     "neutral": "Based on what you've described, this would fall under our Rebooking and Refund Policy. The next step is a review of the evidence.",
+     "why": "Nomeia a política."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "You'll definitely get a full refund.",
+     "why": "Promessa de resultado que não é seu."
+    },
+    {
+     "text": "There's nothing I can do.",
+     "why": "Quase nunca é verdade; há sempre um próximo passo ou uma explicação."
+    }
+   ]
+  },
+  {
+   "id": "deny",
+   "label": "Delivering a no or a partial",
+   "label_pt": "Negar ou dar parcial",
+   "principle": "A negativa clara é mais respeitosa que a negativa amaciada. Estrutura: o que foi decidido → por quê (fato + regra) → o que ainda existe (recurso, gesto, próximo passo).",
+   "lines": [
+    {
+     "warm": "I want to be straight with you. The refund request wasn't approved, and I'll tell you exactly why: the issue was reported six days after you found it, and the policy window is 72 hours. That's the whole reason.",
+     "why": "Claro, com o fato e a regra, sem 'unfortunately'."
+    },
+    {
+     "warm": "What was approved is a refund for the two nights the heating was out — not the full stay, because the rest of the stay wasn't affected. I know that's not everything you asked for.",
+     "why": "Parcial explicada pela lógica de 'parte afetada'; reconhece a lacuna."
+    },
+    {
+     "warm": "If you feel something was missed in the review, you can dispute it, and I'll tell you how. I'd also add anything new you have — a message from the host, a receipt.",
+     "why": "Caminho de recurso concreto."
+    },
+    {
+     "warm": "Separately from the policy, I'm able to offer a credit as a goodwill gesture. It doesn't change the decision, but I'd like you to have it.",
+     "why": "Gesto claramente separado da decisão."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Unfortunately, as per policy, we are unable to…",
+     "why": "Três marcadores de robô em uma frase."
+    },
+    {
+     "text": "I'm sorry, my hands are tied.",
+     "why": "Transfere a culpa para o sistema e sai da conversa."
+    }
+   ]
+  },
+  {
+   "id": "policy",
+   "label": "Explaining the policy in plain English",
+   "label_pt": "Explicar a política",
+   "lines": [
+    {
+     "warm": "The way the 72-hour rule works is simple: from the moment you discover a problem, you have three days to tell us or the host. It's there so issues can be checked while they're still happening.",
+     "why": "Regra + motivo. Regra sem motivo soa arbitrária."
+    },
+    {
+     "warm": "Your booking was on a Strict policy, which means a free cancellation only within 48 hours of booking and at least 28 days before check-in. Because it was cancelled ten days out, the policy itself doesn't give a refund. That's the starting point — then we look at whether anything else applies.",
+     "why": "Política do anúncio explicada e depois aberta a exceções."
+    },
+    {
+     "warm": "AirCover covers things that stop the place being what was advertised — no heating in winter, a missing bedroom, a pool that isn't there. It doesn't cover small inconveniences; the example we use is a broken toaster.",
+     "why": "Escopo com exemplos concretos."
+    },
+    {
+     "warm": "For damage claims, the host needs to have asked you through the Resolution Center within 14 days of check-out. You have a right to respond, and both sides' evidence is looked at.",
+     "why": "Regra + direito do outro lado."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "As per our terms and conditions section 4.2…",
+     "why": "Ninguém ouve depois de 'as per'."
+    }
+   ]
+  },
+  {
+   "id": "evidence",
+   "label": "Requesting evidence",
+   "label_pt": "Pedir evidência",
+   "lines": [
+    {
+     "warm": "The strongest thing you can send is a photo with the date visible, or a short video walking through the room. Even a message to the host from that day helps.",
+     "why": "Diz O QUE é forte, não só 'send evidence'."
+    },
+    {
+     "warm": "Could you upload those in the app under this reservation? I'll see them straight away and add them to the case.",
+     "why": "Caminho e confirmação."
+    },
+    {
+     "warm": "If you don't have photos, don't worry — tell me what you do have, and we'll work with that.",
+     "why": "Não fecha a porta."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Without evidence we can't do anything.",
+     "why": "Falso e hostil."
+    }
+   ]
+  },
+  {
+   "id": "expectations",
+   "label": "Managing expectations & timelines",
+   "label_pt": "Prazos e expectativas",
+   "lines": [
+    {
+     "warm": "Refunds are issued straight away on our side, but most take up to 15 days to show on your statement, depending on your bank. If it's not there by then, message me on the case and I'll chase it.",
+     "why": "Número real + o que fazer se falhar."
+    },
+    {
+     "warm": "I'll follow up with you by message within 24 hours, whether or not there's news.",
+     "why": "Compromisso com prazo, inclusive sem novidade."
+    },
+    {
+     "warm": "The review normally takes a day or two. I'd rather tell you two days and be early than one day and be late.",
+     "why": "Expectativa honesta."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "It should be quick.",
+     "why": "Vago."
+    }
+   ]
+  },
+  {
+   "id": "summary",
+   "label": "Summary before closing",
+   "label_pt": "Sumarização final (crítico)",
+   "principle": "Antes de perguntar se o cliente entendeu e se precisa de mais ajuda, e antes de dizer que vai fechar o caso: resumir TUDO o que foi tratado — problema, o que foi feito, próximos passos com prazos, referência. Vale para chat e ligação. Esquecer é motivo de desligamento.",
+   "lines": [
+    {
+     "warm": "Before we finish, let me go over everything we covered today. You called because the lockbox code wasn't working and the host wasn't responding. I've messaged and called the host, opened an access-failure case, and started a rebooking search for tonight. You'll get options by message within the hour, and I'll call you back before six. Your reference is 4471.",
+     "why": "Problema → feito → próximos passos com prazos → referência. Nessa ordem."
+    },
+    {
+     "warm": "So today: the refund for the two affected nights was approved and is on its way — usually within 15 days; the hotel receipt is attached for the reviewer; and the dispute path is in the app if you need it.",
+     "why": "Versão curta para caso simples."
+    },
+    {
+     "warm": "To sum up what we agreed: …",
+     "why": "Abertura alternativa."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Okay, so is there anything else?",
+     "why": "Pulou o resumo. É a falha que demite."
+    },
+    {
+     "text": "(resumir só o próximo passo)",
+     "why": "Resumo é TUDO o que foi tratado."
+    }
+   ]
+  },
+  {
+   "id": "confirm",
+   "label": "Confirm understanding & offer more help",
+   "label_pt": "Confirmar entendimento e oferecer mais ajuda",
+   "principle": "Depois do resumo e antes de fechar: (1) os passos ficaram claros? (2) precisa de mais alguma coisa? Só então: 'vou fechar o caso'.",
+   "lines": [
+    {
+     "warm": "Have I explained those steps clearly? Is there anything you'd like me to go over again?",
+     "why": "Pergunta 1 — entendimento."
+    },
+    {
+     "warm": "And is there anything else I can help you with today?",
+     "why": "Pergunta 2 — mais ajuda."
+    },
+    {
+     "warm": "Then I'll go ahead and close this case. You'll have everything we discussed in writing in the app, under that reference.",
+     "why": "Fechamento anunciado, com o resumo por escrito."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "I'm closing the case now, bye.",
+     "why": "Sem as duas perguntas antes."
+    }
+   ]
+  },
+  {
+   "id": "future",
+   "label": "Clarifying future doubts & how to reach us",
+   "label_pt": "Esclarecer dúvidas futuras",
+   "lines": [
+    {
+     "warm": "Before we finish — is there anything about this you're still unsure of? I'd rather cover it now than have you wonder later.",
+     "why": "Convite explícito."
+    },
+    {
+     "warm": "Your case reference is 4471. If you message through the app with that number, it comes straight to the team handling it — you won't have to start over.",
+     "why": "Número + como usar + benefício."
+    },
+    {
+     "warm": "I'm going to send a summary of what we agreed in the app in the next few minutes, so you have it in writing.",
+     "why": "Resumo por escrito — reduz recontato."
+    },
+    {
+     "warm": "If anything changes tonight — the host gets back to you, or you find somewhere — just message the case, and we'll adjust.",
+     "why": "Antecipa o cenário mais provável."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Is there anything else?",
+     "why": "Fórmula. Pergunte sobre O CASO."
+    }
+   ]
+  },
+  {
+   "id": "close",
+   "label": "Closing",
+   "label_pt": "Encerramento",
+   "lines": [
+    {
+     "warm": "Thanks for talking this through with me, Ms. Okafor. You'll hear from me by tomorrow. I hope the rest of the trip is a lot better than the start.",
+     "why": "Nome, próximo passo, toque humano."
+    },
+    {
+     "warm": "I've got everything I need. You don't need to do anything else tonight — I'll take it from here.",
+     "why": "Tira o peso do cliente."
+    },
+    {
+     "neutral": "Thank you for your time. The case is documented and you'll receive an update by message.",
+     "why": "Sóbria."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "Have a nice day.",
+     "why": "Depois de uma noite trancado para fora? Leia a sala."
+    }
+   ]
+  },
+  {
+   "id": "host_specific",
+   "label": "Outbound to hosts",
+   "label_pt": "Ligando para anfitriões",
+   "principle": "O host não te ligou; você ligou para ele, muitas vezes com notícia que custa dinheiro. Ele precisa de: por que você ligou, o que já se sabe, o que o lado dele pode mudar, e o que acontece a seguir.",
+   "lines": [
+    {
+     "warm": "I'm calling because a guest has reported an issue with the stay, and I want your account of it before anything is decided.",
+     "why": "Enquadra como investigação justa."
+    },
+    {
+     "warm": "Can you walk me through the check-in on the 14th — who prepared the place, and when?",
+     "why": "Pergunta aberta, factual."
+    },
+    {
+     "warm": "Do you have photos from before check-in, or the cleaner's checklist? Those help your side a lot.",
+     "why": "Evidência do host."
+    },
+    {
+     "warm": "I have to be clear about something: because the guest couldn't get in until 1 a.m., the policy treats that as an access failure, and it affects the payout for that night. Here's how, and here's how you can dispute it.",
+     "why": "Notícia ruim clara, com mecanismo e recurso."
+    },
+    {
+     "warm": "Your Superhost status isn't affected by this particular outcome. I want to say that because I know it's a worry.",
+     "why": "Antecipa o medo (quando for verdade)."
+    },
+    {
+     "warm": "On the damage claim: the policy excludes normal wear and tear, so a worn sofa cushion wouldn't qualify — but a broken frame would. Which are we looking at?",
+     "why": "Ensina a linha da política com exemplo do caso."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "The guest says you…",
+     "why": "Coloca a palavra do guest como acusação."
+    },
+    {
+     "text": "I'm just the messenger.",
+     "why": "Abdica."
+    }
+   ]
+  },
+  {
+   "id": "connection",
+   "label": "Line problems",
+   "label_pt": "Problemas de linha",
+   "lines": [
+    {
+     "warm": "I'm sorry, you're breaking up a little — could you say the last part again?",
+     "why": "Assume o problema como da linha, não do cliente."
+    },
+    {
+     "warm": "If we get cut off, I'll call you straight back on this number.",
+     "why": "Antecipa a queda."
+    },
+    {
+     "warm": "There's a bit of background noise on my end — I want to make sure I catch everything. Could you spell the name of the street for me?",
+     "why": "Pede soletrar com motivo."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "What? Say again.",
+     "why": "Seco."
+    }
+   ]
+  },
+  {
+   "id": "retention",
+   "label": "Keeping the customer (CSAT)",
+   "label_pt": "Manter o cliente — julgamento comercial",
+   "principle": "Imparcial, com inclinação ao guest. Nunca pagar a quem está claramente errado. Mas os clientes desta linha gastam mais de US$ 1.000 e não podem ser perdidos — e hosts excelentes tampouco. Nos casos limítrofes, o gesto de boa vontade separado da decisão é a ferramenta. Personalização (nome, detalhes) é o que faz a nota do CSAT.",
+   "lines": [
+    {
+     "warm": "I can see you've been with us a long time, and I want to get this right for you. What the policy allows is X — and I'll do that fully, today.",
+     "why": "Reconhece o valor sem prometer exceção."
+    },
+    {
+     "warm": "Separately from the decision, I'd like to offer a credit as a goodwill gesture. It doesn't change the outcome, but I'd like you to have it.",
+     "why": "Gesto claramente separado — para caso limítrofe com cliente de alto valor."
+    },
+    {
+     "warm": "I've looked at this carefully, and I'm not able to approve it — the evidence shows the damage happened after check-out, and paying it wouldn't be fair to the guest. Here's what I can do instead.",
+     "why": "Negativa a quem está errado, sem hostilidade, com o que resta."
+    },
+    {
+     "warm": "You're one of the hosts we most want to keep, and I'll make sure this case reflects that — here's exactly what would help your side.",
+     "why": "Host excelente: retenção sem ceder na regra."
+    }
+   ],
+   "avoid": [
+    {
+     "text": "(pagar para o cliente parar de reclamar)",
+     "why": "Injusto com a outra parte e ensina o comportamento errado."
+    },
+    {
+     "text": "Rules are rules.",
+     "why": "Perde o cliente de alto valor por nada."
+    }
+   ]
+  }
+ ]
+}
